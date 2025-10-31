@@ -1,0 +1,109 @@
+% !TEX program = xelatex
+% 这行告诉LaTeX编辑器使用XeLaTeX引擎编译（支持更好的字体处理）
+
+% Elsarticle文档类声明：review格式，12pt字体，Harvard引用风格
+\documentclass[authoryear,preprint,review,times,12pt]{elsarticle}
+
+% ===== 宏包导入部分 =====
+% 数学相关宏包（必备！工程管理论文经常用到数学公式）
+\usepackage{amsmath}      % 强大的数学环境，如align、equation等
+\usepackage{amssymb}      % 数学符号，如∈、⊆、∀、∃等
+\usepackage{amsfonts}     % 数学字体，如粗体向量、花体字母等
+
+% 基础功能宏包（elsarticle已包含graphicx）
+\usepackage{booktabs}     % 制作专业表格（\toprule、\midrule、\bottomrule）
+\usepackage{enumitem}     % 增强列表功能（itemize、enumerate）
+\usepackage{lineno}       % 行号宏包（review格式需要）
+
+% 页边距调整（草稿阶段使用，投稿时可注释掉）
+\usepackage{geometry}
+\geometry{
+    left=2.5cm,    % 左边距（原约3.5cm）
+    right=2.5cm,   % 右边距（原约3.5cm）
+    top=2.5cm,     % 上边距（原约3cm）
+    bottom=2.5cm   % 下边距（原约3cm）
+}
+
+\usepackage{hyperref}     % 超链接和PDF书签（应该放在最后导入）
+
+% 指定目标期刊（根据实际投稿期刊修改）
+\journal{Engineering Management Journal}
+
+\begin{document}
+
+\begin{frontmatter}
+
+% 论文标题
+\title{Emergency response strategy and simulation analysis considering inter-government coordination and information sharing}
+
+% 作者信息（使用elsarticle格式）
+\author[label1]{dongjie}
+\ead{zylenw97@usts.edu.cn}
+
+\author[label1]{Yitong Chen}
+\ead{yitongchen@usts.edu.cn}
+
+\author[label2]{Zhe Zhang\texorpdfstring{\corref{cor1}}{*}}
+\ead{2431220@tongji.edu.cn}
+
+\author[label2]{Qinghua He}
+\ead{heqinghua@tongji.edu.cn}
+
+
+\cortext[cor1]{Corresponding author}
+
+\affiliation[label1]{organization={School of Civil Engineering, Suzhou University of Science and Technology},
+            addressline={}, 
+            city={Suzhou},
+            postcode={215011}, 
+            state={},
+            country={China}}
+
+\affiliation[label2]{organization={School of Economics and Management, Tongji University},
+            addressline={}, 
+            city={Shanghai},
+            postcode={200092}, 
+            state={},
+            country={China}}
+
+% 摘要
+\begin{abstract}
+This paper investigates the application of game-theoretic approaches to engineering management problems, focusing on multi-agent optimization in complex systems. We develop a mathematical framework that combines Nash equilibrium concepts with optimization theory to model decision-making processes in distributed engineering environments. Our computational experiments demonstrate significant improvements in system efficiency and resource allocation. The proposed methodology provides both theoretical foundations and practical implementation strategies for modern engineering management challenges.
+\end{abstract}
+
+% 关键词（使用elsarticle格式）
+\begin{keyword}
+Game theory \sep Multi-agent systems \sep Engineering management \sep Optimization \sep Nash equilibrium
+\end{keyword}
+
+\end{frontmatter}
+
+% 启用行号（review格式特有）
+\linenumbers
+
+% 目录页（期刊论文通常不需要）
+% \tableofcontents
+% \newpage
+
+% ===== 正文各章节 =====
+% 使用 \input 命令导入各章节文件
+
+\input{sections/01-introduction}
+\input{sections/02-literature}
+\input{sections/03-methodology}
+\input{sections/04-experiments}
+\input{sections/05-results}
+\input{sections/06-conclusion}
+
+% ===== 参考文献 =====
+% 使用BibTeX生成参考文献列表（Harvard格式）
+\bibliographystyle{elsarticle-harv}
+\bibliography{dj01}
+
+\end{document}
+
+% ===== Harvard 引用格式说明 =====
+% 1. \citep{key} → (Author, Year) - 括号内引用
+% 2. \citet{key} → Author (Year) - 文本内引用
+% 3. 参考文献按作者姓氏字母排序
+% 4. 适合管理学、社会科学期刊投稿
