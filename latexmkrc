@@ -4,7 +4,7 @@ $pdf_mode = 5;
 $xelatex = "xelatex -synctex=1 -interaction=nonstopmode %O %S";
 
 # 启用 BibTeX 编译（用于 elsarticle 参考文献）
-$bibtex_use = 1;
+$bibtex_use = 2;  # 强制每次运行BibTeX
 
 # 输出目录设置 - 临时文件放到build，PDF放根目录
 $aux_dir = "build";
