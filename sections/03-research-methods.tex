@@ -1,7 +1,82 @@
 \section{Research Methods}
 \label{sec:methods}
 
-\subsection{The Baseline Two-Player Evolutionary Game Model}
+\subsection{Methodology}
+To address the two RQs, this study adopted three methods: Necessary Condition Analysis (NCA), Time-Series Qualitative Comparative Analysis (TSQCA), and Typical Case Tracing (TCT). The reasons are as follows. First, NCA was employed to identify the "bottlenecks" of sustainable competitive advantage. While RQ1 aims to find sufficient configurations, it is critical to first ascertain whether any specific antecedent serves as a \textit{necessary condition} --- a factor that must be present for a specific outcome to occur. NCA allows us to quantify the effect size of necessity, ensuring that we do not overlook critical prerequisites before examining configurations \citep{dul2016Necessary}. Second, TSQCA is utilized to address two RQs. Traditional regression analysis, based on "net effects," is insufficient for capturing the \textit{conjunction} (factors working together), \textit{equifinality} (multiple pathways to the same outcome), and \textit{asymmetry} (presence and absence of factors having different effects) inherent in our framework \citep{ragin2009Redesigning,fiss2011Building}. Given our panel dataset of construction enterprises, TSQCA extends standard QCA by assessing the consistency of relationships over time and across cases \citep{denford2024Assessing}. This enables us to identify robust configurations in a dynamic context. Third, to further build connections between configurational patterns and specific cases, this study employed TCT. Established by \citet[p.~561]{schneider2013Combining}, this technique is qualitative within-case method that trace the temporal sequence of events and decision-making processes within specific enterprises based on typical configurations. While TSQCA reveals which antecedents combine to form sufficient conditions, TCT can explicate how these factors dynamically interact to produce the outcome by reconstructing the detailed "chain of evidence" of enterprises \citep{álamos-concha2022Conservative}. By deconstructing the continuous operational logic within these typical cases, this technique helps confirm that configurations reflect genuine managerial logic rather than coincidental associations \citep{beach2018Achieving}.
+
+% To ensure methodological rigor, we strictly follow the "principle of unique membership" and the "principle of maximum set membership"  to select representative cases that exhibit high and exclusive adherence to specific configurations. 
+
+\subsection{Data Source and Sample}
+The empirical setting for this study comprises A-share listed Chinese construction enterprises. This selection is driven by the unique "high-velocity" characteristics of this market. As the world's largest construction market, Chinese construction sector is currently navigating a profound transition from extensive scale-driven growth to intensive quality-driven development \citep{wang2024Strategic}. This creates a context of intense environmental dynamism and fierce competition \citep{zhao2024Using}, allowing for a rigorous examination of how enterprises construct sustainable competitive advantages beyond simple market expansion.
+
+The initial data were primarily sourced from the China Stock Market \& Accounting Research (CSMAR) database and the Wind Financial Terminal (WIND). The study period is set from 2014 to 2023. This decade captures a critical phase of structural transformation, characterized by market adjustments under the "new normal," the acceleration of digital transformation, and strict compliance requirements under the "dual carbon" goals \citep{das2021Developing,sharma2023Construction}. Crucially, this longitudinal window encompasses the COVID-19 pandemic, an unprecedented exogenous shock that severely disrupted global supply chains and project continuity. This major contingency serves as a natural "stress test," enabling this study to observe not only how configurations evolve to ensure sustainable competitive advantages but also how they empower enterprises to withstand and recover from extreme disruptions (i.e., organizational resilience).
+
+To ensure data accuracy and analytical robustness, the initial sample was subjected to a rigorous screening process. First, enterprises marked as "ST" (Special Treatment) or "*ST" during the sample period were excluded. In the Chinese stock market, these tags indicate abnormal financial conditions (e.g., consecutive losses), which could introduce noise regarding extreme financial distress rather than normal strategic behavior. Second, enterprises with significant missing data for key variables, particularly those related to strategic orientation and organizational resources, were removed to ensure comparability. Finally, a panel dataset of 114 listed construction enterprises was obtained, yielding a total of 2,150 enterprise-year observations.
+
+\subsection{Measurements}
+The measurements of outcome variables and nine condition variables are shown as follows.
+
+\subsubsection{Outcome variable}
+Sustainable competitive advantage (livaRatio). To measure sustainable competitive advantage, this study leverages long-term investor value appropriation (LIVA), as developed by \citet{wibbens2020Introducing}. LIVA is defined as the net present value of the excess returns a firm generates for its investors over a specific time horizon, relative to the market’s cost of capital \citep{wibbens2020Introducing}. The formula of LIVA is: 
+
+\begin{equation}
+LIVA = V_T - V_0 - \sum_{t=1}^{T} \frac{FCF_t}{(1+r)^t}
+\end{equation}
+where $V_0$ and $V_T$ denote the enterprise's market value at the beginning and end of the period, respectively; $FCF_t$ represents the free cash flow in period $t$; and $r$ is the weighted average cost of capital.
+
+The reasons we used LIVA are threefold. First, consistent with \citep{barney1991Firm}, a true competitive advantage must result in the appropriation of superior value over the long run. Second, unlike short-term accounting ratios (e.g., return on assets) or market expectations (e.g., Tobin's Q), LIVA captures the cumulative economic magnitude of a firm's success, filtering out short-term accounting noise \citep{wibbens2020Introducing}. Third, by netting out the cost of capital, LIVA effectively isolates the value created specifically by the firm's unique capabilities above the market average, rendering it a robust indicator of sustained advantage \citep{mizik2003Trading}. To ensure comparability across enterprises and eliminate scale effects, the ratio of LIVA to total assets (livaRatio) is used for analysis.
+
+\subsubsection{Condition Variables}
+Cost Stickiness (stick). We measure cost stickiness using the model proposed by \citet{weiss2010Cost}, which captures the asymmetric behavior of costs --- the tendency for costs to rise with increasing sales but fall disproportionately less when sales decline. Calculated based on the difference in cost behavior between periods of decreasing and increasing activity, the model is specified as:
+
+\subsubsection{Resource-related condition variables}
+\begin{equation}
+stick_{i,t} = \log\left(\frac{\Delta COST}{\Delta SALE}\right)_{i,\underline{\tau}} - \log\left(\frac{\Delta COST}{\Delta SALE}\right)_{i,\bar{\tau}}
+\end{equation}
+where $\underline{\tau}$ represents the most recent quarter within the observation year (from $t$ to $t-3$) exhibiting a decline in sales, and $\bar{\tau}$ represents the most recent quarter exhibiting an increase. Here, $\Delta SALE$ and $\Delta COST$ denote the year-over-year changes in sales and total costs (calculated as sales minus operating earnings), respectively. Since a lower negative value in the original Weiss model indicates higher stickiness, we multiply the result by $-1$ to ensure that a higher $STICKY$ value corresponds to a greater degree of resource retention.
+
+Enterprise size (size). Enterprise size is measured as the natural logarithm of total assets at year-end.
+
+Environmental, social, and governance (esg). We measured ESG performance using the Sino-Securities ESG rating sourced from the Wind database, according to \citet{cheng2024Strategic}. This rating system aligns with international ESG evaluation frameworks while accommodating the specialties of the Chinese capital market, offering broad coverage, frequent updates and high data accessibility. A higher score on this scale signifies superior ESG performance, allowing for a nuanced analysis of companies' sustainability efforts within the context of China's unique capital market environment.
+
+Digital transformation (digit). Quantified through textual analysis. A dictionary of construction-specific digital keywords (e.g., "smart site," "digital twin," "IoT") was constructed. The variable is measured by the frequency of these keywords relative to the total text in annual reports, capturing the extent of digital capability integration.
+
+\subsubsection{Environment-related condition variables}
+Following prior studies \citep{ghosh2009Environmental}, we employ a time-series forecasting model to measure environmental characteristics. An industry's sales revenue over the past five years is regressed against time: $y_{it} = \alpha_i + \beta_i t_i + \epsilon_{it}$.
+
+\paragraph{Environmental Dynamism (DYNA).}
+Calculated as the standard error of the regression coefficient ($se_i$) divided by the mean industry sales revenue ($\bar{y}_i$). This reflects market unpredictability:
+\begin{equation}
+DYNA_i = \frac{se_i}{\bar{y}_i}
+\end{equation}
+
+\paragraph{Environmental Munificence (MUNI).}
+Calculated as the regression coefficient ($\beta_i$) divided by the mean revenue ($\bar{y}_i$), reflecting the industry's growth potential:
+\begin{equation}
+MUNI_i = \frac{\beta_i}{\bar{y}_i}
+\end{equation}
+
+\subsubsection{Strategy-related condition variables}
+\paragraph{Diversification Strategy (DIVER).}
+This is measured using the entropy index of revenues, which accounts for both the number of business segments and the balance of sales distribution. The formula is:
+\begin{equation}
+DIVER = \sum_{i=1}^{n} p_i \ln(1/p_i)
+\end{equation}
+where $p_i$ is the proportion of sales from business segment $i$ to total sales, and $n$ is the total number of segments.
+
+\paragraph{Differentiation (DIFF) and Cost Leadership (COST).}
+Following \citet{hu2021Differentiation}, these are quantified via textual analysis of annual reports. We calculated the frequency of specific keywords within the "Management Discussion and Analysis" (MD\&A) section. A differentiation word set (e.g., "technological innovation," "green building," "BIM") and a cost leadership word set (e.g., "cost control," "lean construction," "supply chain optimization") were constructed tailored to the construction context. The ratio of keyword frequency to total word count proxies the strategic emphasis.
+
+\subsection{Variable Calibration}
+Calibration converts raw data into fuzzy-set membership scores (0 to 1), a prerequisite for QCA. Given the lack of established theoretical thresholds for these specific continuous variables, we employed the direct calibration method based on sample percentiles, following \citet{greckhamer2010Strategy}.
+
+Consistent with large-N QCA applications, we defined the three qualitative anchors as follows:
+\begin{itemize}
+    \item \textbf{Full Membership (0.95):} Threshold set at the 90th percentile of the sample data.
+    \item \textbf{Crossover Point (0.50):} Threshold set at the 50th percentile (median).
+    \item \textbf{Full Non-Membership (0.05):} Threshold set at the 10th percentile.
+\end{itemize}
+For \textit{Cost Stickiness}, calibration focused on the presence of stickiness. Additionally, to avoid calculation errors during the truth table analysis, cases with exact 0.5 membership scores were adjusted by a constant of 0.001 (i.e., set to 0.501) as recommended by \citet{fiss2011Building}.
 
 \begin{table}[htbp]
 \centering
@@ -11,7 +86,7 @@
 \small
 \begin{tabular}{lccccccc}
 \toprule
-\textbf{Conditions} & \textbf{Mean} & \textbf{SD} & \textbf{Min} & \textbf{Max} & \textbf{Full M.} & \textbf{Crossover} & \textbf{Full NM.} \\
+\textbf{Conditions} & \textbf{Mean} & \textbf{SD} & \textbf{Min} & \textbf{Max} & \textbf{Full Membership} & \textbf{Crossover} & \textbf{Full Non-membership} \\
 \midrule
 Competitive Advantage & -0.2127 & 1.0933 & -17.9606 & 7.9195 & 0.2585 & -0.1036 & -0.6564 \\
 Diversification & 0.5259 & 0.3463 & 0 & 1.5765 & 1.0079 & 0.4597 & 0.0853 \\
@@ -21,13 +96,13 @@ Environmental Dynamism & 0.0035 & 0.001 & 0.0015 & 0.0067 & 0.0048 & 0.0033 & 0.
 Environmental Munificence & 0.1639 & 0.0098 & 0.1389 & 0.1804 & 0.1761 & 0.1649 & 0.1523 \\
 Cost Stickiness & -0.1376 & 0.6176 & -4.4882 & 3.3257 & 0.0193 & 0.0193 & -4.4882 \\
 Organizational Size & 13.9767 & 1.9074 & 8.9897 & 19.4865 & 16.8851 & 13.6397 & 12.0103 \\
-Social Responsibility & 72.5259 & 4.7067 & 46.41 & 87.71 & 78.34 & 72.48 & 67.69 \\
+ESG & 72.5259 & 4.7067 & 46.41 & 87.71 & 78.34 & 72.48 & 67.69 \\
 Digital Transformation & 0.0006 & 0.0006 & 0 & 0.0081 & 0.001 & 0.0005 & 0.0001 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
 \footnotesize
-\item Note: SD = Standard Deviation; Full M. = Full Membership; Full NM. = Full Non-membership. Calibration anchors based on thresholds of 0.95 (full membership), 0.5 (crossover point), and 0.05 (full non-membership).
+\item Note: SD = Standard Deviation. Calibration anchors based on thresholds of 0.95 (full membership), 0.5 (crossover point), and 0.05 (full non-membership).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

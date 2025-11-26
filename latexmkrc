@@ -8,7 +8,8 @@ $bibtex_use = 2;  # 强制每次运行BibTeX
 
 # 输出目录设置 - 临时文件放到build，PDF放根目录
 $aux_dir = "build";
-# $out_dir 不设置，PDF默认输出到根目录
+$out_dir = ".";  # 显式指定PDF输出到根目录
+$emulate_aux_dir = 1;  # 模拟辅助目录，确保xdvipdfmx能正确找到XDV文件
 
 # 自动清理辅助文件（包含 BibTeX 相关文件）
 $clean_ext = "bbl blg run.xml";
