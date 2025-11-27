@@ -45,3 +45,48 @@
 ### 3. 投稿前准备
 - 注释掉`main.tex`中的geometry页边距设置，恢复Elsarticle默认格式
 - 修改`\journal{}`为目标期刊名称
+
+## 📊 表格绘制规范
+
+### 必需宏包
+```latex
+\usepackage{booktabs}       % 专业表格横线
+\usepackage{threeparttable} % 表格注释
+\usepackage{caption}        % Caption格式控制
+```
+
+### 标准模板
+```latex
+\begin{table}[!htbp]
+\centering
+\captionsetup{font=normalsize, labelsep=period}
+\setlength{\abovecaptionskip}{8pt}
+\setlength{\belowcaptionskip}{0pt}
+\caption{表格标题}
+\label{tab:label_name}
+\small
+\begin{threeparttable}
+\begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill}}lccccccc}
+\toprule
+\textbf{列标题1} & \textbf{列标题2} & ... \\
+\midrule
+\textit{变量1} & 数据 & ... \\
+\textit{变量2} & 数据 & ... \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}[flushleft]
+\small\linespread{1}\selectfont
+\item \textit{Note}: 注释内容...
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+\vspace{-15pt}
+```
+
+### 关键设置
+- **Caption**：`font=normalsize, labelsep=period`（字体适中，点分隔）
+- **浮动**：`[!htbp]`（强制位置）
+- **宽度**：`0.9\textwidth`（90%页宽）
+- **字体**：表格`\small`，表头`\textbf{}`，第一列变量`\textit{}`
+- **Notes**：`[flushleft]`左对齐，`\linespread{1}`单倍行距
+- **列对齐**：第一列`l`，数据列`c`
