@@ -60,7 +60,7 @@
 \begin{table}[!htbp]
 \centering
 \captionsetup{font=normalsize, labelsep=period}
-\setlength{\abovecaptionskip}{8pt}
+\setlength{\abovecaptionskip}{5pt}
 \setlength{\belowcaptionskip}{0pt}
 \caption{表格标题}
 \label{tab:label_name}
