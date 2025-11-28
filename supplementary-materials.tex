@@ -1,0 +1,97 @@
+% !TEX program = xelatex
+\documentclass[authoryear,preprint,review,times,12pt]{elsarticle}
+
+% ===== 宏包导入部分 =====
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{caption}
+\usepackage{geometry}
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+
+\begin{document}
+
+\section*{Supplementary Materials}
+
+\subsection*{Table S1. Bottleneck Analysis}
+
+\begin{table}[!htbp]
+\centering
+\captionsetup{font=normalsize, labelsep=period}
+\setlength{\abovecaptionskip}{5pt}
+\setlength{\belowcaptionskip}{0pt}
+\caption{Bottleneck Analysis}
+\label{tab:bottleneck}
+\small
+\begin{threeparttable}
+\begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill}}lccccccccc}
+\toprule
+\textbf{Outcome} & \textbf{\textit{stick}} & \textbf{\textit{size}} & \textbf{\textit{esg}} & \textbf{\textit{digit}} & \textbf{\textit{dynam}} & \textbf{\textit{munif}} & \textbf{\textit{diver}} & \textbf{\textit{diff}} & \textbf{\textit{lead}} \\
+\midrule
+0   & NN   & NN & NN & NN & NN & NN & NN & NN & NN \\
+10  & NN   & NN & NN & NN & NN & NN & NN & NN & NN \\
+20  & NN   & NN & NN & NN & NN & NN & NN & NN & NN \\
+30  & NN   & NN & NN & NN & NN & NN & NN & NN & NN \\
+40  & NN   & NN & NN & NN & NN & NN & NN & NN & NN \\
+50  & NN   & NN & NN & NN & NN & NN & NN & NN & NN \\
+60  & NN   & NN & NN & NN & NN & NN & NN & NN & NN \\
+70  & 27.2 & NN & NN & NN & NN & NN & NN & NN & NN \\
+80  & 27.2 & NN & NN & NN & NN & NN & NN & NN & NN \\
+90  & 27.2 & NN & NN & NN & NN & NN & NN & NN & NN \\
+100 & 27.2 & NN & NN & NN & NN & NN & NN & NN & NN \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}[flushleft]
+\small\linespread{1}\selectfont
+\item \textit{Note}: NN = Not Necessary (no bottleneck threshold). Values indicate the minimum percentile threshold required for each condition to achieve the corresponding outcome level. Outcome represents percentiles of sustainable competitive advantage (0--100). stick = Cost Stickiness; size = Organizational Size; esg = Social Responsibility (ESG); digit = Digital Transformation; dynam = Environmental Dynamism; munif = Environmental Munificence; diver = Diversification; diff = Differentiation; lead = Cost Leadership.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\subsection*{Table S2. Annual Between-Case Coverage (BECOV) Analysis (2014-2023)}
+
+\begin{table}[!htbp]
+\centering
+\captionsetup{font=normalsize, labelsep=period}
+\setlength{\abovecaptionskip}{5pt}
+\setlength{\belowcaptionskip}{0pt}
+\caption{Annual Between-Case Coverage (BECOV) Analysis (2014-2023)}
+\label{tab:becov}
+\footnotesize
+\begin{threeparttable}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccccccc}
+\toprule
+\textbf{Conditions} & \textbf{S1a} & \textbf{S1b} & \textbf{S2a} & \textbf{S2b} & \textbf{S3a} & \textbf{S3b} & \textbf{S4a} & \textbf{S4b} & \textbf{S5a} & \textbf{S5b} \\
+\midrule
+\textit{stick} & $\times$ & $\times$ & $\times$ & & $\times$ & $\times$ & {\large $\bullet$} & $\times$ & {\large $\bullet$} & {\large $\bullet$} \\
+\textit{size} & & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & & $\times$ & $\times$ & & & {\large $\bullet$} \\
+\textit{esg} & {\large $\bullet$} & {\large $\bullet$} & & $\times$ & {\large $\bullet$} & & & {\large $\bullet$} & $\times$ & $\times$ \\
+\textit{digit} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & & & & & & {\large $\bullet$} \\
+\textit{dynam} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & $\times$ & $\times$ & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & $\times$ \\
+\textit{munif} & & $\times$ & & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & $\times$ & $\times$ & \\
+\textit{diver} & {\large $\bullet$} & $\times$ & $\times$ & & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & $\times$ & $\times$ \\
+\textit{diff} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & $\times$ & {\large $\bullet$} & $\times$ & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & \\
+\textit{lead} & {\large $\bullet$} & & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & $\times$ & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} \\
+\midrule
+BECOV 2014 & 0.127 & 0.270 & 0.291 & 0.137 & 0.127 & 0.137 & 0.127 & 0.312 & 0.367 & 0.137 \\
+BECOV 2015 & 0.081 & 0.116 & 0.137 & 0.091 & 0.081 & 0.086 & 0.088 & 0.166 & 0.167 & 0.091 \\
+BECOV 2016 & 0.190 & 0.221 & 0.258 & 0.188 & 0.190 & 0.185 & 0.197 & 0.349 & 0.294 & 0.188 \\
+BECOV 2017 & 0.259 & 0.285 & 0.317 & 0.221 & 0.259 & 0.247 & 0.316 & 0.400 & 0.359 & 0.221 \\
+BECOV 2018 & 0.256 & 0.349 & 0.337 & 0.235 & 0.254 & 0.239 & 0.318 & 0.400 & 0.377 & 0.235 \\
+BECOV 2019 & 0.259 & 0.272 & 0.283 & 0.232 & 0.262 & 0.236 & 0.263 & 0.313 & 0.286 & 0.232 \\
+BECOV 2020 & 0.268 & 0.278 & 0.272 & 0.264 & 0.287 & 0.258 & 0.255 & 0.267 & 0.254 & 0.264 \\
+BECOV 2021 & 0.204 & 0.203 & 0.213 & 0.224 & 0.243 & 0.185 & 0.172 & 0.176 & 0.182 & 0.224 \\
+BECOV 2022 & 0.153 & 0.149 & 0.159 & 0.230 & 0.240 & 0.135 & 0.125 & 0.124 & 0.134 & 0.230 \\
+BECOV 2023 & 0.204 & 0.185 & 0.192 & 0.294 & 0.345 & 0.174 & 0.146 & 0.147 & 0.154 & 0.294 \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}[flushleft]
+\footnotesize\linespread{1}\selectfont
+\item \textit{Note}: {\large $\bullet$} = condition present; $\times$ = condition absent; blank = don't care condition. stick = Cost Stickiness; size = Organizational Size; esg = Social Responsibility (ESG); digit = Digital Transformation; dynam = Environmental Dynamism; munif = Environmental Munificence; diver = Diversification; diff = Differentiation; lead = Cost Leadership. BECOV = Between-Case Coverage (annual). See main text Table 4 for pooled statistics (POCONS, BECONS, POCOV) and other summary measures.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\end{document}
