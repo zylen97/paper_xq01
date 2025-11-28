@@ -49,25 +49,22 @@ Table \ref{tab:nca} presents the NCA results using both ceiling regression and c
 Furthermore, the bottleneck level analysis (see Table S1 in Supplementary Materials) corroborates these findings. While \textit{stick} shows a localized bottleneck level of 27.2\% strictly at the highest tier of performance (70\%--100\%), for all other performance levels and conditions, the bottleneck requirement is consistently "Not Necessary" (NN). This suggests that while maintaining slack resources (cost stickiness) may act as a threshold condition for achieving elite status, it is not a prerequisite for sustainable competitive advantage.
 
 \subsection{Sufficient configuration (TSQCA)}
-Standard QCA procedures yield three types of solutions: complex, parsimonious, and intermediate. The complex solution excludes all logical remainders, often leading to many configurations that are difficult to interpret. The parsimonious solution automatically incorporates all logical remainders to maximize simplicity, potentially producing results that are detached from empirical reality. To address these limitations, this study adopts the intermediate solution. The intermediate solution strikes an optimal balance between the complexity of the complex solution and the over-simplification of the parsimonious solution \citep{ragin2006Set}. This approach ensures that the findings are both theoretically grounded and empirically interpretable, a practice particularly recommended for maintaining robustness in panel data QCA \citep{guedes2016UK}. Consequently, the analysis that follows focuses on the 10 distinct pathways derived from the intermediate solution, as detailed in Table 4.
+Standard QCA procedures yield three types of solutions: complex, parsimonious, and intermediate. Complex solutions often lead to many configurations that are difficult to interpret. Parsimonious solutions incorporate all logical remainders to maximize simplicity, potentially producing results that are detached from empirical reality. To address these limitations, this study adopts the intermediate solution. The intermediate solution strikes an optimal balance between the complexity of the complex solution and the over-simplification of the parsimonious solution \citep{ragin2006Set}. This approach ensures that the findings are both theoretically grounded and empirically interpretable, a practice particularly recommended for maintaining robustness in panel data QCA \citep{guedes2016UK}. Consequently, the analysis that follows focuses on the 10 configurations derived from the intermediate solution, as detailed in Table \ref{tab:tsqca}.
 
 \subsubsection{Consistency Analysis}
-Consistency serves as the primary criterion for evaluating the validity of a configuration. For TSQCA, consistency is typically assessed through three distinct metrics: Pooled Consistency (POCONS), Between-Case Consistency (BECONS), and Within-Case Consistency (WICONS) \citep{castro2016General}. Among these, WICONS calculates the sufficiency of a configuration for a single case over time. However, given that the primary objective of this study is to investigate the general strategic patterns and temporal evolution trends across construction enterprises, rather than focusing on idiosyncratic trajectories of individual case, we specifically select POCONS and BECONS for our analysis.
+Consistency serves as the primary criterion for evaluating configurations' validity. TSQCA assesses consistency through three metrics: pooled consistency (POCONS), between-case consistency (BECONS), and within-case consistency (WICONS) \citep{castro2016General}. We selected POCONS and BECONS for our analysis because our aim is to investigate the general patterns and temporal evolution trends across construction enterprises, rather than focusing on idiosyncratic trajectories of individual case. 
 
-POCONS assesses the strength of the sufficiency relationship between each configuration and high sustainable competitive advantage across the entire study period (2014--2023) and all cases. As reported in Table 4, the POCONS values for all 10 configurations range from 0.893 to 0.950, exceeding the recommended threshold of 0.80 \citep{ragin2009Redesigning}. This high consistency confirms that all identified pathways act as valid and reliable sufficient conditions for achieving sustainable competitive advantage.
+POCONS assesses the strength of the sufficiency relationship between each configuration and high sustainable competitive advantage across the study period and all cases. As reported in Table \ref{tab:tsqca}, the POCONS values for all 8 configurations range from 0.893 to 0.950, exceeding the recommended threshold of 0.80 \citep{ragin2009Redesigning}. This that all identified pathways act as valid and reliable sufficient conditions for achieving sustainable competitive advantage.
 
-To further capture the temporal dynamics of strategy, we employed BECONS analysis. BECONS considers temporal effects by calculating the degree of sufficiency of condition combinations for the outcome variable based on data at each specific time point \citep{guedes2016UK}. As shown in Table 4, the annual BECONS values across all 10 configurations exhibit notable temporal variation throughout the study period (2014--2023). For instance, configurations S4b and S5a demonstrate particularly high consistency during 2014 (0.977 and 0.984, respectively) and maintain strong performance through 2021. Conversely, configurations S1b and S2a experience pronounced fluctuations, with BECONS values dropping to as low as 0.678 and 0.745 in 2017, before recovering in subsequent years. To quantify this volatility, we computed the BECONS distance (Euclidean distance), which measures the deviation of annual consistency from the pooled consistency:
-\begin{equation}
-\text{BECONS distance} = \sqrt{\frac{1}{T} \sum_{t=1}^{T} (BECONS_t - POCONS)^2}
-\end{equation}
-The calculated distances for all configurations exceed the 0.004 threshold, confirming significant temporal volatility. This demonstrates that the effectiveness of strategic configurations is not static; rather, it evolves in response to shifts in macroeconomic cycles, industrial policies, and market environments.
+BECONS considers temporal effects by calculating the degree of sufficiency of condition combinations for the outcome variable based on data at each specific time point \citep{guedes2016UK}. Table \ref{tab:tsqca} suggests that annual BECONS values exhibit notable temporal variation throughout the study period. For instance, configurations S1b and S2a experience pronounced fluctuations, with BECONS values dropping to as low as 0.678 and 0.745 in 2017, before recovering in subsequent years. To quantify this volatility, we further computed the BECONS distance, which measures the deviation of annual consistency from the pooled consistency. Higher BECONS distances indicate more substantial temporal fluctuations. BECONS distances for all configurations exceed the 0.004 threshold \citep{castro2016General}, confirming significant temporal volatility ang the necessity of TSQCA. 
+
 
 \begin{table}[!htbp]
 \centering
 \captionsetup{font=normalsize, labelsep=period}
 \setlength{\abovecaptionskip}{5pt}
 \setlength{\belowcaptionskip}{0pt}
-\caption{TSQCA Results: Configurations, Consistency, and Coverage}
+\caption{TSQCA results}
 \label{tab:tsqca}
 \footnotesize
 \begin{threeparttable}
@@ -75,15 +72,15 @@ The calculated distances for all configurations exceed the 0.004 threshold, conf
 \toprule
 \textbf{Conditions} & \textbf{S1a} & \textbf{S1b} & \textbf{S2a} & \textbf{S2b} & \textbf{S3a} & \textbf{S3b} & \textbf{S4a} & \textbf{S4b} & \textbf{S5a} & \textbf{S5b} \\
 \midrule
-\textit{stick} & $\times$ & $\times$ & $\times$ & & $\times$ & $\times$ & {\large $\bullet$} & $\times$ & {\large $\bullet$} & {\large $\bullet$} \\
-\textit{size} & & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & & $\times$ & $\times$ & & & {\large $\bullet$} \\
-\textit{esg} & {\large $\bullet$} & {\large $\bullet$} & & $\times$ & {\large $\bullet$} & & & {\large $\bullet$} & $\times$ & $\times$ \\
-\textit{digit} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & & & & & & {\large $\bullet$} \\
-\textit{dynam} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & $\times$ & $\times$ & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & $\times$ \\
-\textit{munif} & & $\times$ & & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & $\times$ & $\times$ & \\
-\textit{diver} & {\large $\bullet$} & $\times$ & $\times$ & & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & $\times$ & $\times$ \\
-\textit{diff} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & $\times$ & {\large $\bullet$} & $\times$ & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & \\
-\textit{lead} & {\large $\bullet$} & & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} & $\times$ & {\large $\bullet$} & {\large $\bullet$} & {\large $\bullet$} \\
+\textit{stick} & {\Large $\times$} & {\Large $\times$} & {\Large $\times$} & & {\Large $\times$} & {\Large $\times$} & {\Large $\bullet$} & {\Large $\times$} & {\Large $\bullet$} & {\Large $\bullet$} \\
+\textit{size} & & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & & {\Large $\times$} & {\Large $\times$} & & & {\Large $\bullet$} \\
+\textit{esg} & {\Large $\bullet$} & {\Large $\bullet$} & & {\Large $\times$} & {\Large $\bullet$} & & & {\Large $\bullet$} & {\Large $\times$} & {\Large $\times$} \\
+\textit{digit} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & & & & & & {\Large $\bullet$} \\
+\textit{dynam} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\times$} & {\Large $\times$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\times$} \\
+\textit{munif} & & {\Large $\times$} & & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\times$} & {\Large $\times$} & \\
+\textit{diver} & {\Large $\bullet$} & {\Large $\times$} & {\Large $\times$} & & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\times$} & {\Large $\times$} \\
+\textit{diff} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\times$} & {\Large $\bullet$} & {\Large $\times$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & \\
+\textit{lead} & {\Large $\bullet$} & & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\times$} & {\Large $\bullet$} & {\Large $\bullet$} & {\Large $\bullet$} \\
 \midrule
 POCONS & 0.943 & 0.893 & 0.910 & 0.925 & 0.934 & 0.950 & 0.927 & 0.928 & 0.918 & 0.925 \\
 BECONS 2014 & 0.913 & 0.892 & 0.916 & 0.903 & 0.881 & 0.866 & 0.839 & 0.977 & 0.984 & 0.821 \\
@@ -108,7 +105,7 @@ Amp\% 2020-2021 & -23.90 & -27.00 & -21.70 & -15.20 & -15.30 & -28.30 & -32.50 &
 \end{tabular*}
 \begin{tablenotes}[flushleft]
 \footnotesize\linespread{1}\selectfont
-\item \textit{Note}: {\large $\bullet$} = condition present; $\times$ = condition absent. POCONS = Pooled Consistency; BECONS = Between-Case Consistency (annual); POCOV = Pooled Coverage; SD = Standard Deviation; Amp\% = Amplitude Percentage (year-over-year change in coverage). See Table S1 in Supplementary Materials for annual BECOV details.
+\item \textit{Note}: {\Large $\bullet$} = condition present; {\Large $\times$} = condition absent. POCONS = Pooled Consistency; BECONS = Between-Case Consistency; POCOV = Pooled Coverage; SD = Standard Deviation; Amp\% = Amplitude Percentage (year-over-year change in coverage). See Table S1 in Supplementary Materials for annual BECOV details.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -123,7 +120,3 @@ This metric reflects the empirical prevalence of each strategic configuration ac
 POCOV(X \rightarrow Y) = \frac{\sum_{i=1}^{N}\sum_{t=1}^{T} \min(X_{it}, Y_{it})}{\sum_{i=1}^{N}\sum_{t=1}^{T} Y_{it}}
 \end{equation}
 As shown in Table 4, POCOV values vary across configurations. Notably, pathways S4b (0.237), S3a (0.232), S5a (0.231), and S2a (0.229) exhibit the highest coverage, suggesting they represent the most dominant patterns in the industry. A deeper inspection of these high-coverage paths reveals a compelling commonality: they predominantly feature a combination of differentiation and cost leadership strategies (i.e., a hybrid strategy) synergized with key organizational resources like ESG performance and digital transformation. This underscores a critical trend in the contemporary Chinese construction market: pure strategies alone have limited explanatory power. Instead, the paradigm for success has shifted towards the integration of dual business advantages supplemented by modern organizational capabilities.
-
-\begin{quote}
-\textbf{Proposition 3 (Hybrid Dominance):} Configurations centered on a hybrid business strategy, when synergized with strategic resources such as ESG performance and digital transformation, possess broader explanatory power and empirical relevance for achieving high competitive advantage.
-\end{quote}
