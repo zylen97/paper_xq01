@@ -86,6 +86,17 @@
 - **Caption**：`font=normalsize, labelsep=period`（字体适中，点分隔）
 - **浮动**：`[!htbp]`（强制位置）
 - **宽度**：`0.9\textwidth`（90%页宽）
-- **字体**：表格`\small`，表头`\textbf{}`，第一列变量`\textit{}`
+- **字体**：
+  - 表格主体：统一使用 `\small`（**禁止使用** `\footnotesize` 或其他字体大小）
+  - 表头（第一行）：`\textbf{}`（加粗，保持 `\small` 字体大小）
+  - 第一列变量：`\textit{}`（斜体，保持 `\small` 字体大小）
+  - 表格符号：直接使用符号，**不添加** `\Large`、`\huge` 等字体大小命令
+  - Notes行：`\small\linespread{1}\selectfont`
 - **Notes**：`[flushleft]`左对齐，`\linespread{1}`单倍行距
 - **列对齐**：第一列`l`，数据列`c`
+
+**⚠️ 字体大小一致性原则**：
+- 所有表格必须统一使用 `\small` 作为基础字体
+- 标题行的 `\textbf{}` 仅改变字重（加粗），不改变字体大小
+- 禁止在表格内使用 `\footnotesize`、`\normalsize`、`\Large`、`\huge` 等字体大小命令
+- 这确保所有表格的视觉一致性和专业性
