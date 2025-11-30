@@ -45,6 +45,19 @@
 - 注释掉`main.tex`中的geometry页边距设置，恢复Elsarticle默认格式
 - 修改`\journal{}`为目标期刊名称
 
+### 4. 标题大写规范
+**所有章节标题（section、subsection、subsubsection）和表格/图片标题均使用 Sentence case（句式大写），而非 Title Case（标题式大写）。**
+
+- ✅ **正确**：只在第一个单词首字母大写
+  - `\section{Results of necessary condition analysis}`
+  - `\caption{Descriptive statistics and correlation matrix}`
+
+- ❌ **错误**：不要每个单词首字母都大写
+  - `\section{Results of Necessary Condition Analysis}`
+  - `\caption{Descriptive Statistics and Correlation Matrix}`
+
+**例外**：专有名词（如人名、地名、缩写）保持原有大写形式（例如：COVID-19、China、TSQCA）。
+
 ## 📊 表格绘制规范
 
 ### 必需宏包
