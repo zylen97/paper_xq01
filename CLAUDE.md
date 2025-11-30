@@ -8,8 +8,7 @@
 ## 文件结构
 - `main.tex` - 论文主文件
 - `sections/` - 章节内容（01-introduction.tex, 02-literature.tex, 03-methodology.tex等）
-- `draft/` - 草稿文件夹（碎片化灵感、思路和初步内容）
-- `figures/` - 图片文件夹
+- `figures/` - 图片、图表及相关Python绘图脚本
 - `build/` - 编译临时文件（.aux, .log, .bbl, .blg等）
 - `dj01.bib` - 参考文献（Better BibTeX自动导出）
 - `elsarticle.cls` + `elsarticle/` - Elsevier模板文件
