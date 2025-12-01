@@ -1,7 +1,7 @@
 % !TEX program = xelatex
 % 这行告诉LaTeX编辑器使用XeLaTeX引擎编译（支持更好的字体处理）
 
-% Elsarticle文档类声明：review格式，12pt字体，Harvard引用风格
+% Elsarticle文档类声明：review格式，12pt字体，author-year引用风格
 \documentclass[authoryear,preprint,review,times,12pt]{elsarticle}
 
 % ===== 宏包导入部分 =====
@@ -24,8 +24,9 @@
 \geometry{
     left=2cm,    % 左边距（原约3.5cm）
     right=2cm,   % 右边距（原约3.5cm）
-    top=1.5cm,     % 上边距（原约3cm）
-    bottom=1.5cm   % 下边距（原约3cm）
+    top=1.2cm,     % 上边距（原约3cm）
+    bottom=1.5cm,  % 下边距（调整后，页码不会太靠下）
+    footskip=0.5cm % 文本底部到页脚的距离
 }
 
 \usepackage{hyperref}     % 超链接和PDF书签（应该放在最后导入）
@@ -52,7 +53,6 @@
 
 \author[label2]{Qinghua He}
 \ead{heqinghua@tongji.edu.cn}
-
 
 \cortext[cor1]{Corresponding author}
 
@@ -96,14 +96,23 @@ Sustainable competitive advantage \sep Organizational resilience \sep Constructi
 \input{sections/06-conclusion}
 
 % ===== 参考文献 =====
-% 使用BibTeX生成参考文献列表（Harvard格式）
+% 使用BibTeX生成参考文献列表（ASCE author-year格式，适用于JCEM投稿）
+% ASCE使用author-date系统，类似APA但有特殊格式要求
+
+% 优化参考文献行间距以控制页数（策略1+2组合）
+\setlength{\bibsep}{0pt plus 0.3ex}  % 减少条目间距
+{\linespread{0.95}\selectfont  % 轻微压缩行距至0.95倍
 \bibliographystyle{elsarticle-harv}
 \bibliography{dj01}
+}
 
 \end{document}
 
-% ===== Harvard 引用格式说明 =====
-% 1. \citep{key} → (Author, Year) - 括号内引用
-% 2. \citet{key} → Author (Year) - 文本内引用
-% 3. 参考文献按作者姓氏字母排序
-% 4. 适合管理学、社会科学期刊投稿
+% ===== ASCE 引用格式说明 =====
+% 文内引用: \citep{key} → (Author Year), \citet{key} → Author (Year)
+% 参考文献列表格式（需在.bib中确保）:
+%   - Authors. Year. "Title." Journal abbr. Volume (Issue): CID. DOI.
+%   - 按作者姓氏字母顺序排列
+%   - 期刊名需使用ASCE标准缩写
+%   - 必须包含DOI
+% 投稿前建议使用ASCE官方模板确保完全符合格式要求
