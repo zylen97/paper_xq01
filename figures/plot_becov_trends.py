@@ -114,7 +114,7 @@ fig.text(0.5, 0.02,
          ha='center', va='bottom', fontsize=10, wrap=True)
 
 # ========== 保存高清图片 ==========
-output_path = 'Fig7_becov_2014_2016.png'
+output_path = 'Fig7_becov_2014_2016.pdf'
 plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
 print(f"✅ 优化后的图片已保存至: {output_path}")
 print(f"📊 图表尺寸: 13×6英寸 (紧凑布局)")

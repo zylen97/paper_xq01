@@ -15,14 +15,21 @@
 
 \section*{Supplementary Materials}
 
-\subsection*{Table S1. Bottleneck Analysis}
+% ==================== 关键修改开始 ====================
+% 1. 重置表格计数器，使其从 1 开始
+\setcounter{table}{0}
+% 2. 修改表格编号格式，在数字前加 S (例如 Table S1)
+\renewcommand{\thetable}{S\arabic{table}}
+% ==================== 关键修改结束 ====================
+
+% 注意：我删除了原本这里的 \subsection，因为 caption 会自动生成标题
 
 \begin{table}[!htbp]
 \centering
 \captionsetup{font=normalsize, labelsep=period}
 \setlength{\abovecaptionskip}{5pt}
 \setlength{\belowcaptionskip}{0pt}
-\caption{Bottleneck Analysis}
+\caption{Bottleneck Analysis} % 这里会自动变成 Table S1. Bottleneck Analysis
 \label{tab:bottleneck}
 \small
 \begin{threeparttable}
@@ -50,14 +57,14 @@
 \end{threeparttable}
 \end{table}
 
-\subsection*{Table S2. Annual Between-Case Coverage (BECOV) Analysis (2014-2023)}
+% 注意：删除了这里的 \subsection
 
 \begin{table}[!htbp]
 \centering
 \captionsetup{font=normalsize, labelsep=period}
 \setlength{\abovecaptionskip}{5pt}
 \setlength{\belowcaptionskip}{0pt}
-\caption{Annual Between-Case Coverage (BECOV) Analysis (2014-2023)}
+\caption{Annual between-case coverage results} % 这里会自动变成 Table S2. ...
 \label{tab:becov}
 \small
 \begin{threeparttable}
@@ -79,7 +86,7 @@ BECOV 2023 & 0.078 & 0.078 & 0.117 & 0.201 & 0.235 & 0.194 & 0.045 & 0.081 \\
 \end{tabular*}
 \begin{tablenotes}[flushleft]
 \small\linespread{1}\selectfont
-\item \textit{Note}: $\bullet$ = condition present; $\otimes$ = condition absent; blank = don't care condition. stick = Cost Stickiness; size = Organizational Size; esg = Social Responsibility (ESG); digit = Digital Transformation; dynam = Environmental Dynamism; munif = Environmental Munificence; diver = Diversification; diff = Differentiation; lead = Cost Leadership. BECOV = Between-Case Coverage (annual). See main text Table 4 for pooled statistics (POCON, BECON, POCOV) and other summary measures.
+\item \textit{Note}: BECOV = Between-Case Coverage (annual). See main text Table 3 for pooled statistics (POCON, BECON, POCOV) and other summary measures.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
