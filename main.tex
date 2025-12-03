@@ -31,6 +31,31 @@
 
 \usepackage{hyperref}     % 超链接和PDF书签（应该放在最后导入）
 
+% 移除frontmatter后的双横线
+\makeatletter
+\def\ps@pprintTitle{%
+  \let\@oddhead\@empty
+  \let\@evenhead\@empty
+  \def\@oddfoot{}%
+  \let\@evenfoot\@oddfoot}
+% 重新定义pprintMaketitle，移除横线
+\def\pprintMaketitle{\clearpage
+  \iflongmktitle\if@twocolumn\let\columnwidth=\textwidth\fi\fi
+  \resetTitleCounters
+  \def\baselinestretch{1}%
+  \printFirstPageNotes
+  \begin{center}%
+   \thispagestyle{pprintTitle}%
+   \def\baselinestretch{1}%
+    \Large\@title\par\vskip18pt
+    \normalsize\elsauthors\par\vskip10pt
+    \footnotesize\itshape\elsaddress\par\vskip12pt
+    % 横线被移除了，原本这里有\hrule命令
+  \end{center}%
+  \gdef\thefootnote{\arabic{footnote}}%
+  }
+\makeatother
+
 % 指定目标期刊（根据实际投稿期刊修改）
 \journal{Engineering Management Journal}
 
@@ -40,7 +65,9 @@
 \renewcommand{\baselinestretch}{2.0}
 \normalsize  % 激活新的行距设置
 
-\linenumbers  % ASCE要求：摘要也需要行号
+% 行号设置（ASCE要求）
+\modulolinenumbers[1]  % 每行都显示行号（而不是默认每5行）
+\runninglinenumbers  % 使用连续行号（适用于所有环境包括frontmatter）
 \begin{frontmatter}
 
 % 论文标题
@@ -71,19 +98,13 @@
             postcode={200092},
             country={China}}
 
-% 摘要
-\begin{abstract}
-Developing sustainable competitive advantage is imperative for construction enterprises to navigate the high-velocity environment driven by digitalization and sustainability mandates. However, existing construction engineering and management literature has yet to systematically explore sustainable competitive advantage, largely focusing on static advantages or the net effects of isolated variables. To bridge this gap, this study investigates the configurations shaping sustainable competitive advantage by employing a "Resource-Environment-Strategy" framework and analyzing 1,061 observations from 115 listed Chinese construction enterprises (2014--2023) through necessary condition analysis, time-series qualitative comparative analysis, and typical case tracing. Additionally, we examine which high sustainable competitive advantage configurations enable organizational resilience. The results indicate that no single condition is necessary for sustainable competitive advantage; instead, eight equifinal configurations emerge, revealing a dual market structure: majority of configurations relying on efficiency-driven pathways (scale and diversification), and a minority leveraging differentiation and specialization. Also, a distinct efficiency-resilience trade-off is identified, where mainstream configurations exhibit fragility during crises, while the minority of configurations demonstrate superior resilience through mechanisms of legitimacy and resource slack. This study contributes theoretically by clarifying the configurational nature of sustainable competitive advantage and offering practical guidance for orchestrating resources to ensure long-term viability.
-\end{abstract}
-
-% 关键词（使用elsarticle格式）
-\begin{keyword}
-Sustainable competitive advantage \sep Organizational resilience \sep Construction enterprises \sep Time-series qualitative comparative analysis \sep Typical case tracing
-\end{keyword}
-
 \end{frontmatter}
-\clearpage  % 强制换页，避免跨页导致双横线
-% 行号已在frontmatter之前启用
+
+% ===== 摘要部分（以不编号section形式呈现，确保有行号） =====
+\section*{Abstract}
+Developing sustainable competitive advantage is imperative for construction enterprises to navigate the high-velocity environment driven by digitalization and sustainability mandates. However, existing construction engineering and management literature has yet to systematically explore sustainable competitive advantage, largely focusing on static advantages or the net effects of isolated variables. To bridge this gap, this study investigates the configurations shaping sustainable competitive advantage by employing a "Resource-Environment-Strategy" framework and analyzing 1,061 observations from 115 listed Chinese construction enterprises (2014--2023) through necessary condition analysis, time-series qualitative comparative analysis, and typical case tracing. Additionally, we examine which high sustainable competitive advantage configurations enable organizational resilience. The results indicate that no single condition is necessary for sustainable competitive advantage; instead, eight equifinal configurations emerge, revealing a dual market structure: majority of configurations relying on efficiency-driven pathways (scale and diversification), and a minority leveraging differentiation and specialization. Also, a distinct efficiency-resilience trade-off is identified, where mainstream configurations exhibit fragility during crises, while the minority of configurations demonstrate superior resilience through mechanisms of legitimacy and resource slack. This study contributes theoretically by clarifying the configurational nature of sustainable competitive advantage and offering practical guidance for orchestrating resources to ensure long-term viability.
+
+\noindent\textbf{Keywords:} Sustainable competitive advantage; Organizational resilience; Construction enterprises; Time-series qualitative comparative analysis; Typical case tracing
 
 % 目录页（期刊论文通常不需要）
 % \tableofcontents
@@ -92,20 +113,395 @@ Sustainable competitive advantage \sep Organizational resilience \sep Constructi
 % ===== 正文各章节 =====
 % 使用 \input 命令导入各章节文件
 
-\input{sections/01-introduction}
-\input{sections/02-literature}
-\input{sections/03-research-methods}
-\input{sections/04-results}
-\input{sections/05-discussion}
-\input{sections/06-conclusion}
+\section{Introduction}
+\label{sec:introduction}
+
+The construction industry is undergoing a transformation, challenging the efficiency of construction enterprises' traditional, often fragmented, project-based business modes \citep{dang2025Assessing}. On the one hand, conventional operational pressures exist, including rising material costs and skilled labor shortages \citep{aghimien2022Dynamic}. On the other hand, disruptive external requirements, such as digitalization and sustainability, are intensifying these pressures \citep{wen2025Gap}. Digitalization from building information modeling (BIM) or robotics can mitigate labor shortages; however, it requires substantial capital investment and implementation across projects, which in turn reduces enterprises' short-term profit margins \citep{shao2025Competitive}. Sustainability mandates, such as net-zero regulations \citep{locatelli2025Social}, also introduce new compliance costs and operational complexities \citep{wang2023Exploring}. These trends create a high-velocity environment where conventional enterprises' advantages, such as a successful project bid or isolated technology adoption, are no longer sufficient to ensure long-term performance. A practical problem facing construction enterprises' managers is how to develop \textbf{\textit{sustainable competitive advantage}} --- a set of difficult-to-imitate edges \citep{adner2006Demandbased} --- to ensure growth within contexts of project-based business.
+
+Sustainable competitive advantage, coined by \citet[p.~102]{barney1991Firm}, denotes a firm's capacity to "\textit{implement a value creating strategy not simultaneously being implemented by any current or potential competitors and when these other firms are unable to duplicate the benefits of this strategy}". Developing sustainable competitive advantage is critical for construction enterprises due to their inherent discontinuity and fragmentation of operations \citep{betts1994Sustainablea}. Unlike continuous manufacturing, construction operations are project-based and temporary, often leading to the loss of knowledge and efficiency when project teams disband \citep{sydow2018Projects}. In this context, sustainable competitive advantage improves organizational continuity, allowing enterprises to transfer technological innovations and management expertise across projects \citep{malik2023Green}. Specifically, the construction industry is historically dominated by fierce price competition and thin profit margins \citep{sharma2023Construction}. Rare and non-substitutable edges enable enterprises to differentiate themselves beyond low bid competition \citep{deng2014Developing}. Thus, clarifying the formation of construction enterprises' sustainable competitive advantage is imperative to the construction engineering and management (CEM) literature for understanding how to ensure long-term survival.
+
+Existing CEM literature has largely investigated the antecedents of construction enterprises' competitive advantage in three aspects. First, research identifies critical resource-based factors, such as resource amalgamation \citep{wang2024Strategic}, dynamic capability \citep{ning2022How}, and human capital \citep{sarihi2020Multiskilled}, as the foundation of market position. Second, studies on strategy-based antecedents explore specific business modes, including internationalization \citep{jang2020Classifying}, networking \citep{lello2024Professional}, and projectization \citep{barbosa2024Multilevel}. Third, works on innovation-based antecedents highlight how digital technologies like BIM \citep{shao2025Competitive} and green innovation techniques \citep{dang2025Assessing} offer new avenues for sustainable development.
+
+Despite these advancements, \textbf{\textit{two gaps remain in the CEM literature}} that hinder a comprehensive understanding of the formation of sustainable competitive advantage. \textbf{\textit{First}}, CEM literature pays most attention to static or conventional competitive advantage rather than sustainable competitive advantage. Related studies treated competitive advantage as a direct, immediate outcome of achieving profitability \citep{li2025Impact}, possessing specific business resources \citep{wang2024Strategic}, or adopting new tools. In contrast, sustainable competitive advantage emphasizes the formation of difficult-to-imitate advantages through continuous resource integration and capability enhancement \citep{abdeen2025Strategic}. Although some CEM studies have discussed sustainable competitive advantage, they failed to capture its core attributes. For instance, \citet{toor2010Positive} conceptualized sustainable competitive advantage as a derivative of leadership. \citet[p.~45]{betts1994Sustainablea} equated it with the critical success factors of construction enterprises. These studies overlooked the very nature of sustainable competitive advantage, rendering it insufficient to guide construction enterprises' managers. \textbf{\textit{Second}}, competitive advantage research is fragmented, mostly examining antecedents from isolated perspectives. A substantial body of literature relies on a "net-effect" logic to assess the specific impact of single variables, such as the implementation of BIM, project management tools and techniques \citep{li2025Impact}, or specific market segment drivers. In reality, construction enterprises do not strictly respond to single environmental stimuli; rather, they "orchestrate" antecedents to navigate challenges \citep{black1994Strategic}. While some recent studies have adopted a configurational perspective \citep{wang2024Strategic,shao2025Competitive}, they have not explicitly targeted competitive advantage as their subjects. CEM literature lacks an integrative, configurational perspective to systematically unravel how different antecedents interact and combine to jointly develop sustainable competitive advantage. Therefore, \textbf{\textit{the first aim of this study is to investigate the configurations of factors that shape construction enterprises' sustainable competitive advantage.}}
+
+While sustainable competitive advantage is crucial for sustained growth, organizational resilience serves as an important safeguard for survival and stability in turbulent environments \citep{yang2024What}. Organizational resilience refers to an enterprise's capacity to anticipate, absorb, and respond to contingencies \citep{zhang2024Deconstructing}. Despite systematic examinations of organizational resilience in CEM literature \citep{zhang2022Organizational}, few studies have integrated resilience with sustainable competitive advantage. Sustainable competitive advantage and organizational resilience represent two distinct yet mutually reinforcing dimensions of long-term viability. Sustainable competitive advantage primarily targets the sustainability of superior market position and inimitable performance, while organizational resilience prioritizes stable operations and continuity, specifically in crisis events \citep{shao2024Contradiction}. Focusing solely on competitive superiority may create vulnerability to crises, particularly in the highly uncertain post-pandemic era \citep{lv2024Digital}. This disconnection hinders our understanding of how construction enterprises can ensure long-term market dominance with the capability of addressing contingencies. Consequently, \textbf{\textit{the second aim of this study is to examine which configurations shaping sustainable competitive advantage simultaneously enable a high level of organizational resilience.}}
+
+To bridge these knowledge gaps, we developed a "Resource-Environment-Strategy" framework to investigate configurations of nine antecedents across dimensions of organizational resource, external environment, and strategic orientation. This framework is derived from the literature on sustainable competitive advantage and is further grounded in the body of CEM research. This study utilizes a panel dataset including 1,061 observations from 115 listed Chinese construction enterprises spanning 2014-2023. We employed necessary condition analysis, time-series qualitative comparative analysis, and typical case tracing to examine how configurations of nine antecedents relate to sustainable competitive advantage and organizational resilience. Therefore, \textbf{\textit{this study answers two research questions (RQs):}}
+
+\textit{RQ1: What are the configurations of factors across dimensions of organizational resource, external environment, and strategic orientation that shape construction enterprises' sustainable competitive advantage?}
+
+\textit{RQ2: Which of these configurations simultaneously allow construction enterprises to maintain a high level of organizational resilience, specifically in crisis events?}
+
+The remainder of this paper is organized as follows. Section 2 reviews the related works and establishes the "Resource-Environment-Strategy" framework. Section 3 details the research methods. Section 4 presents the empirical results. Section 5 discusses the key findings, elaborating on research implications. Section 6 concludes the study with limitations for future research.
+
+\section{Literature review and theoretical foundation}
+\label{sec:literature}
+
+Three streams of literature are related to our research questions: (1) works on sustainable competitive advantage, (2) CEM literature regarding competitive advantage, and (3) CEM literature on organizational resilience. This section reviews these studies and builds the theoretical foundation. First, we synthesized the evolution of sustainable competitive advantage research to propose the "Resource-Environment-Strategy" framework. Second, we reviewed extant CEM literature regarding competitive advantage to contextualize the framework and identified nine potential antecedents. Third, we reviewed organizational resilience studies to clarify its relationship with sustainable competitive advantage.
+
+\subsection{"Resource-Environment-Strategy" framework from sustainable competitive advantage studies}
+
+We derived the "Resource-Environment-Strategy" framework from a review of the literature on sustainable competitive advantage. Distinct from conventional competitive advantage, sustainable competitive advantage emphasizes the \textit{durability} of superior performance and the \textit{inimitability} of value-creating capabilities against competitive duplication \citep{oliver1997Sustainable,lado1992CompetencyBased}. Scholars have progressively investigated the antecedents from resource, environment, and strategy perspectives.
+
+Sustainable competitive advantage originates from the resource-based view, which posits that the heterogeneous resources are the primary source of advantage \citep{abdeen2025Strategic}. However, the literature evolved from focusing on tangible assets to more complex resource forms. For instance, \citet{hall1993FRAMEWORK} argued that sustainable advantage is derived primarily from intangible resources—such as reputation and employee know-how—because their causal ambiguity creates formidable barriers to imitation. Further, \citet{black1994Strategic} critiqued the atomistic view of resources, introducing the concept of "resource networks". They posited that advantage arises not from isolated factors but from the complementary relationships between resources.
+
+Building upon the resource-based view, several studies integrating institutional theory and market perspectives argue that resources cannot exist in a vacuum; rather, their value is contingent upon the external environment. \citet{oliver1997Sustainable} provided a seminal integration, demonstrating that an enterprise's advantage is shaped by the interaction between internal resources and external institutional pressures, where social legitimacy becomes a prerequisite for survival. Also, \citet{adner2006Demandbased} indicated that the sustainability of advantage is determined by market heterogeneity and consumer marginal utility rather than supply-side capabilities alone. Empirical work by \citet{mady2024Nexus} further confirmed that external drivers, such as regulatory pressure and eco-friendly product demand, are critical forces that compel enterprises to adapt their resource base.
+
+The scholarship also highlights that alignment between resources and the environment requires clear strategic orientation. Strategic orientation reflects the firm's proactive intent and the specific logic it employs to create and capture value \citep{sabug2020Competitive}. \citet{lado1992CompetencyBased} were among the first to propose a comprehensive model that prioritizes "managerial competencies" and "strategic focus". They argued that strategy acts as the "engine" that transforms input resources into competitive outputs, integrating environmental determinism with strategic choice. This view is supported by \citet{johannessen2003Knowledge}, who highlighted that sustainable competitive advantage is the result of conscious "strategic training" and management intervention. Moreover, \citet{malik2023Green} empirically demonstrated that strategic orientations act as essential mediators that leverage technological readiness to achieve sustainable competitive advantage, particularly in emerging markets.
+
+While the literature has identified these three dimensions, prior studies have predominantly examined them in isolation. \citet{rouse1999Rethinking} and \citet{levitas2002Rethinking} debated the difficulties of isolating sources of advantage, pointing to a "black box" in understanding how these factors interact holistically. On this basis, we propose the "Resource-Environment-Strategy" framework to investigate the configurations of construction enterprises' sustainable competitive advantage.
+
+\subsection{Antecedents of sustainable competitive advantage in construction enterprises}
+Construction enterprises are characterized by project discontinuity, fragmented supply chains, and high sensitivity to institutional pressures \citep{ning2022How}. These attributes render the "Resource-Environment-Strategy" framework pertinent for unraveling the causal complexity of sustainable competitive advantage. This section grounds the framework in the CEM literature regarding conventional competitive advantage and identifies nine antecedents accordingly.
+
+\subsubsection{Organizational resource and sustainable competitive advantage}
+CEM literature regarding conventional competitive advantage has witnessed a theoretical evolution from the resource-based view to the dynamic capabilities view \citep{choi2018Dynamic}. Resource-based view primarily centers on the accumulation of internal resources that are valuable, rare, inimitable, and non-substitutable \citep{barney2021Emergence}; rather, dynamic capabilities are defined as the potential to "\textit{integrate, build, and reconfigure internal and external competences to address rapidly changing environments}" \citep{whang2024Understanding}. Situated within these two theoretical lenses, this study identifies \textit{cost stickiness}, \textit{organizational size}, \textit{ESG}, and \textit{digital transformation} as four resource-related antecedents.
+
+\textbf{Cost stickiness.} Cost stickiness refers to the asymmetry where costs increase more rapidly with rising activity volume than they decrease during declines. Cost stickiness in construction enterprises reflects the deliberate retention of slack resources, such as skilled project managers and specialized technical equipment \citep{potgieter2016Maximizing}, acting as a resource investment from a long-term perspective \citep{luo2019Impacts}. Cost stickiness enables construction enterprises to rapidly mobilize resources and stimulate innovation when new project opportunities emerge \citep{love2004Industrycentric}, which is specifically required for sustainable competitive advantage.
+
+\textbf{Enterprise size.} Size functions as a critical indicator of resource endowment \citep{shao2025Competitive}. Large-scale enterprises typically possess abundant slack resources and lower financing costs, which provide a buffer against the high risks inherent in construction projects. Furthermore, consistent with \citet{maury2018Sustainable}, who found that market share significantly predicts profit persistence, large construction enterprises benefit from deep social embeddedness \citep{lello2024Professional}. 
+
+\textbf{Environmental, social, and governance (ESG).} ESG performance recently represents a critical intangible resource that transforms ethical behavior and sustainable practices into strategic assets \citep{wang2023Exploring}. Given that construction projects possess significant environmental footprints and social implications, superior ESG performance goes beyond mere compliance to become a mechanism for building trust and legitimacy. For construction enterprises, proactive ESG practices --- ranging from utilizing eco-friendly materials and ensuring site safety to maintaining transparent management --- can reduce friction with stakeholders and enhance corporate reputation \citep{locatelli2025Social}. As noted by \citet{mattera2022Sustainable}, a strong commitment to sustainable business models, as reflected in high ESG ratings, contributes to a firm's ability to improve long-term financial performance.
+
+\textbf{Digital transformation.} Digital transformation represents a competency that fundamentally reconfigures an enterprise's operational resources \citep{wen2025Gap}. It involves integrating digital technologies (e.g., BIM, IoT) into project lifecycles to enhance decision-making and efficiency \citep{simard2025Project}. \citet{probojakti2025Driving} found that digital transformation significantly improves organizational agility and resiliency, which are pivotal for sustaining competitive edges. Also, \citet{van2025Green} emphasized that data-driven decision-making enabled by digital integration boosts organizational creativity and competitive advantage. Digital transformation allows construction enterprises to better sense environmental changes and seize new market opportunities, thereby securing a sustainable position.
+
+\subsubsection{External environment and sustainable competitive advantage}
+Construction enterprises operate as complex open systems where the sustainability of advantage is determined by how well internal capabilities align with external demands \citep{zhao2024Using}. Recent CEM studies suggested that the external environment is no longer static but characterized by rapid technological disruptions and fluctuating resource availability \citep{ning2022How}. This study identifies \textit{environmental dynamism} and \textit{environmental munificence} as the two critical environmental antecedents.
+
+\textbf{Environmental dynamism.} Environmental dynamism refers to the rate and unpredictability of change in a firm's external environment \citep{dess1984Dimensions}. In the construction industry, dynamism is currently driven by the "Fourth Industrial Revolution" and increasingly stringent sustainability mandates \citep{aghimien2023Dynamic}. High dynamism challenges the traditional static model of competitive advantage, as existing competencies can rapidly become obsolete. \citet{zhao2024Using} argued that in transient competitive environments, advantages are easily eroded, compelling firms to continuously sense and seize new opportunities. Therefore, dynamism acts as a stressor that shifts from efficiency-based strategies to flexibility-based dynamic capabilities \citep{ning2022How}.
+
+\textbf{Environmental munificence.} Environmental munificence describes the extent to which an environment can support sustained growth, reflecting the abundance of critical resources and market opportunities \citep{chen2017Munificence}. For construction enterprises, this manifests as the availability of infrastructure projects, financial capital, and network support \citep{ma2018Unraveling}. A munificent environment provides necessary "slack resources", allowing firms to experiment with innovations and absorb failures without threatening survival. \citet{wang2024Strategic} suggested that firms in munificent environments can leverage diversified operations to capture emerging opportunities. Thus, environmental munificence dictates the "room for maneuver".
+
+\subsubsection{Strategic orientation and sustainable competitive advantage}
+While \citet{porter1997COMPETITIVE}'s generic strategies have long served as a baseline, recent CEM literature suggested that sustainable competitive advantage emerges not from a single strategic posture but from the dynamic configuration of multiple orientations that match the firm's resource endowment with environmental demands \citep{shao2025Competitive}. This study identifies \textit{diversification}, \textit{differentiation}, and \textit{cost leadership} as three strategy-related antecedents.
+
+\textbf{Diversification.} Diversification refers to the strategic expansion into new market segments or business lines to spread risks and capture emerging opportunities. For construction enterprises facing cyclical demand and intense local competition, diversification is a vital mechanism for survival and growth. \citet{wang2024Strategic} argued that "strategic resource amalgamation" is the driver of diversified operations, enabling contractors to leverage their operational and innovation capabilities across broader markets. Thus, diversification represents a strategy of scope, allowing firms to exploit their existing resource base.
+
+\textbf{Differentiation.} Differentiation involves creating a unique value proposition, thereby allowing for premium pricing or customer loyalty. In the construction industry, differentiation is increasingly driven by "soft power" attributes such as corporate image, technical innovation, and brand reputation \citep{anjomshoa2024Key}. \citet{budayan2014Alignment} classified this into "quality and image-related differentiation," emphasizing that firms must align their project management processes with these strategic goals. Furthermore, differentiation is often achieved through the superior implementation of technologies like BIM. \citet{shao2025Competitive} found that image-oriented and quality-oriented competitive strategies signal competence and secure legitimacy. Differentiation serves as a strategy of value, insulating firms from direct price competition.
+
+\textbf{Cost leadership.} Cost leadership is characterized by the pursuit of the lowest operational costs to offer competitive delivery services. While often viewed as a traditional strategic orientation, modern cost leadership transcends mere cost-cutting; it involves the rigorous pursuit of efficiency through lean management and technological integration \citep{li2024Lean}. \citet{sabug2020Competitive} highlighted that in competitive markets, a hybrid approach combining cost leadership with other strategies is often required for success. Thus, cost leadership represents a strategy of efficiency, essential for maintaining the economic viability in the low-margin construction industry \citep{li2025Impact}.
+
+\subsection{Organizational resilience and its relationship with sustainable competitive advantage}
+
+Resilience represents the fundamental capacity of construction enterprises to survive amidst contingencies \citep{zhang2022Organizational}. In the CEM literature, organizational resilience is defined as the dynamic capability of an enterprise to anticipate, absorb, recover from, and adapt to unexpected disruptions and shocks \citep{zhang2024Deconstructing}. The relevance of organizational resilience in the construction industry stems from the inherent complexity and uncertainty of project delivery \citep{yao2025Clear}. Construction enterprises frequently face high-impact, low-probability events—ranging from supply chain ruptures to sudden policy shifts—that threaten their viability \citep{wang2026Dynamic}. Unlike traditional risk management, which focuses on identifying specific risks, resilience emphasizes a generalized capacity to cope with the "unknown unknowns" \citep{lv2024Digital}.
+
+Sustainable competitive advantage and organizational resilience represent two distinct yet complementary dimensions of construction enterprises' long-term viability. Sustainable competitive advantage focuses on \textit{market superiority}: it emphasizes the capacity to outperform competitors and secure persistent economic returns, largely under normal market conditions \citep{adner2006Demandbased}. In contrast, organizational resilience focuses on \textit{operational robustness}: it emphasizes the capacity to withstand shocks, absorb disruptions, and recover functions during crises or high-uncertainty events \citep{zhang2022Organizational,yao2025Clear}. While sustainable competitive advantage answers the question of "how to thrive and lead," organizational resilience answers "how to survive and persist". 
+
+Studies on competitive advantage rarely account for how high-performance configurations work under crisis. It remains unclear whether the pathways leading to sustainable competitive advantage naturally encompass the attributes required for resilience, or if they leave enterprises vulnerable to disruptions.
+
+In summary, the research framework of this study based on the "Resource-Environment-Strategy" framework is suggested in Fig. 1.
+
+\begin{center}[Insert Fig. 1 here]\end{center}
+
+\section{Research methods}
+\label{sec:methods}
+
+\subsection{Methodology}
+To address our RQs, this study adopted three methods: necessary condition analysis (NCA), time-series qualitative comparative analysis (TSQCA), and typical case tracing (TCT). The reasons are as follows. \textbf{\textit{First}}, NCA allows us to quantify the effect size of necessity, ensuring that we do not overlook critical prerequisites before examining configurations \citep{dul2016Necessary}. It is important for RQ1 to first ascertain whether any antecedent serves as a necessary condition. \textbf{\textit{Second}}, TSQCA is utilized to identify configurations related to our RQs. Traditional regression analysis is insufficient for capturing the \textit{conjunction} (factors working together), \textit{equifinality} (multiple pathways to the same outcome), and \textit{asymmetry} (presence and absence of factors having different effects) of antecedents \citep{ragin2009Redesigning,fiss2011Building}, which QCA can do. Given our panel dataset, TSQCA extends general QCA by assessing configurations' consistency and coverage over time \citep{denford2024Assessing}, enabling identification of robust configurations in a dynamic context. \textbf{\textit{Third}}, this study employed TCT to further build connections between identified configurations and the practices of construction enterprises. Established by \citet[p.~561]{schneider2013Combining}, TCT is a qualitative within-case method that traces good practice based on typical configurations. While TSQCA reveals which antecedents combine to form sufficient conditions, TCT can explicate how these factors interact by reconstructing the detailed "chain of evidence" \citep{álamos-concha2022Conservative}. The detailed methods and their relationships with our RQs are shown in Fig. 2.
+
+\begin{center}[Insert Fig. 2 here]\end{center}
+
+\subsection{Data source and sample}
+The empirical setting for this study comprises A-share listed Chinese construction enterprises. We selected Chinese construction enterprises because of their unique "high-velocity" characteristics. As the world's largest construction market, the Chinese construction sector is currently navigating a profound transition from extensive scale-driven growth to intensive quality-driven development \citep{wang2024Strategic}, allowing for a rigorous examination of how enterprises construct sustainable competitive advantages beyond simple market expansion.
+
+The initial data were primarily sourced from the China Stock Market \& Accounting Research (CSMAR) database and the Wind Financial Terminal (WIND). The study period is set from 2014 to 2023. This decade captures a critical phase of structural transformation, characterized by market adjustments under the "new normal," the acceleration of digital transformation, and strict compliance requirements under the "dual carbon" goals \citep{das2021Developing,sharma2023Construction}. This period also includes exogenous shocks like COVID-19, enabling us to explore configurations with high organizational resilience. Descriptive statistics for all variables are provided in Table \ref{tab:descriptive}.
+
+To ensure data accuracy and analytical robustness, the initial sample was subjected to a rigorous screening process. First, observations marked as "ST" (Special Treatment) or "*ST" during the sample period were excluded. Second, enterprises with significant missing data for key variables were removed to ensure comparability. Finally, a panel dataset of 115 listed construction enterprises was obtained, yielding a total of 1,061 enterprise-year observations.
+
+\subsection{Measurements}
+\subsubsection{Outcome variable}
+\textbf{Sustainable competitive advantage (\textit{livaRatio})}. To measure sustainable competitive advantage, this study leverages long-term investor value appropriation (\textit{liva}) as the proxy. \textit{Liva} is defined as the net present value of the excess returns a firm generates for its investors over a specific time horizon, relative to the market’s cost of capital \citet{wibbens2020Introducing}. The formula of \textit{liva} is: 
+
+\begin{equation}
+liva = V_T - V_0 - \sum_{t=1}^{T} \frac{FCF_t}{(1+r)^t}
+\end{equation}
+where $V_0$ and $V_T$ denote the enterprise's market value at the beginning and end of the period, respectively; $FCF_t$ represents the free cash flow in period $t$; and $r$ is the weighted average cost of capital.
+
+The reasons we used LIVA are threefold. First, consistent with \citet{barney1991Firm}, a sustainable competitive advantage must result in the appropriation of superior value over the long run. Second, unlike short-term accounting ratios (e.g., return on assets) or market expectations (e.g., Tobin's Q), \textit{liva} captures the cumulative economic magnitude of a firm's success, filtering out short-term accounting noise \citep{wibbens2020Introducing}. Third, by netting out the cost of capital, \textit{liva} effectively isolates the value created specifically by the firm's unique capabilities above the market average, rendering it a robust indicator of sustained advantage \citep{mizik2003Trading}. To ensure comparability across enterprises, the ratio of \textit{liva} to total assets (\textit{livaRatio}) is used for analysis.
+
+\subsubsection{Resource-related conditions}
+\textbf{Cost Stickiness (\textit{stick})}. We measured cost stickiness using the model proposed by \citet{weiss2010Cost}, which captures the asymmetric behavior of costs --- the tendency for costs to rise with increasing sales but fall disproportionately less when sales decline. The model is specified as:
+
+\begin{equation}
+stick_{i,t} = \log\left(\frac{\Delta cost}{\Delta sale}\right)_{i,\underline{\tau}} - \log\left(\frac{\Delta cost}{\Delta sale}\right)_{i,\bar{\tau}}
+\end{equation}
+where $\underline{\tau}$ represents the most recent quarter within the observation year (from $t$ to $t-3$) exhibiting a decline in sales, and $\bar{\tau}$ represents the most recent quarter exhibiting an increase. Here, $\Delta sale$ and $\Delta cost$ denote the year-over-year changes in sales and total operating costs, respectively. Since a lower negative value in the original Weiss model indicates higher stickiness, we multiplied the result by $-1$ to ensure that a higher $stick$ value corresponds to a greater degree of resource retention.
+
+\textbf{Enterprise size (\textit{size})}. Enterprise size is measured as the natural logarithm of total assets at year-end.
+
+\textbf{Environmental, social, and governance (\textit{esg})}. We measured ESG performance using the Sino-Securities ESG rating sourced from the Wind database, according to \citet{cheng2024Strategic}. This rating system aligns with international ESG evaluation frameworks while accommodating the specialties of the Chinese capital market, offering broad coverage, frequent updates and high data accessibility.
+
+\textbf{Digital transformation (\textit{digit})}. According to \citet{zareie2024Firm}, \textit{digit} was quantified through textual analysis. A dictionary of construction-specific digital keywords (e.g., "smart site," "digital twin," "IoT") was constructed. The variable is measured by the frequency of these keywords relative to the total text in annual reports, capturing the extent of digital integration.
+
+\subsubsection{Environment-related conditions}
+\textbf{Environmental Dynamism (\textit{dynam})} and \textbf{Environmental Munificence (\textit{munif})}. Although all sample enterprises belong to the construction industry, they operate in distinct sub-industries with varying degrees of volatility. Therefore, to capture this heterogeneity, we referenced the \textit{"Guidelines for Industry Classification of Listed Companies"} issued by \citet{chinasecuritiesregulatorycommission2012Guidelines} to categorize the sample enterprises into four distinct sub-industries: Building Construction (E47), Civil Engineering Construction (E48), Building Installation (E49), and Building Decoration and Other Construction (E50). Following \citet{ghosh2009Environmental}, we measured \textit{dynam} and \textit{munif} for each sub-industry using a time-series forecasting model based on aggregated revenue data. To capture environmental dynamics, we adopted a \textbf{5-year rolling window} approach. For each sub-industry $j$ in year $t$, we regressed total revenue ($S_{j\tau}$) against time ($\tau$) over the window $[\text{t}-4, \text{t}]$ (where $\tau \in \{1, \dots, 5\}$):
+\begin{equation}
+S_{j\tau} = \alpha_j + \beta_j \tau + \epsilon_{j\tau}
+\end{equation}
+Using the sub-industry's mean revenue ($\bar{S}_j$) to normalize for scale, we calculated two environment-related conditions. First, \textit{dynam} proxies market volatility using the standard error of the slope ($se_{\beta_j}$): $dynam_{i,t} = se_{\beta_j}/\bar{S}_j$. Second, \textit{munif} represents growth potential using the regression slope coefficient ($\beta_j$): $munif_{i,t} = \beta_j/\bar{S}_j$.
+
+\subsubsection{Strategy-related conditions}
+\textbf{Diversification (\textit{diver})}. Following strategic management literature \citep{palepu1985Diversification}, this study employed the entropy index of revenues to measure diversification. Compared to simple counts of business segments or dummy variables, the entropy index is superior as it captures two dimensions simultaneously: the \textit{scope} of businesses (number of segments) and the \textit{balance} of total sales distributed across these segments. To ensure the accurate categorization of the construction industry, we strictly adopted the classification standards from the \textit{"Guidelines for Industry Classification of Listed Companies"} \citep{chinasecuritiesregulatorycommission2012Guidelines}. The variable is calculated as:
+\begin{equation}
+diver = \sum_{i=1}^{n} p_i \ln(1/p_i)
+\end{equation}
+where $p_i$ represents the proportion of sales revenue from the $i$-th business segment to the firm's total revenue, and $n$ denotes the total number of business segments.
+
+\textbf{Differentiation (\textit{diff}) and Cost Leadership (\textit{lead})}. Following the methodology of \citet{banker2024Strategy}, we quantified these two conditions via textual analysis of the "Management Discussion and Analysis" (MD\&A) section in annual reports. To adapt to the construction industry context, we constructed two distinct keyword dictionaries. For \textit{diff}, the word set focuses on uniqueness and technical superiority (e.g., "technological innovation," "green building," "BIM"). For \textit{lead}, the word set emphasizes efficiency and expense reduction (e.g., "cost control," "lean construction," "supply chain optimization"). \textit{Diff} and \textit{lead} are measured as the ratio of the respective keyword frequency to the total word count of the MD\&A section.
+
+\subsection{Variable calibration}
+Variable calibration is the critical procedure of transforming raw data into fuzzy-set membership scores ranging from 0 to 1. We employed the direct calibration method based on sample percentiles, a standard practice in large-sample QCA \citep{fiss2007Settheoretic}. Specifically, we defined the three qualitative anchors based on the data distribution: the threshold for full membership was set at the 90th percentile, the crossover point at the 50th percentile, and the threshold for full non-membership at the 10th percentile. To prevent case dropout during the truth table analysis caused by maximum ambiguity, cases with membership scores of 0.5 were adjusted to 0.501, following the recommendation of \citet{fiss2011Building}. Table \ref{tab:descriptive} presents calibration thresholds.
+
+\begin{table}[!htbp]
+\centering
+\captionsetup{font=normalsize, labelsep=period}
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{0pt}
+\caption{Descriptive statistics and calibrations}
+\label{tab:descriptive}
+\small
+\begin{threeparttable}
+\begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill}}lccccccc}
+\toprule
+\textbf{Condition} & \textbf{Mean} & \textbf{SD} & \textbf{Min} & \textbf{Max} & \textbf{Full M.} & \textbf{Cross} & \textbf{Full NM.} \\
+\midrule
+\textit{livaRatio} & -0.2127 & 1.0933 & -17.9606 & 7.9195 & 0.2585 & -0.1036 & -0.6564 \\
+\textit{stick} & -0.1376 & 0.6176 & -4.4882 & 3.3257 & 0.0193 & 0.0193 & -4.4882 \\
+\textit{size} & 13.9767 & 1.9074 & 8.9897 & 19.4865 & 16.8851 & 13.6397 & 12.0103 \\
+\textit{esg} & 72.5259 & 4.7067 & 46.41 & 87.71 & 78.34 & 72.48 & 67.69 \\
+\textit{digit} & 0.0006 & 0.0006 & 0 & 0.0081 & 0.001 & 0.0005 & 0.0001 \\
+\textit{dynam} & 0.0035 & 0.001 & 0.0015 & 0.0067 & 0.0048 & 0.0033 & 0.0024 \\
+\textit{munif} & 0.1639 & 0.0098 & 0.1389 & 0.1804 & 0.1761 & 0.1649 & 0.1523 \\
+\textit{diver} & 0.5259 & 0.3463 & 0 & 1.5765 & 1.0079 & 0.4597 & 0.0853 \\
+\textit{diff} & 0.0042 & 0.0015 & 0.0006 & 0.0112 & 0.0063 & 0.0039 & 0.0025 \\
+\textit{lead} & 0.0065 & 0.0012 & 0.0032 & 0.0151 & 0.0079 & 0.0064 & 0.0052 \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}[flushleft]
+\small\linespread{1}\selectfont
+\item \textit{Note}: SD = Standard Deviation. Full M. = Full Membership, Cross = Crossover point, Full NM. = Full Non-membership.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+\vspace{-25pt}
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Necessary conditions analysis results}
+Table \ref{tab:nca} presents the NCA results using ceiling regression and ceiling envelopment techniques \citep{dul2016Necessary}. A condition is considered necessary only if it meets two criteria simultaneously: the effect size is not less than 0.1 ($d \ge 0.1$), and the Monte Carlo simulation permutation test shows that the effect size is statistically significant ($p < 0.05$) \citep{dul2016Necessary}. The empirical data reveal that the effect sizes for eight out of the nine antecedent conditions are 0.000. Cost stickiness exhibits a minor effect size (0.039, 0.077); however, the value remains below the 0.1 threshold, and the permutation tests yield non-significant results for all conditions (p-values = 1.000). These statistics confirm that no single factor constitutes a necessary condition for sustainable competitive advantage. Furthermore, the bottleneck level analysis (see Table S1 in Supplementary Materials) corroborates these findings. While \textit{stick} shows a localized bottleneck level of 27.2\% strictly at the highest tier of performance (70\%--100\%), the bottleneck requirement is consistently "Not Necessary" (NN) for all other levels and conditions. This suggests that while cost stickiness acts as a threshold condition for achieving elite status, it is not a prerequisite for sustainable competitive advantage.
+
+\begin{table}[!t]
+\centering
+\captionsetup{font=normalsize, labelsep=period}
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{0pt}
+\caption{Results of necessary condition analysis}
+\label{tab:nca}
+\small
+\begin{threeparttable}
+\begin{tabular*}{0.85\textwidth}{@{\extracolsep{\fill}}lcccccc}
+\toprule
+\textbf{Condition} & \textbf{Method} & \textbf{Consistency} & \textbf{Ceiling Zone} & \textbf{Coverage} & \textbf{Effect Size} & \textbf{p-value} \\
+\midrule
+\textit{diver} & CR & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+                & CE & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+\textit{diff}  & CR & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+                & CE & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+\textit{lead}  & CR & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+                & CE & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+\textit{dynam} & CR & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+                & CE & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+\textit{munif} & CR & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+                & CE & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+\textit{stick} & CR & 1.000 & 0.031 & 0.810 & 0.039 & 1.000 \\
+                & CE & 1.000 & 0.063 & 0.810 & 0.077 & 1.000 \\
+\textit{size}  & CR & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+                & CE & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+\textit{esg}   & CR & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+                & CE & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+\textit{digit} & CR & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+                & CE & 1.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}[flushleft]
+\small\linespread{1}\selectfont
+\item \textit{Note}: CR = Ceiling Regression; CE = Ceiling Envelopment. Consistency values of 1.000 indicate perfect consistency. Effect sizes below 0.1 suggest negligible necessity.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+\vspace{-15pt}
+
+\subsection{Configuration analysis results}
+QCA yields three types of solutions: complex, parsimonious, and intermediate. Complex solutions often lead to many configurations that are difficult to interpret. Parsimonious solutions incorporate all logical remainders to maximize simplicity, potentially producing results that are detached from empirical reality. To address these limitations, this study adopts the intermediate solution. The intermediate solution strikes an optimal balance between the complex solution and the parsimonious solution \citep{ragin2006Set}. This approach ensures that the findings are both theoretically grounded and empirically interpretable, a practice particularly recommended for maintaining robustness in panel data QCA \citep{guedes2016UK}. Consequently, eight configurations were identified from the intermediate solution, as detailed in Table \ref{tab:tsqca}.
+
+\subsubsection{Consistency analysis}
+Consistency serves to evaluate configurations' validity. TSQCA assesses consistency through three metrics: pooled consistency (POCON), between-case consistency (BECON), and within-case consistency (WICON) \citep{castro2016General}. We selected POCON and BECON for our analysis because we aim to investigate the general patterns and temporal evolution trends across construction enterprises, rather than focusing on trajectories of individual cases. 
+
+POCON assesses the strength of the sufficiency relationship between each configuration and high sustainable competitive advantage across the study period. As reported in Table \ref{tab:tsqca}, the POCON values for all 8 configurations range from 0.873 to 0.925, exceeding the recommended threshold of 0.80 \citep{ragin2009Redesigning}. This indicates that all identified configurations act as valid and reliable sufficient conditions for achieving sustainable competitive advantage.
+
+BECON considers temporal effects by calculating the degree of sufficiency of condition combinations for the outcome variable based on data at each specific time point \citep{guedes2016UK}. Table \ref{tab:tsqca} suggests that annual BECON values exhibit notable temporal variation. To quantify this volatility, we further computed the BECON distance, which measures the deviation of annual consistency from the pooled consistency. BECON distances for all configurations exceed the 0.004 threshold \citep{castro2016General}, confirming significant temporal volatility and the necessity of TSQCA. 
+
+\begin{table}[!htb]
+\centering
+\captionsetup{font=normalsize, labelsep=period}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{0pt}
+\caption{TSQCA results}
+\label{tab:tsqca}
+\small
+\begin{threeparttable}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccccc}
+\toprule
+\textbf{Conditions} & \textbf{C1a} & \textbf{C1b} & \textbf{C2a} & \textbf{C2b} & \textbf{C3a} & \textbf{C3b} & \textbf{C4a} & \textbf{C4b} \\
+\midrule
+\textit{stick} & {\Large $\otimes$} & & {\Large $\otimes$} & & {\Large $\otimes$} & {\Large $\otimes$} & {\huge $\bullet$} & {\huge $\bullet$} \\
+\textit{size} & & {\huge $\bullet$} & {\huge $\bullet$} & {\huge $\bullet$} & & {\Large $\otimes$} & & {\huge $\bullet$} \\
+\textit{esg} & {\huge $\bullet$} & {\huge $\bullet$} & & {\Large $\otimes$} & {\huge $\bullet$} & & {\Large $\otimes$} & {\Large $\otimes$} \\
+\textit{digit} & {\huge $\bullet$} & {\huge $\bullet$} & {\huge $\bullet$} & {\huge $\bullet$} & & & & {\huge $\bullet$} \\
+\textit{dynam} & {\huge $\bullet$} & & {\huge $\bullet$} & {\Large $\otimes$} & {\Large $\otimes$} & {\huge $\bullet$} & {\huge $\bullet$} & {\Large $\otimes$} \\
+\textit{munif} & & {\Large $\otimes$} & & {\huge $\bullet$} & {\huge $\bullet$} & {\huge $\bullet$} & & \\
+\textit{diver} & {\huge $\bullet$} & {\Large $\otimes$} & {\Large $\otimes$} & & {\huge $\bullet$} & {\huge $\bullet$} & {\Large $\otimes$} & {\Large $\otimes$} \\
+\textit{diff} & {\huge $\bullet$} & {\huge $\bullet$} & {\huge $\bullet$} & {\Large $\otimes$} & & {\Large $\otimes$} & {\huge $\bullet$} & \\
+\textit{lead} & & & {\huge $\bullet$} & {\huge $\bullet$} & {\huge $\bullet$} & {\huge $\bullet$} & {\huge $\bullet$} & {\huge $\bullet$} \\
+\midrule
+POCON & 0.893 & 0.873 & 0.910 & 0.925 & 0.884 & 0.905 & 0.918 & 0.875 \\
+BECON 2014 & 0.876 & 0.851 & 0.867 & 0.891 & 0.855 & 0.879 & 0.833 & 0.851 \\
+BECON 2015 & 0.813 & 0.832 & 0.846 & 0.803 & 0.811 & 0.826 & 0.834 & 0.821 \\
+BECON 2016 & 0.830 & 0.789 & 0.758 & 0.805 & 0.910 & 0.861 & 0.806 & 0.805 \\
+BECON 2017 & 0.857 & 0.828 & 0.845 & 0.876 & 0.857 & 0.893 & 0.878 & 0.876 \\
+BECON 2018 & 0.837 & 0.868 & 0.883 & 0.842 & 0.876 & 0.883 & 0.859 & 0.842 \\
+BECON 2019 & 0.919 & 0.938 & 0.944 & 0.937 & 0.942 & 0.937 & 0.941 & 0.927 \\
+BECON 2020 & 0.868 & 0.876 & 0.928 & 0.871 & 0.886 & 0.901 & 0.872 & 0.897 \\
+BECON 2021 & 0.931 & 0.908 & 0.924 & 0.939 & 0.922 & 0.919 & 0.929 & 0.895 \\
+BECON 2022 & 0.942 & 0.829 & 0.972 & 0.951 & 0.951 & 0.935 & 0.896 & 0.921 \\
+BECON 2023 & 0.962 & 0.969 & 0.952 & 0.960 & 0.961 & 0.949 & 0.946 & 0.952 \\
+BECON distance & 0.050 & 0.053 & 0.064 & 0.067 & 0.048 & 0.037 & 0.060 & 0.046 \\
+\midrule
+POCOV & 0.074 & 0.092 & 0.139 & 0.146 & 0.202 & 0.182 & 0.067 & 0.059 \\
+BECOV SD & 0.022 & 0.025 & 0.037 & 0.034 & 0.058 & 0.052 & 0.024 & 0.015 \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}[flushleft]
+\small\linespread{1}\selectfont
+\item \textit{Note}: $\bullet$ = condition present; $\otimes$ = condition absent. POCON = Pooled Consistency; BECON = Between-Case Consistency; POCOV = Pooled Coverage; BECOV = Between-Case Coverage; SD = Standard Deviation. See Table S2 in Supplementary Materials for annual BECOV details.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+\vspace{-20pt}
+
+\vspace{15pt}
+\subsubsection{Coverage analysis}
+Coverage assesses the explanatory power of each configuration, indicating the proportion of the outcome set explained by a specific configuration. Variations in coverage values reflect changes in the explanatory strength of configurations across the study period. Specifically, coverage in TSQCA comprises three metrics: pooled coverage (POCOV), between-case coverage (BECOV), and within-case coverage (WICOV) \citep{castro2016General}. Following the analytical approach adopted in the consistency analysis, we examined POCOV and BECOV. As shown in Table \ref{tab:tsqca}, POCOV values vary across configurations. Notably, configurations C3a (0.202), C3b (0.182), and C2a (0.146) exhibit the highest coverage, suggesting that they represent the most dominant patterns to shape sustainable competitive advantage. The results of BECOV are shown in Section \ref{subsec:resilience}. 
+
+\subsection{Typical case tracing results and elaboration of configurations}
+We employed three steps to elaborate on the identified configurations. First, we consolidated and labeled configurations into broader patterns based on their similarity and dissimilarity. Four distinct configuration groups were established. Second, we utilized TCT to trace typical cases representing configurations \citep{schneider2013Combining}. Third, we developed theoretical pathways based on four groups of configurations and their typical enterprise cases.
+
+\subsubsection{Dual-resource driven differentiation configurations (C1a, C1b)}
+C1a ($\sim \textit{stick} * \textit{esg} * \textit{digit} * \textit{dynam} * \textit{diver} * \textit{diff}$) and C1b ($\textit{size} * \textit{esg} * \textit{digit} * \sim \textit{munif} * \sim \textit{diver} * \textit{diff}$) represent a group of configurations we term the "Dual-Resource Driven Differentiation Configurations". The characteristic of these configurations is the simultaneous presence of differentiation strategy ($\textit{diff}$), superior ESG performance ($\textit{esg}$), and deep digital transformation ($\textit{digit}$). This configuration depicts an industry leader that transcends traditional low-cost competition by positioning technological innovation and social responsibility as differentiating advantages. 
+
+According to the "principle of maximum set membership," \textbf{China State Construction Engineering Corporation (CSCEC)} is identified as the typical case for these configurations. Specifically, CSCEC has developed proprietary "C-Smart" management platforms and independently controlled digital techniques that define industry standards, such as the comprehensive application of digital twin technology in complex landmark structures \citep{cscec2024China}. Regarding ESG performance, CSCEC delivered Huoshenshan and Leishenshan hospitals within days, a feat made possible by the commitment to public health \citep{tan2021Integrated}. Furthermore, its promotion of green buildings and zero-carbon industrial parks serves as a tangible response to national "dual carbon" goals. 
+
+The formation mechanism of sustainable competitive advantage for this configuration follows a cumulative "Resource-Strategy" mutual reinforcement logic. Specifically, CSCEC integrates tangible digital capabilities with intangible legitimacy resources. Proprietary digital technologies provide data support for ESG management, while high-standard ESG requirements conversely drive the demand for technological innovation. On this basis, the enterprise deployed a differentiation strategy to navigate environmental dynamism. Fig. 3 illustrates these configurations' pathways.
+
+\begin{center}[Insert Fig. 3 here]\end{center}
+
+\subsubsection{Digital-enabled lean scale configurations (C2a, C2b)}
+We term C2a ($\sim \textit{stick} * \textit{size} * \textit{digit} * \textit{dynam} * \sim \textit{diver} * \textit{diff} * \textit{lead}$) and C2b ($\textit{size} * \sim \textit{esg} * \textit{digit} * \sim \textit{dynam} * \textit{munif} * \sim \textit{diff} * \textit{lead}$) "Digital-Enabled Lean configurations". The case enterprise in these configurations leverages its immense organizational size ($\textit{size}$) as a foundation, executes a cost leadership strategy ($\textit{lead}$), and deploys digital transformation ($\textit{digit}$). Enterprises in these configurations utilize digital tools to convert static scale advantages into dynamic, inimitable efficiency advantages.
+
+\textbf{China Communications Construction Company (CCCC)} stands out as the typical case. CCCC is an engineering contractor in ultra-large infrastructure, facing extreme pressure to control costs while managing vast assets. This configuration accurately reflects its strategic pivot: moving from "extensive expansion" to "lean management" via digitalization. Specifically, CCCC has successfully implemented digitalization through its digital supply chain and smart engineering. To support its cost leadership strategy, CCCC established a centralized digital procurement platform that leverages its massive scale ($\textit{size}$) to negotiate lower material prices. Furthermore, in landmark projects like the \textit{Hong Kong-Zhuhai-Macao Bridge}, CCCC utilized BIM in manufacturing of steel structures \citep{cccc2024China}. By integrating the Beidou satellite system into dual-carbon service platform \citep[p.~42]{cccc2024China}, CCCC optimized operational efficiency under complex environmental conditions.
+
+The formation of sustainable competitive advantage for this group follows a logic of "Scale Digitization $\rightarrow$ Efficiency Activation $\rightarrow$ Cost Barrier." Specifically, by embedding digital capabilities into a massive organizational size, the enterprise enhances resource orchestration efficiency. Consequently, the synergistic integration of scale and digital precision constructs an inimitable cost barrier that sustains long-term performance. Fig. 4 illustrates the configurational pathways.
+
+\begin{center}[Insert Fig. 4 here]\end{center}
+
+\subsubsection{Diversification-driven cost leadership configurations (C3a, C3b)}
+C3a ($\sim \textit{stick} * \textit{esg} * \sim \textit{dynam} * \textit{munif} * \textit{diver} * \textit{lead}$) and C3b ($\sim \textit{stick} * \sim \textit{size} * \textit{dynam} * \textit{munif} * \textit{diver} * \sim \textit{diff} * \textit{lead}$) depict configurations we named the "Diversification-Driven Cost Leadership Configurations". Enterprises leverage abundant external opportunities ($\textit{munif}$) to construct a highly \textit{diversified} business mode ($\textit{diver}$) and accordingly reinforce a cost leadership advantage ($\textit{lead}$). Unlike simple conglomerate expansion, this group treats diversification as a strategic instrument to realize economies of scope and reduce transaction costs. 
+
+\textbf{China Railway Group Limited (CREC)} serves as the case for these configurations. The growth trajectory of CREC is intertwined with China's massive national infrastructure investment \citep{tan2019Rise}. CREC exemplifies the power of "diversification for efficiency" by establishing a full-chain layout encompassing survey, design, construction, and industrial manufacturing. For instance, CREC is not only a global engineering contractor but also a leading manufacturer of high-value equipment, such as Tunnel Boring Machines (TBMs) and railway turnouts \citep{chinadaily2024BRI}. By incorporating these critical upstream manufacturing sectors into its diversified portfolio, CREC effectively internalizes high procurement costs and mitigates supply chain risks. 
+
+This group follows a logic of "environmental support + diversified integration + cost barrier". CREC capitalizes on environmental munificence, characterized by sustained large-scale national infrastructure investment, as a fertile foundation. Upon this basis, the enterprise pursues a diversification strategy not merely for revenue growth, but as a mechanism for vertical integration across the upstream and downstream supply chain. This strategic orchestration internalizes external market transactions, thereby building a cost advantage. Fig. 5 illustrates these configurations' logic.
+
+\begin{center}[Insert Fig. 5 here]\end{center}
+
+\subsubsection{Specialized cost leadership configurations (C4a, C4b)}
+We named C4a ($\textit{stick} * \sim \textit{esg} * \textit{dynam} * \sim \textit{diver} * \textit{diff} * \textit{lead}$) and C4b ($\textit{stick} * \textit{size} * \sim \textit{esg} * \textit{digit} * \sim \textit{dynam} * \sim \textit{diver} * \textit{lead}$) as "Specialized Cost Leadership Configurations". Under these configurations, enterprises forgo diversification ($\sim \textit{diver}$) in favor of a specific niche market to pursue operational efficiency ($\textit{lead}$). Cost stickiness ($\textit{stick}$) here implies high "asset specificity" --- the deliberate retention of specialized human capital and R\&D capabilities. This sustained resource commitment serves as foundations for technical dominance in a focused domain.
+
+\textbf{Sinoma International Engineering Co., Ltd.} serves as a typical case. Unlike diversified conglomerates, Sinoma exhibits high strategic focus ($\sim \textit{diver}$), consistently channeling resources into its core business of cement technology \citep{sinafinance2025Sinoma}. Its high cost stickiness ($\textit{stick}$) reflects long-term investments in specialized assets. Even during industry downturns, the retention of these core technical teams creates "sunk costs" that competitors cannot easily replicate. Hundreds of cement production lines worldwide \citep{sinafinance2025Sinoma} enable Sinoma to offer proprietary technologies, such as low-energy clinker calcination, for simultaneously achieving the industry's lowest operating costs and highest technical standards, effectively unifying technical differentiation with cost leadership.
+
+Sustainable competitive advantage for this configuration follows a logic of "Asset Specificity + Niche Focus + Technical Moat." By maintaining high levels of investment in specialized R&D and personnel, the firm builds tacit knowledge and the moat. These bases support a focused strategy that targets specific market segments, allowing enterprises to achieve cost leadership through the economies of specialization rather than economies of scale. While competitors may enter the general market, they cannot replicate the efficiency and technological sophistication. The logic of C4a and C4b is illustrated in Fig. 6.
+
+\begin{center}[Insert Fig. 6 here]\end{center}
+
+\subsection{High sustainable competitive advantage configurations with organizational resilience}
+\label{subsec:resilience}
+Existing literature often operationalizes organizational resilience by measuring the capacity of an enterprise to maintain performance levels or minimize volatility following a crisis shock \citep{zhang2022Organizational,yao2025Clear}. Building upon this logic, and drawing on the set-theoretic discussions \citep{castro2016General, ragin2006Set}, this study proposes a configurational approach to measure resilience. Specifically, we assessed resilience by investigating the temporal variations in \textit{consistency} and \textit{coverage} before and after specific crises. A smaller fluctuation in coverage implies that the strategic configuration retains its empirical explanatory power and applicability despite external turbulence. 
+
+To empirically test this, we identified two specific crisis shocks and focused on the observation windows of 2014--2015 and 2019--2020. The first shock was the 2015 real estate structural crisis. In 2015, the Chinese construction industry faced a cyclical crisis driven by adjustment of the real estate market. The newly started floor area of building construction plummeted to 1,066.51 million square meters, a year-on-year decrease of 14.6\% \citep{chinesenationalbureauofstatistics2016National}. Given the period's context of high-speed economic ascent, this contraction represented a severe exogenous shock. The second shock was the 2020 COVID-19 pandemic. This "black swan" event imposed a more abrupt test than the 2015 structural adjustment, causing widespread project suspensions, supply chain ruptures, and labor shortages due to lockdowns \citep{zhang2024Deconstructing}. 
+
+We examined the changes in BECON and BECOV for all configurations across these two crises. Regarding BECON, the analysis reveals that BECON values for all configurations remained consistently above 0.80 during both crisis periods. They remained valid sufficiency pathways for achieving competitive advantage even during crises. Regarding BECOV, configurations exhibited varying degrees of volatility (See Table S2 in Supplementary Materials). Figures 7 and 8 illustrate the BECOV trends for the two crisis periods, respectively. Four configurations in C2 and C3 exhibited a sharp decline in coverage during both crises, suggesting that configurations relying heavily on cost leadership and complex diversified supply chains are more vulnerable to external shocks. In contrast, the configurations within C1 and C4 demonstrated relative stability. This conclusion is further corroborated by the BECOV standard deviations. BECOV standard deviations for Groups C2 and C3 are markedly higher than those for Groups C1 and C4. 
+
+\begin{center}[Insert Figs. 7 and 8 here]\end{center}
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Discussion on research questions}
+\subsubsection{Configurations that shape construction enterprises' sustainable competitive advantage (RQ1)}
+Regarding RQ1, our findings reveal that the formation of sustainable competitive advantage is shaped by complex interactions of antecedents across dimensions of organizational resource, external environment, and strategic orientation. \textbf{\textit{Firstly}}, the NCA results indicate that no single condition constitutes a necessary condition for sustainable competitive advantage. This finding expands on some CEM literature that often elevated specific factors, such as BIM adoption or human capital, to the status of prerequisites for success \citep{probojakti2025Driving}. Instead, our results resonate with the principle of "equifinality", demonstrating that construction enterprises can achieve the same outcome through multiple, distinct pathways. For instance, while digital transformation is highly emphasized \citep{simard2025Project}, our NCA results suggest it is not necessary; enterprises can still achieve sustainable advantages through specialized cost leadership without heavy digital reliance (as seen in C4a), provided they possess other resources like cost stickiness.
+
+\textbf{\textit{Secondly}}, TSQCA results indicate eight distinct configurations. The high consistency of these configurations validates the principle of "equifinality". There is no single "best way"; rather, there are multiple "orchestrations" of resources and strategies that match specific environments, echoing the configurational view that competitive advantage stems from complex resource networks \citep{black1994Strategic}. Further, POCOV results delineate the distribution of valid configurations. Configurations in Group C3 ("Diversification-Driven Cost Leadership") and Group C2 ("Digital-Enabled Lean Scale") exhibit the highest explanatory power. From the "Resource-Environment-Strategy" perspective, these high-coverage groups share a common strategic core of cost leadership, yet they achieve it through distinct mechanisms. Group C3 represents an "externally-oriented" efficiency model where enterprises, operating in munificent environments, leverage diversification strategies to integrate supply chains and internalize transaction costs, consistent with the logic of strategic resource amalgamation \citep{wang2024Strategic}. Conversely, Group C2 represents an "internally-oriented" efficiency model, where firms rely on massive organizational size and digital transformation to achieve economies of scale and optimize management efficiency. The dominance of these two groups suggests that efficiency-based cost leadership remains the mainstream logic for Chinese construction enterprises to build sustainable competitive advantage. This finding aligns with the industry's inherent characteristics of fierce price competition and thin profit margins \citep{das2021Developing,sharma2023Construction}. Consequently, for the majority of enterprises, the primary pathway to sustainability lies in leveraging resource endowments to ensure efficiency.
+
+In contrast, Group C1 ("Dual-Resource Driven Differentiation") and Group C4 ("Specialized Cost Leadership") demonstrate significantly lower POCOV values. This disparity indicates that these configurations represent "elite" or "niche" pathways that are fewer in number but equally effective in outcome. Group C1 reflects a "high-end" pathway where enterprises combine superior ESG performance and digital capabilities to pursue differentiation. The lower coverage of this group suggests high barriers to entry, as it requires the accumulation of scarce, high-quality resources that average firms typically lack, particularly given the challenges of transforming ethical behaviors into strategic assets \citep{locatelli2025Social}. Similarly, Group C4 reflects a "specialized" pathway where enterprises reject diversification in favor of focusing on a niche market. The presence of cost stickiness in this configuration implies a reliance on asset specificity and long-term resource commitment, which acts as a strategic investment in specialized human capital \citep{luo2019Impacts}. The low coverage here indicates that this is a focused strategy suitable for "hidden champions" in specific technical sub-sectors, rather than a general model for the mass market. 
+
+\subsubsection{High sustainable competitive advantage configurations that simultaneously maintain high organizational resilience (RQ2)}
+
+Regarding RQ2, we identified which sustainable competitive advantage configurations can lead to high organizational resilience. Our investigation of temporal variations of BECOV in configurations during crisis reveals the answer: the configurations that are most dominant in stable times (Groups C2 and C3) appear the most vulnerable during crises. Specifically, the coverage of C2 and C3 declined sharply during shock periods. This finding empirically corroborates the "efficiency-resilience trade-off" discussed in recent literature, suggesting that the pursuit of absolute efficiency may inadvertently erode the capacity to withstand shocks \citep{shao2024Contradiction}. We argue that the very mechanisms driving the efficiency of these groups create structural rigidities. For Group C3, the reliance on complex, integrated supply chains—while reducing transaction costs in normal times—amplifies exposure to disruption risks. When external shocks cause widespread supply chain ruptures, the tight coupling between diversified segments transmits the shock across the entire enterprise, leading to a rapid loss of advantage \citep{zhang2024Deconstructing}. Similarly, for Group C2, the pursuit of economies of scale creates organizational inertia. While massive assets provide resource buffers, they also entail high fixed costs. In the face of sudden market contractions, these "heavy" enterprises struggle to pivot quickly, highlighting that focusing solely on competitive superiority may create relative vulnerability to contingencies \citep{lv2024Digital}.
+
+On the contrary, Group C1 and Group C4 demonstrated remarkable stability, with minimal fluctuations in coverage during crises. This suggests that the pathways to resilience differ fundamentally from those to efficiency. For Group C1, the stability suggests that superior ESG performance acts as an "insurance mechanism". During crises, intangible assets such as corporate reputation and stakeholder trust become critical buffers. Enterprises in this group leverage their commitment to social responsibility to maintain legitimacy and reduce friction with stakeholders, thereby preserving their market position even when external conditions deteriorate \citep{mattera2022Sustainable}. Furthermore, the resilience of Group C4 offers a novel theoretical insight into the role of cost stickiness. While conventional accounting wisdom often views cost stickiness as a sign of inefficiency, our findings suggest that for specialized firms, high stickiness represents the deliberate retention of slack resources—such as skilled project teams and specialized equipment \citep{potgieter2016Maximizing}. Instead of laying off staff to cut costs during downturns, these enterprises retain their core human capital. This "resource redundancy" allows them to rapidly mobilize capabilities and recover functions as soon as the shock subsides \citep{love2004Industrycentric}.
+
+\subsection{Theoretical implications}
+This study suggests four theoretical implications for the literature. First, this study contributes to the CEM literature by systematically conceptualizing and empirically investigating sustainable competitive advantage in construction enterprises. While prior studies have extensively examined static competitiveness or isolated factors, this research represents a pioneering effort to unravel the "sustainable" dimension of advantage—specifically the durability of value creation. By adopting a configurational perspective, we demonstrate that sustainable competitive advantage in the project-based construction industry is not driven by single factors but by the "orchestration" of resources, environments, and strategies. This shift provides a more holistic perspective for understanding how construction firms maintain long-term survival amidst discontinuity.
+
+Second, this study bridges the theoretical divide between sustainable competitive advantage and organizational resilience in the CEM domain. Existing literature often treats these two constructs in isolation. By integrating them, our study uncovers a critical "efficiency-resilience trade-off" specific to the construction sector. We provide theoretical nuance by revealing that the efficiency-driven configurations that dominate stable periods are structurally fragile to exogenous shocks, whereas niche configurations exhibit superior resilience. This insight challenges the assumption that high performance automatically equates to high resilience, enriching the theoretical understanding of organizational viability in turbulent environments.
+
+Third, this study validates and contextualizes the "Resource-Environment-Strategy" framework within the unique setting of the construction industry. While this framework was derived from general management literature, its application in CEM has been limited. We extend its applicability by demonstrating that construction enterprises are complex open systems where internal resource endowments must be dynamically aligned with external environmental conditions through strategic orientations. By confirming the explanatory power of this framework in the construction industry, we provide a robust theoretical scaffold for future research on strategic management in project-based organizations.
+
+Fourth, this study makes a methodological contribution by integrating TSQCA with TCT. While QCA is gaining traction in CEM research, it is often criticized for remaining a "black box" regarding causal mechanisms \citep{frateur2025How}. By employing TCT, we moved beyond merely identifying "what" certain configurations work to explaining "how" they work through the detailed reconstruction of evidence chains in typical enterprises. Our mixed-method approach offers a rigorous template for future empirical studies addressing causal complexity in the construction management field.
+
+\subsection{Practical implications}
+
+We provide practical insights for construction enterprise managers aiming to achieve sustainable competitive advantage and maintain organizational resilience as follows.
+
+First, managers must recognize that there is no "one-size-fits-all" formula for long-term success; rather, they should tailor their managerial patterns to align with their specific resource endowments and environmental contexts. For leaders of large-scale enterprises, the "Digital-Enabled Lean Scale" pathway (as seen in Group C2) offers a guideline. Managers in such enterprises should prioritize digital transformation not merely as a technical upgrade, but as a strategic enabler to optimize cost leadership. For example, implementing centralized digital procurement platforms can leverage massive purchasing power to negotiate lower material prices, converting sheer size into genuine efficiency. Conversely, for specialized or smaller firms, blindly imitating the diversification strategies of giants is ill-advised. Instead, they should adopt the "Specialized Cost Leadership" model (Group C4). Managers should focus resources on a specific niche—such as tunnel engineering or green building technology—to build technical barriers that generalist competitors cannot penetrate.
+
+Second, managers are required to make a strategic choice between maximizing efficiency in stable times and ensuring resilience during crises, as our results highlight a distinct trade-off. For enterprises pursuing the "mainstream" efficiency strategies (Groups C2 and C3), managers must be acutely aware of their structural fragility. While integrated supply chains drive profits in munificent environments, they become vulnerabilities during shocks. Therefore, managers adopting these strategies should establish proactive risk-addressing mechanisms, such as maintaining flexible backup suppliers rather than relying solely on lean, just-in-time delivery, to mitigate the losses due to contingencies.
+
+Third, for managers seeking high organizational resilience, our findings regarding "niche" configurations (Groups C1 and C4) offer advice regarding resource allocation. Specifically, managers should rethink the value of ESG and Cost Stickiness. Regarding ESG, managers should view investments in social responsibility not as compliance burdens but as intangible assets. Proactive community engagement and environmental compliance can build a reservoir of goodwill that protects the firm's legitimacy when market sentiments turn negative. Regarding cost stickiness, managers of specialized firms should resist the pressure to immediately cut costs by laying off core technical staff during industry downturns. By retaining skilled project managers and R&D teams during recessions, managers effectively preserve the organization's recovery capacity, enabling the firm to seize opportunities faster than competitors once the market rebounds.
+
+\section{Conclusion}
+\label{sec:conclusion}
+\subsection{Conclusion}
+This study investigated the configurations of organizational resource, external environment, and strategic orientation that shape sustainable competitive advantage and organizational resilience in construction enterprises. By integrating NCA, TSQCA, and TCT within the "Resource-Environment-Strategy" framework, we analyzed the causal complexity underlying long-term value creation. The conclusions of this study are as follows:
+
+First, the formation of sustainable competitive advantage follows the principle of equifinality, driven by eight distinct configurations rather than universal necessary conditions. These configurations reveal a polarized industry structure: the majority of enterprises adopt mainstream efficiency-driven pathways (e.g., Digital-Enabled Lean Scale or Diversification-Driven Cost Leadership) to navigate fierce price competition. In contrast, a minority of enterprises pursue niche pathways (e.g., Dual-Resource Driven Differentiation or Specialized Cost Leadership) by leveraging scarce resources such as superior ESG performance or high cost stickiness.
+
+Second, there exists a pronounced trade-off between efficiency and organizational resilience. While mainstream efficiency-driven configurations maximize market coverage in stable and munificent environments, they are structurally vulnerable to exogenous shocks due to supply chain coupling and organizational inertia. Conversely, niche configurations, despite holding lower market shares, demonstrate high organizational resilience. Mechanisms such as the legitimacy conferred by ESG and the strategic slack provided by cost stickiness act as buffers, enabling these firms to maintain performance stability during crises like the COVID-19 pandemic.
+
+\subsection{Limitations and future research}
+This study has several limitations that pave the way for future research. First, the empirical setting is restricted to Chinese construction enterprises. Given the unique institutional characteristics of China's construction market, the generalizability of the "Resource-Environment-Strategy" framework to other cultural and economic contexts warrants validation. Future studies should replicate this configurational analysis in other emerging or developed economies to test cross-national applicability. Second, the sample primarily consists of listed enterprises, which tend to be large-scale and resource-abundant. Consequently, the identified configurations may not fully capture the survival logic of Small and Medium-sized Enterprises (SMEs), which operate under different resource constraints. Future research could expand the scope to include non-listed SMEs to explore distinct pathways for smaller players. Third, while this study examined nine key antecedents, other potential factors, such as top management team characteristics, open innovation ecosystems, or specific policy incentives, were not included due to data availability. Future scholars are encouraged to leverage other perspectives and include more antecedents to further refine the understanding of sustainable competitive advantage.
+
+\section*{Data availability statement}
+All data, models, or codes that support the findings of this study are available from the corresponding author upon reasonable request.
+
+\section*{Acknowledgments}
+This paper was supported by the National Natural Science Foundation of China (Project Numbers: 72371189, 72371190) and the program of China Scholarship Council (CSC) (No. 202206260227).
 
 % ===== 参考文献 =====
 % 使用BibTeX生成参考文献列表（ASCE author-year格式，适用于JCEM投稿）
 % ASCE使用author-date系统，类似APA但有特殊格式要求
 
 % 优化参考文献行间距以控制页数（策略1+2组合）
-\setlength{\bibsep}{0pt plus 0.3ex}  % 减少条目间距
-{\linespread{0.98}\selectfont  % 轻微压缩行距至0.97倍
 \bibliographystyle{elsarticle-harv}
 \bibliography{dj01}
 
