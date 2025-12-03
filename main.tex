@@ -1,8 +1,8 @@
 % !TEX program = xelatex
 % 这行告诉LaTeX编辑器使用XeLaTeX引擎编译（支持更好的字体处理）
 
-% Elsarticle文档类声明：review格式，12pt字体，author-year引用风格
-\documentclass[authoryear,preprint,review,times,12pt]{elsarticle}
+% Elsarticle文档类声明：review格式，10pt字体（5号字），author-year引用风格
+\documentclass[authoryear,preprint,review,times,10pt]{elsarticle}
 
 % ===== 宏包导入部分 =====
 % 数学相关宏包（必备！工程管理论文经常用到数学公式）
@@ -36,6 +36,11 @@
 
 \begin{document}
 
+% ASCE要求：双倍行距
+\renewcommand{\baselinestretch}{2.0}
+\normalsize  % 激活新的行距设置
+
+\linenumbers  % ASCE要求：摘要也需要行号
 \begin{frontmatter}
 
 % 论文标题
@@ -78,8 +83,7 @@ Sustainable competitive advantage \sep Organizational resilience \sep Constructi
 
 \end{frontmatter}
 \clearpage  % 强制换页，避免跨页导致双横线
-% 启用行号（review格式特有）
-\linenumbers
+% 行号已在frontmatter之前启用
 
 % 目录页（期刊论文通常不需要）
 % \tableofcontents
