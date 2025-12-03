@@ -6,12 +6,15 @@
 - **触发方式**: 保存时自动编译（`onSave`）
 
 ## 文件结构
-- `main.tex` - 论文主文件
-- `sections/` - 章节内容（01-introduction.tex, 02-literature.tex, 03-methodology.tex等）
+- `main.tex` - **论文主文件（包含所有章节内容，单文件结构）**
+  - 所有章节（Abstract, Introduction, Literature, Methods, Results, Discussion, Conclusion）均已整合到main.tex中
+  - Abstract使用`\section*{Abstract}`格式（不编号section），确保显示行号
+  - 不再使用`\input{sections/...}`引用外部章节文件
 - `figures/` - 图片、图表及相关Python绘图脚本
 - `build/` - 编译临时文件（.aux, .log, .bbl, .blg等）
 - `dj01.bib` - 参考文献（Better BibTeX自动导出）
 - `elsarticle.cls` + `elsarticle/` - Elsevier模板文件
+- ~~`sections/`~~ - **已废弃**：原章节文件夹已删除，所有内容已整合到main.tex
 
 ## 配置文件交互逻辑
 - **settings.json** (VS Code层)
@@ -35,17 +38,25 @@
 
 ## ⚠️ 关键规则
 
-### 1. 文件位置规范
-**所有章节内容必须写入`sections/`文件夹**，绝不要在项目根目录创建新的章节文件。
+### 1. 文件结构规范
+**本项目采用单文件结构**：所有章节内容均在`main.tex`中，不使用外部章节文件。
+- 直接在main.tex中编辑各章节内容
+- 禁止创建新的章节文件或重新拆分sections/文件夹
+- Abstract采用`\section*{Abstract}`格式（不编号），确保行号显示
 
-### 2. 文献引用标记
+### 2. 行号配置
+- 使用`\runninglinenumbers`和`\modulolinenumbers[1]`确保所有内容（包括Abstract）显示行号
+- Abstract已从frontmatter移出，作为正文第一个section
+- 已移除frontmatter后的双横线（通过自定义`\pprintMaketitle`）
+
+### 3. 文献引用标记
 文本中标有 **`(ref)`** 的地方是待添加文献的标记，**绝对不要修改或删除这些标记**！用户会手动添加对应的文献引用。
 
-### 3. 投稿前准备
+### 4. 投稿前准备
 - 注释掉`main.tex`中的geometry页边距设置，恢复Elsarticle默认格式
 - 修改`\journal{}`为目标期刊名称
 
-### 4. 标题大写规范
+### 5. 标题大写规范
 **所有章节标题（section、subsection、subsubsection）和表格/图片标题均使用 Sentence case（句式大写），而非 Title Case（标题式大写）。**
 
 - ✅ **正确**：只在第一个单词首字母大写
