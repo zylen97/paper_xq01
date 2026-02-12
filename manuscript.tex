@@ -61,11 +61,7 @@
 
 \begin{document}
 
-% ASCE要求：双倍行距
-\renewcommand{\baselinestretch}{2.0}
-\normalsize  % 激活新的行距设置
-
-% 行号设置（ASCE要求）
+% 行号设置（审稿格式）
 \modulolinenumbers[1]  % 每行都显示行号（而不是默认每5行）
 \runninglinenumbers  % 使用连续行号（适用于所有环境包括frontmatter）
 \begin{frontmatter}
@@ -73,42 +69,49 @@
 % 论文标题
 \title{How digital communication tools use shapes improvisation capability in large-scale construction projects: The role of meta-knowledge}
 
-% 作者信息（每人独立标记a、b、c、d）
-\author[labela]{Zilun}
+% 作者信息
+\author[labela]{Zilun\corref{cor1}}
+\ead{zylenw97@usts.edu.cn}
 \author[labelb]{Ying Tang}
-\author[labelc]{Dongjie Zheng\texorpdfstring{$^{*}$}{*}}
-\author[labeld]{and Qinghua He}
+\ead{19552089006@163.com}
+\author[labelc]{Dongjie Zheng}
+\ead{2531180@tongji.edu.cn}
+\author[labeld]{Qinghua He}
+\ead{heqinghua@tongji.edu.cn}
 
-% 机构信息（每人独立，身份+机构+Email直接写在一行）
-\affiliation[labela]{organization={Lecturer, School of Civil Engineering, Suzhou University of Science and Technology},
+\cortext[cor1]{Corresponding author.}
+
+% 机构信息
+\affiliation[labela]{organization={School of Civil Engineering, Suzhou University of Science and Technology},
             city={Suzhou},
             postcode={215011},
-            country={China. Email: zylenw97@usts.edu.cn}}
+            country={China}}
 
-\affiliation[labelb]{organization={Undergraduate, School of Civil Engineering, Suzhou University of Science and Technology},
+\affiliation[labelb]{organization={School of Civil Engineering, Suzhou University of Science and Technology},
             city={Suzhou},
             postcode={215011},
-            country={China. Email: 19552089006@163.com}}
+            country={China}}
 
-\affiliation[labelc]{organization={Postgraduate, School of Economics and Management, Tongji University},
+\affiliation[labelc]{organization={School of Economics and Management, Tongji University},
             city={Shanghai},
             postcode={200092},
-            country={China. Email: 2531180@tongji.edu.cn (Corresponding Author)}}
+            country={China}}
 
-\affiliation[labeld]{organization={Professor, School of Economics and Management, Tongji University},
+\affiliation[labeld]{organization={School of Economics and Management, Tongji University},
             city={Shanghai},
             postcode={200092},
-            country={China. Email: heqinghua@tongji.edu.cn}}
+            country={China}}
+
+\begin{abstract}
+Improvisation capability enables project teams to respond effectively to unexpected situations. While digital communication tools are widely used in projects, limited research has examined how different patterns of digital communication tool use influence improvisation capability or the cognitive mechanisms involved. This study develops and tests a model linking work-oriented and social-oriented digital communication tool use to improvisation capability through meta-knowledge, defined as shared awareness of expertise, relationships, and procedures. Using time-lagged survey data from 355 project members in China, the results show that different digital communication tool use patterns foster complementary forms of meta-knowledge, which selectively transmit effects to improvisation capability. Structural meta-knowledge emerges as the dominant mediator, whereas relational and procedural meta-knowledge exhibit more selective effects. This research contributes by distinguishing work-oriented from social-oriented digital communication tool use, introducing procedural meta-knowledge as a novel cognitive construct, and identifying differentiated meta-knowledge pathways linking digital collaboration to improvisation capability. The findings offer practical guidance for designing digital collaboration practices that enhance team capability in uncertain project environments.
+\end{abstract}
+
+\begin{keyword}
+Digital communication tools \sep Meta-knowledge \sep Improvisation capability \sep Large-scale construction projects
+\end{keyword}
 
 \end{frontmatter}
 
-
-% ===== 摘要部分（以不编号section形式呈现，确保有行号） =====
-\section*{Abstract}
-Improvisation capability enables project teams to respond effectively to unexpected situations. While digital communication tools are widely used in projects, limited research has examined how different patterns of digital communication tool use influence improvisation capability or the cognitive mechanisms involved. This study develops and tests a model linking work-oriented and social-oriented digital communication tool use to improvisation capability through meta-knowledge, defined as shared awareness of expertise, relationships, and procedures. Using time-lagged survey data from 355 project members in China, the results show that different digital communication tool use patterns foster complementary forms of meta-knowledge, which selectively transmit effects to improvisation capability. Structural meta-knowledge emerges as the dominant mediator, whereas relational and procedural meta-knowledge exhibit more selective effects. This research contributes by distinguishing work-oriented from social-oriented digital communication tool use, introducing procedural meta-knowledge as a novel cognitive construct, and identifying differentiated meta-knowledge pathways linking digital collaboration to improvisation capability. The findings offer practical guidance for designing digital collaboration practices that enhance team capability in uncertain project environments.
-
-\noindent\textbf{Keywords:}
-Digital Communication tools, Meta-Knowledge, Improvisational Capability, Large-scale construction projects
 % ===== 正文各章节 =====
 
 \section{Introduction}
@@ -155,7 +158,7 @@ Addressing this gap, this study introduces procedural meta-knowledge as a third 
 
 Despite growing interest in meta-knowledge, most empirical insights have been derived from relatively stable teams, where membership continuity allows knowledge structures and coordination patterns to gradually stabilize over time (Mohammadparst Tabas et al., 2024; Zhang et al., 2023). Temporary project teams present a distinct context in which meta-knowledge must develop more rapidly and adapt more frequently to changing conditions, making it a particularly critical cognitive resource for rapid coordination and improvisation in project environments.
 
-\subsection{Mechanisms Linking DCT usage and IC: A Distributed Cognition Theory Perspective}
+\subsection{Mechanisms linking DCT usage and IC: A distributed cognition theory perspective}
 In temporary project teams, knowledge, cognition, and action are inherently distributed across individuals and digital communication tools. Under such conditions, individual-level cognitive perspectives provide limited explanatory power for understanding IC. This study therefore adopts Distributed Cognition Theory. By conceptualizing cognition as an emergent outcome of interactions among individuals, technological artifacts, and the social environment, distributed cognition theory provides a well-suited theoretical lens for examining how DCT usage shape IC in temporary project teams (Safadi, 2024; Swart et al., 2022). 
 
 Within distributed cognitive systems, meta-knowledge has been discussed as a form of “cognitive indexing” that helps individuals understand how knowledge resources are distributed, related, and accessed (Engelbrecht et al., 2019; Ye and Chen, 2021). Rather than emphasizing the possession of substantive expertise, this line of research highlights knowing where relevant knowledge resides, how it can be obtained, and how it may be mobilized in action. As DCTs become increasingly embedded in organizational work, interaction processes that were previously transient or implicit are more likely to be externalized and stabilized. Persistent communication traces, visible interaction histories, and routinized collaboration structures thus constitute important conditions under which meta-knowledge can form and be maintained (Palazzolo et al., 2006; Leonardi, 2014; Treem et al., 2020).
@@ -332,7 +335,7 @@ A team cognition perspective provides a coherent explanation for this pattern. P
 
 These findings suggest that the relationship between digital collaboration and performance is more contingent than often assumed. Digital interaction generates abundant communication, but only some of this interaction crystallizes into shared cognitive structures that can support improvisation capability (Ye and Chen, 2021; Zaverzhenets and Łobacz, 2021). 
 
-\subsection{Theoretical Implications}
+\subsection{Theoretical implications}
 \subsubsection{Reframing digital collaboration as cognitive infrastructure building}
 This study reframes digital collaboration in project research by showing that digital communication tools primarily build team cognitive infrastructure rather than merely improve communication efficiency. Prior project management research has largely treated digital tool use as a homogeneous driver of coordination and information sharing outcomes (Faraj and Sproull, 2000; Leonardi, 2015; Sun et al., 2022). The present findings show that digital collaboration does not produce uniform effects; instead, its consequences depend fundamentally on how digital tools are used within project teams.
 
@@ -379,15 +382,13 @@ The findings reveal that DCT usage does not influence improvisation capability u
 These insights contribute to research on digital collaboration, distributed cognition, and project teamwork by clarifying the cognitive mechanisms through which digital interaction translates into team capability. The findings also offer guidance for project organizations seeking to design digital collaboration practices that support both rapid response and creative problem solving in complex project environments. Because the empirical context focuses on construction and infrastructure project teams in China, caution is warranted when generalizing the findings to other project settings and national contexts.
 
 \section*{Data availability statement}
+The data that support the findings of this study are available from the corresponding author upon reasonable request.
 
 \section*{Acknowledgments}
 
 % ===== 参考文献 =====
-% 使用BibTeX生成参考文献列表（ASCE格式）
-% ascelike-new.bst 提供完整的ASCE引用格式支持
-% 包括：作者-年份格式、期刊缩写、DOI显示等
-
-\bibliographystyle{ascelike-new}
+% 参考文献（Elsevier author-year 格式）
+\bibliographystyle{elsarticle-harv}
 \bibliography{xq01}
 
 
