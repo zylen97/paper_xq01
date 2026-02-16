@@ -14,7 +14,7 @@
 ├── xq01.bib                   # 参考文献数据库
 ├── figures/                   # 图片、图表及Python绘图脚本
 ├── build/                     # 编译临时文件（.aux, .log, .bbl等）
-├── drafts/                    # Agent工作流输出（changelog + final）
+├── drafts/                    # Agent工作流输出（按 Section_时间戳 分目录）
 ├── .vscode/settings.json      # VS Code配置
 ├── latexmkrc                  # latexmk编译配置
 └── elsarticle.cls             # Elsevier模板文件
@@ -93,6 +93,6 @@ latexmk -C               # 完全清理（包括PDF）
 
 **使用方式**：在 VS Code 中选中文本，输入 `/draft` 或 `/polish`。
 
-**输出**：`drafts/writing_brief.md`（期刊简报）+ `drafts/{Section}_changelog.md` + `drafts/{Section}_final.md`。
+**输出**：`drafts/writing_brief.md`（期刊简报）+ `drafts/{Section}_{timestamp}/`（含 checkpoint 文件、changelog.md、final.md）+ `drafts/{Section}_latest_final.md`（便捷入口）。
 
 **核心规则**：manuscript 文件全程只读 · 确认后手动合并 · 保持 `(ref)` 标记不变。
