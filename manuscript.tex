@@ -2,7 +2,7 @@
 % 这行告诉LaTeX编辑器使用XeLaTeX引擎编译（支持更好的字体处理）
 
 % Elsarticle文档类声明：review格式，10pt字体（5号字），author-year引用风格
-\documentclass[authoryear,preprint,review,times,10pt]{elsarticle}
+\documentclass[authoryear,preprint,review,times,12pt]{elsarticle}
 
 % ===== 宏包导入部分 =====
 % 数学相关宏包（必备！工程管理论文经常用到数学公式）
@@ -22,11 +22,10 @@
 % 页边距调整（草稿阶段使用，投稿时可注释掉）
 \usepackage{geometry}
 \geometry{
-    left=2cm,    % 左边距（原约3.5cm）
-    right=2cm,   % 右边距（原约3.5cm）
-    top=1.2cm,     % 上边距（原约3cm）
-    bottom=1.5cm,  % 下边距（调整后，页码不会太靠下）
-    footskip=0.5cm % 文本底部到页脚的距离
+    left=2.5cm,
+    right=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm,
 }
 
 \usepackage{hyperref}     % 超链接和PDF书签（应该放在最后导入）
@@ -69,41 +68,41 @@
 % 论文标题
 \title{How digital communication tools use shapes improvisation capability in large-scale construction projects: The role of meta-knowledge}
 
-% 作者信息
-\author[labela]{Zilun\corref{cor1}}
-\ead{zylenw97@usts.edu.cn}
-\author[labelb]{Ying Tang}
-\ead{19552089006@163.com}
-\author[labelc]{Dongjie Zheng}
-\ead{2531180@tongji.edu.cn}
-\author[labeld]{Qinghua He}
-\ead{heqinghua@tongji.edu.cn}
-
-\cortext[cor1]{Corresponding author.}
-
-% 机构信息
-\affiliation[labela]{organization={School of Civil Engineering, Suzhou University of Science and Technology},
-            city={Suzhou},
-            postcode={215011},
-            country={China}}
-
-\affiliation[labelb]{organization={School of Civil Engineering, Suzhou University of Science and Technology},
-            city={Suzhou},
-            postcode={215011},
-            country={China}}
-
-\affiliation[labelc]{organization={School of Economics and Management, Tongji University},
-            city={Shanghai},
-            postcode={200092},
-            country={China}}
-
-\affiliation[labeld]{organization={School of Economics and Management, Tongji University},
-            city={Shanghai},
-            postcode={200092},
-            country={China}}
+% === BLINDED FOR SUBMISSION (author info moved to titlepage.tex) ===
+% \author[labela]{Zilun Wang}
+% \ead{zylenw97@usts.edu.cn}
+% \author[labelb]{Xueqing Gan\corref{cor1}}
+% \ead{TODO@just.edu.cn}  % TODO: fill in correct email
+% \author[labelc]{Zhe Zhang}
+% \ead{TODO@tongji.edu.cn}  % TODO: fill in correct email
+% \author[labeld]{Qinghua He}
+% \ead{heqinghua@tongji.edu.cn}
+%
+% \cortext[cor1]{Corresponding author.}
+%
+% \affiliation[labela]{organization={School of Civil Engineering, Suzhou University of Science and Technology},
+%             city={Suzhou},
+%             postcode={215011},
+%             country={China}}
+%
+% \affiliation[labelb]{organization={School of Business, Jiangsu University of Science and Technology},
+%             city={Zhenjiang},
+%             postcode={212100},
+%             country={China}}
+%
+% \affiliation[labelc]{organization={School of Economics and Management, Tongji University},
+%             city={Shanghai},
+%             postcode={200092},
+%             country={China}}
+%
+% \affiliation[labeld]{organization={School of Economics and Management, Tongji University},
+%             city={Shanghai},
+%             postcode={200092},
+%             country={China}}
+% === END BLINDED SECTION ===
 
 \begin{abstract}
-Improvisation capability enables project teams to respond effectively to unexpected situations. While digital communication tools are widely used in projects, limited research has examined how different patterns of digital communication tool use influence improvisation capability or the cognitive mechanisms involved. This study develops and tests a model linking work-oriented and social-oriented digital communication tool use to improvisation capability through meta-knowledge, defined as shared awareness of expertise, relationships, and procedures. Using time-lagged survey data from 355 project members in China, the results show that different digital communication tool use patterns foster complementary forms of meta-knowledge, which selectively transmit effects to improvisation capability. Structural meta-knowledge emerges as the dominant mediator, whereas relational and procedural meta-knowledge exhibit more selective effects. This research contributes by distinguishing work-oriented from social-oriented digital communication tool use, introducing procedural meta-knowledge as a novel cognitive construct, and identifying differentiated meta-knowledge pathways linking digital collaboration to improvisation capability. The findings offer practical guidance for designing digital collaboration practices that enhance team capability in uncertain project environments.
+Improvisation capability enables project teams to respond effectively to unexpected situations, yet how digital communication tool use shapes this capability remains underexplored. This study develops and tests a model linking work-oriented and social-oriented digital communication tool use to improvisation capability through meta-knowledge---shared awareness of expertise, relationships, and procedures. Time-lagged survey data from 355 project members in China show that different usage patterns foster complementary forms of meta-knowledge, which selectively transmit effects to improvisation capability. Structural meta-knowledge emerges as the dominant mediator, whereas relational and procedural meta-knowledge exhibit more selective effects. This research contributes by distinguishing work-oriented from social-oriented tool use, introducing procedural meta-knowledge as a novel construct, and identifying differentiated pathways linking digital collaboration to improvisation capability. The findings offer practical guidance for designing digital collaboration practices that enhance team capability in uncertain project environments.
 \end{abstract}
 
 \begin{keyword}
@@ -141,7 +140,7 @@ IC has been widely recognized as a critical capability for coping with complexit
 
 Although improvisation has been primarily examined at the individual level, its relevance within temporary project teams has received comparatively limited attention. In temporary project teams, improvisation is particularly critical yet difficult to achieve due to dispersed expertise and severe time constraints \citep{bechky2006Gaffers, okhuysenBechky2009}. Large-scale construction projects are frequently characterized by dispersed expertise, knowledge overload, and severe time pressure, which jointly constrain individuals' ability to search for, interpret, and apply relevant knowledge when unexpected events arise \citep{sumbal2025Digitalization}. Under such conditions, effective improvisation depends less on generating new knowledge than on the ability to rapidly mobilize existing expertise—specifically, knowing whom to contact, how to communicate, and which prior solutions or templates can be drawn upon in real time. This understanding aligns with research on transactive memory systems, which highlights that performance under uncertainty relies not only on the availability of expertise, but also on shared awareness of where that expertise resides and how it can be accessed \citep{lewis2021Dark, hu2024Performance}.
 
-The widespread adoption of DCTs has substantially altered how information is shared and accessed in project teams \citep{ding2019Enterprise, leonardi2014Social}. Research on DCTs has primarily emphasized how their technical characteristics—such as visibility, accessibility, and social affordances --- facilitate external knowledge acquisition and utilization \citep{leonardi2014Social, turner2022Improving}. However, DCTs do not automatically enhance IC. Their effectiveness depends on whether specific use patterns reinforce the cognitive conditions that enable rapid and creative action, such as awareness of expertise distribution and the ability to mobilize knowledge in unexpected situations \citep{ma2022Investigating}. Accordingly, DCT usage is often conceptualized as a goal-oriented behavior, with scholars distinguishing between work-oriented and social-orineted use patterns, showing that these patterns have distinct implications for task and relational dimensions of work outcomes \citep{ali-hassan2015Linking, zhang2018Mobile}.
+The widespread adoption of DCTs has substantially altered how information is shared and accessed in project teams \citep{ding2019Enterprise, leonardi2014Social}. Research on DCTs has primarily emphasized how their technical characteristics—such as visibility, accessibility, and social affordances --- facilitate external knowledge acquisition and utilization \citep{leonardi2014Social, turner2022Improving}. However, DCTs do not automatically enhance IC. Their effectiveness depends on whether specific use patterns reinforce the cognitive conditions that enable rapid and creative action, such as awareness of expertise distribution and the ability to mobilize knowledge in unexpected situations \citep{ma2022Investigating}. Accordingly, DCT usage is often conceptualized as a goal-oriented behavior, with scholars distinguishing between work-oriented and social-oriented use patterns, showing that these patterns have distinct implications for task and relational dimensions of work outcomes \citep{ali-hassan2015Linking, zhang2018Mobile}.
 
 In temporary project teams, DCTs function not only as critical work support systems but also as essential social infrastructures \citep{huang2017Ties, oostervink2025Knowledge}. Given limited shared work history and high uncertainty, how DCTs are used may shape not only information exchange but also how team members develop shared understanding and mobilize knowledge in unexpected situations. Therefore, a key unanswered question remains as to how different patterns of DCT usage enable—or constrain—the development of IC in temporary project teams.
 
@@ -369,14 +368,14 @@ Furthermore, aligning meta-knowledge-building strategies with specific capabilit
 Finally, recognize that digital interaction alone does not automatically generate meta-knowledge. Structural meta-knowledge emerges as the most consistent mediator linking DCT usage to improvisation, whereas RM and PM require more intentional design. Project leaders should therefore implement mechanisms that systematically externalize expertise distribution—such as skill-tagging systems and expertise directories—while creating spaces for informal exchange and relationship-building. By treating digital collaboration as designed infrastructure rather than an emergent byproduct, organizations can build the complementary knowledge foundations required for effective improvisation.
 
 \subsection{Limitations and future research directions}
-This study has several limitations should be acknowledged. A first limitation concerns the project context in which the proposed meta-knowledge pathways were examined. Large-scale construction projects are characterized by temporary,  and highly interdependent organizational structures. These features make meta-knowledge particularly critical for coordination and improvisation. However, the prominence of meta-knowledge observed in this study may be partly context-specific. In projects with more stable membership, higher task modularity, or stronger technological integration—such as software development or R&D teams—DCT usage may generate different cognitive consequences. Future research could therefore examine how project characteristics shape the relative importance of different meta-knowledge pathways and explore the boundary conditions of the proposed framework across diverse project settings.
+This study has several limitations should be acknowledged. A first limitation concerns the project context in which the proposed meta-knowledge pathways were examined. Large-scale construction projects are characterized by temporary,  and highly interdependent organizational structures. These features make meta-knowledge particularly critical for coordination and improvisation. However, the prominence of meta-knowledge observed in this study may be partly context-specific. In projects with more stable membership, higher task modularity, or stronger technological integration—such as software development or R\&D teams—DCT usage may generate different cognitive consequences. Future research could therefore examine how project characteristics shape the relative importance of different meta-knowledge pathways and explore the boundary conditions of the proposed framework across diverse project settings.
 
 Another limitation relates to the temporal nature of meta-knowledge development. Although the time-lagged design provides separation between predictors and outcomes, the study captures meta-knowledge as a relatively stable cognitive structure. In practice, meta-knowledge is likely to emerge, decay, and be reconfigured through ongoing digital interaction, team turnover, and shifting project demands. Understanding how these cognitive structures evolve over time represents an important next step. Longitudinal and process-based research could examine how meta-knowledge pathways unfold across project phases and how digital collaboration reshapes team cognition dynamically.
 
 The study also relies on perceptual measures to capture meta-knowledge and digital collaboration. While appropriate for examining shared cognitive structures, this approach cannot fully capture the behavioral traces through which meta-knowledge develops in digital environments. Future research could combine survey and digital trace data to better understand how interaction patterns translate into shared cognitive infrastructures.
 
 \section{Conclusion}
-This study examines how digital communication tool use shapes large-sclae construction project teams’ improvisation capability through meta-knowledge development. Drawing on distributed cognition theory, the study develops and tests a theoretical model that distinguishes work-oriented and social-oriented DCT usage and conceptualizes structural, relational, and procedural meta-knowledge as key cognitive mechanisms linking digital interaction to team capability. The model is examined using time-lagged survey data collected from members of large-scale construction project teams.
+This study examines how digital communication tool use shapes large-scale construction project teams’ improvisation capability through meta-knowledge development. Drawing on distributed cognition theory, the study develops and tests a theoretical model that distinguishes work-oriented and social-oriented DCT usage and conceptualizes structural, relational, and procedural meta-knowledge as key cognitive mechanisms linking digital interaction to team capability. The model is examined using time-lagged survey data collected from members of large-scale construction project teams.
 The findings reveal that DCT usage does not influence improvisation capability uniformly but operates through differentiated meta-knowledge pathways. Work-oriented and social-oriented DCT usage foster distinct yet complementary forms of meta-knowledge, while structural meta-knowledge emerges as the most consistent mechanism linking digital collaboration to both dimensions of improvisation capability. Relational and procedural meta-knowledge exhibit more selective effects, highlighting the uneven cognitive consequences of digital interaction. Together, these results demonstrate that the impact of DCT usage depends on how digital interaction reshapes team cognitive infrastructures rather than on technology use alone.
 
 These insights contribute to research on digital collaboration, distributed cognition, and project teamwork by clarifying the cognitive mechanisms through which digital interaction translates into team capability. The findings also offer guidance for project organizations seeking to design digital collaboration practices that support both rapid response and creative problem solving in complex project environments. Because the empirical context focuses on construction and infrastructure project teams in China, caution is warranted when generalizing the findings to other project settings and national contexts.
@@ -385,6 +384,9 @@ These insights contribute to research on digital collaboration, distributed cogn
 The data that support the findings of this study are available from the corresponding author upon reasonable request.
 
 \section*{Acknowledgments}
+
+\section*{Declaration of competing interest}
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
 
 % ===== 参考文献 =====
 % 参考文献（Elsevier author-year 格式）

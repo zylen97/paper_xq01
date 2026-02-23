@@ -1,0 +1,76 @@
+% !TEX program = xelatex
+% Title Page — for IJPM double-blind submission (upload separately)
+
+\documentclass[authoryear,preprint,times,12pt]{elsarticle}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+\usepackage{hyperref}
+
+% Remove Elsevier preprint footer
+\makeatletter
+\def\ps@pprintTitle{%
+  \let\@oddhead\@empty
+  \let\@evenhead\@empty
+  \def\@oddfoot{\hfil\thepage\hfil}%
+  \let\@evenfoot\@oddfoot}
+\makeatother
+
+\journal{International Journal of Project Management}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{How digital communication tools use shapes improvisation capability in large-scale construction projects: The role of meta-knowledge}
+
+\author[labela]{Zilun Wang}
+\ead{zylenw97@usts.edu.cn}
+\author[labelb]{Xueqing Gan\corref{cor1}}
+\ead{TODO@just.edu.cn}  % TODO: fill in correct email
+\author[labelc]{Zhe Zhang}
+\ead{TODO@tongji.edu.cn}  % TODO: fill in correct email
+\author[labeld]{Qinghua He}
+\ead{heqinghua@tongji.edu.cn}
+
+\cortext[cor1]{Corresponding author.}
+
+\affiliation[labela]{organization={School of Civil Engineering, Suzhou University of Science and Technology},
+            city={Suzhou},
+            postcode={215011},
+            country={China}}
+
+\affiliation[labelb]{organization={School of Business, Jiangsu University of Science and Technology},
+            city={Zhenjiang},
+            postcode={212100},
+            country={China}}
+
+\affiliation[labelc]{organization={School of Economics and Management, Tongji University},
+            city={Shanghai},
+            postcode={200092},
+            country={China}}
+
+\affiliation[labeld]{organization={School of Economics and Management, Tongji University},
+            city={Shanghai},
+            postcode={200092},
+            country={China}}
+
+\end{frontmatter}
+
+\section*{Declaration of competing interest}
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+\section*{CRediT authorship contribution statement}
+\textbf{Zilun Wang}: Conceptualization, Methodology, Formal analysis, Investigation, Writing -- original draft.
+\textbf{Xueqing Gan}: Investigation, Data curation, Formal analysis, Writing -- original draft.
+\textbf{Zhe Zhang}: Methodology, Validation, Writing -- review \& editing.
+\textbf{Qinghua He}: Conceptualization, Supervision, Funding acquisition, Project administration, Writing -- review \& editing.
+
+\section*{Acknowledgments}
+% TODO: Add acknowledgments and funding information here.
+% Example: This work was supported by the National Natural Science Foundation of China [grant number xxxx].
+
+\section*{Funding}
+% TODO: List funding sources here.
+% If no funding: This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
+
+\end{document}

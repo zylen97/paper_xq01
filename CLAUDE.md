@@ -5,6 +5,7 @@
 - **编译引擎**: XeLaTeX + BibTeX
 - **触发方式**: 保存时自动编译（`onSave`）
 - **主文件**: `manuscript.tex` (单文件，所有内容已合并)
+- **参考文献**: `xq01.bib`
 
 ## 文件结构
 ```
@@ -96,3 +97,15 @@ latexmk -C               # 完全清理（包括PDF）
 **输出**：`drafts/writing_brief.md`（期刊简报）+ `drafts/{Section}_{timestamp}/`（含 checkpoint 文件、changelog.md、final.md）+ `drafts/{Section}_latest_final.md`（便捷入口）。
 
 **核心规则**：manuscript 文件全程只读 · 确认后手动合并 · 保持 `(ref)` 标记不变。
+
+## 投稿待办 (TODO)
+
+- [ ] 补充淦雪晴（通讯作者）的邮箱 — `titlepage.tex`、`manuscript.tex`、`coverletter.tex` 中当前为 `TODO@just.edu.cn`
+- [ ] 补充张哲（第三作者）的邮箱 — `titlepage.tex` 和 `manuscript.tex` 中当前为 `TODO@tongji.edu.cn`
+- [ ] 核实 CRediT 贡献分配是否准确（见 `titlepage.tex`）
+- [ ] 补充 Funding 信息（见 `titlepage.tex`）
+- [ ] 补充 Acknowledgments 信息（见 `titlepage.tex`）
+- [ ] 插入 Fig. 1 实际图片（当前为占位符 `[Insert Fig. 1 here]`）
+- [ ] 补充 Table 1–5 到 `manuscript.tex`（正文引用了但未包含表格环境）
+- [ ] 更新 Cover letter 中的字数统计（见 `coverletter.tex`）
+- [ ] （可选）准备 Graphical abstract
