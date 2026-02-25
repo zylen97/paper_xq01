@@ -2,7 +2,7 @@
 
 ## 核心配置
 - **模板**: Elsarticle (preprint格式)
-- **编译引擎**: XeLaTeX + BibTeX
+- **编译引擎**: pdfLaTeX + BibTeX
 - **触发方式**: 保存时自动编译（`onSave`）
 - **主文件**: `manuscript.tex` (单文件，所有内容已合并)
 - **参考文献**: `xq01.bib`
@@ -11,34 +11,57 @@
 ```
 项目根目录/
 ├── manuscript.tex              # 论文主文件（单文件，包含所有section）
-├── supplementary-materials.tex # 补充材料（独立文件）
+├── manuscript-original.tex     # 基准版本（⚠️ 禁止修改！latexdiff 基线）
+├── manuscript-track-changes.tex # 自动生成（latexdiff 输出，不纳入版本控制）
+├── manuscript-track-changes.pdf # 自动生成（蓝色新增 + 红色删除线）
 ├── xq01.bib                   # 参考文献数据库
-├── figures/                   # 图片、图表及Python绘图脚本
+├── tools/                     # 差异生成工具链
+│   ├── make-diff.sh           # 生成 track-changes PDF 的脚本
+│   └── latexdiff-preamble.tex # 自定义差异渲染样式
 ├── build/                     # 编译临时文件（.aux, .log, .bbl等）
-├── drafts/                    # Agent工作流输出（按 Section_时间戳 分目录）
 ├── .vscode/settings.json      # VS Code配置
-├── latexmkrc                  # latexmk编译配置
+├── latexmkrc                  # latexmk编译配置（含自动diff触发）
 └── elsarticle.cls             # Elsevier模板文件
 ```
 
 ## 编译命令
 ```bash
-latexmk manuscript.tex   # 编译
-latexmk -c               # 清理临时文件（保留PDF）
-latexmk -C               # 完全清理（包括PDF）
+latexmk manuscript.tex           # 编译（自动触发 track-changes）
+latexmk -pvc- -pv- manuscript.tex  # 单次编译（不进入持续监听模式）
+bash tools/make-diff.sh          # 手动生成 track-changes PDF
+latexmk -c                       # 清理临时文件（保留PDF）
+latexmk -C                       # 完全清理（包括PDF）
 ```
+
+## Track Changes 工作流
+
+保存 `manuscript.tex` 后自动触发：
+1. pdfLaTeX 编译 → `manuscript.pdf`（干净版）
+2. latexdiff 对比 `manuscript-original.tex` vs `manuscript.tex`
+3. 编译差异文件 → `manuscript-track-changes.pdf`（蓝色新增 / 红色删除线）
+
+### 关键规则
+- **`manuscript-original.tex` 严禁修改** — 这是 latexdiff 的对比基线
+- 所有修改都在 `manuscript.tex` 上进行
+- `manuscript-track-changes.tex` 是自动生成的，不要手动编辑
 
 ## 关键规则
 
 ### 1. 文献引用标记
 文本中标有 **`(ref)`** 的地方是待添加文献的标记，**不要修改或删除**！
 
-### 2. 投稿前准备
+### 2. Unicode 字符
+pdfLaTeX 不支持直接使用 Unicode 希腊字母和特殊符号。正文中必须使用 LaTeX 命令：
+- β → `$\beta$`，α → `$\alpha$`，χ → `$\chi$`
+- → → `$\rightarrow$`，− → `$-$`
+- 禁止使用全角标点（，。；等）
+
+### 3. 投稿前准备
 - 注释掉`manuscript.tex`中的geometry页边距设置，恢复Elsarticle默认格式
 - 修改`\journal{}`为目标期刊名称
 - 确保`xq01.bib`文件完整且格式正确
 
-### 3. 标题大写规范
+### 4. 标题大写规范
 **所有标题均使用 Sentence case（句式大写），而非 Title Case（标题式大写）。**
 - ✅ `\section{Results of necessary condition analysis}`
 - ❌ `\section{Results of Necessary Condition Analysis}`
@@ -80,8 +103,9 @@ latexmk -C               # 完全清理（包括PDF）
 - 宽度 `0.9\textwidth`，浮动 `[!htbp]`
 
 ## 故障排查
-- 编译问题：`Cmd+Shift+P` → `Kill LaTeX compiler process`，或手动 `latexmk -xelatex manuscript.tex`
+- 编译问题：`Cmd+Shift+P` → `Kill LaTeX compiler process`，或手动 `latexmk -pvc- -pv- manuscript.tex`
 - 参考文献不显示：确认 `\bibliography{xq01}` 和 `xq01.bib` 存在
+- Track changes 编译失败：检查 `build/manuscript-track-changes.log`，常见原因是 Unicode 字符或 booktabs 兼容性
 
 ## Academic Writing Workflow
 

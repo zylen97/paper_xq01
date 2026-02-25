@@ -20,6 +20,9 @@
 # Build directory
 build/
 
+# Auto-generated track changes (latexdiff output)
+manuscript-track-changes.tex
+
 # PDF output (optional - uncomment if you don't want to track PDFs)
 *.pdf
 

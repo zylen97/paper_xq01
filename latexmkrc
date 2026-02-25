@@ -1,7 +1,7 @@
 # LaTeXmk 配置文件 - Elsarticle 模板配置
-# 使用 XeLaTeX 编译（支持中文和现代字体）
-$pdf_mode = 5;
-$xelatex = "xelatex -synctex=1 -interaction=nonstopmode %O %S";
+# 使用 pdfLaTeX 编译
+$pdf_mode = 1;
+$pdflatex = "pdflatex -synctex=1 -interaction=nonstopmode %O %S";
 
 # 启用 BibTeX 编译（用于 elsarticle 参考文献）
 $bibtex_use = 2;  # 强制每次运行BibTeX
@@ -9,10 +9,16 @@ $bibtex_use = 2;  # 强制每次运行BibTeX
 # 输出目录设置 - 所有编译产物统一到 build/
 $aux_dir = "build";
 $out_dir = "build";
-$emulate_aux_dir = 1;  # 模拟辅助目录，确保xdvipdfmx能正确找到XDV文件
 
-# 编译成功后：拷贝PDF到根目录，清理根目录残留的.spl文件
-$success_cmd = 'cp build/*.pdf . 2>/dev/null; mv *.spl build/ 2>/dev/null; true';
+# BibTeX 在 build/ 下运行时需要找到根目录的 .bib 文件
+$ENV{'BIBINPUTS'} = '..:' . ($ENV{'BIBINPUTS'} || '');
+
+# 编译成功后：拷贝PDF到根目录，若编译的是 manuscript 则自动生成 track-changes PDF
+$success_cmd = 'cp build/*.pdf . 2>/dev/null; mv *.spl build/ 2>/dev/null; '
+             . 'if [ "%R" = "manuscript" ] && [ -f "manuscript-original.tex" ] && [ -f "tools/latexdiff-preamble.tex" ]; then '
+             .   'echo "[auto-diff] Regenerating highlighted diff..." && '
+             .   'bash tools/make-diff.sh 2>&1 | tail -1; '
+             . 'fi';
 
 # 自动清理辅助文件（包含 BibTeX 相关文件）
 $clean_ext = "bbl blg run.xml spl";
