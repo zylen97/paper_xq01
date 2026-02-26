@@ -13,6 +13,7 @@
 
 % 基础功能宏包（elsarticle已包含graphicx）
 \usepackage{booktabs}     % 制作专业表格（\toprule、\midrule、\bottomrule）
+\usepackage{multirow}     % 表格跨行合并
 \usepackage{threeparttable} % 支持表格注释
 \usepackage{caption}      % caption格式控制
 \usepackage{adjustbox}    % 自动调整表格大小
@@ -143,6 +144,49 @@ Although improvisation has been primarily examined at the individual level, its 
 The widespread adoption of DCTs has substantially altered how information is shared and accessed in project teams \citep{ding2019Enterprise, leonardi2014Social}. Research on DCTs has primarily emphasized how their technical characteristics—such as visibility, accessibility, and social affordances --- facilitate external knowledge acquisition and utilization \citep{leonardi2014Social, turner2022Improving}. However, DCTs do not automatically enhance IC. Their effectiveness depends on whether specific use patterns reinforce the cognitive conditions that enable rapid and creative action, such as awareness of expertise distribution and the ability to mobilize knowledge in unexpected situations \citep{ma2022Investigating}. Accordingly, DCT usage is often conceptualized as a goal-oriented behavior, with scholars distinguishing between work-oriented and social-oriented use patterns, showing that these patterns have distinct implications for task and relational dimensions of work outcomes \citep{ali-hassan2015Linking, zhang2018Mobile}.
 
 In temporary project teams, DCTs function not only as critical work support systems but also as essential social infrastructures \citep{huang2017Ties, jia2025Knowledge}. Given limited shared work history and high uncertainty, how DCTs are used may shape not only information exchange but also how team members develop shared understanding and mobilize knowledge in unexpected situations. Therefore, a key unanswered question remains as to how different patterns of DCT usage enable—or constrain—the development of IC in temporary project teams.
+
+Table~\ref{tab:antecedents} summarizes the existing research on the antecedents of improvisation in the project management literature, organized into three established categories—cognitive and psychological states, knowledge and experience base, and contextual and environmental triggers—alongside a fourth category, digital technology infrastructure, for which no empirical evidence currently exists. This gap underscores the need to examine whether and how digital tools contribute to improvisation capability.
+
+\begin{table}[!htbp]
+\centering
+\captionsetup{font=normalsize, labelsep=period}
+\setlength{\abovecaptionskip}{5pt}
+\setlength{\belowcaptionskip}{0pt}
+\caption{Antecedents of improvisation in the project management literature}
+\label{tab:antecedents}
+\small
+\begin{threeparttable}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{2.8cm}p{2.5cm}p{2.8cm}p{2.8cm}p{3.2cm}}
+\toprule
+ & \multicolumn{4}{c}{\textbf{Representative study}} \\
+\cmidrule(l){2-5}
+\textbf{Category} & \textbf{Author (Year)} & \textbf{Antecedent variable} & \textbf{Theory} & \textbf{Context} \\
+\midrule
+\multirow{3}{2.8cm}{Cognitive and psychological states}
+  & \citet{jiang2025Confronting} & Collective mindfulness & Mindfulness theory & 60 megaproject teams, China \\
+  & \citet{wang2025Formalization} & Team mindfulness & IPO framework & 312 construction workers, China \\
+  & \citet{huang2026Thriving} & Change potency, psychological safety & Team resilience theory & 177 IT programs \\
+\midrule
+\multirow{3}{2.8cm}{Knowledge and experience base}
+  & \citet{sumbal2025Improvisation} & Tacit knowledge, sensemaking & Knowledge-based view & Rescue projects, Pakistan \\
+  & \citet{xie2025How} & Bricolage & Knowledge innovation & Emergency engineering projects \\
+  & \citet{rui2022Contingent} & Ambidextrous search & Dynamic capabilities & 257 start-ups, China \\
+\midrule
+\multirow{3}{2.8cm}{Contextual and environmental triggers}
+  & \citet{hamzeh2018Investigating} & Plan deviation, unexpected problems & --- & 28 construction projects, Lebanon \\
+  & \citet{menches2014Diary} & Workflow disruptions & --- & Diary study, US construction \\
+  & \citet{hacker2019Legitimizing} & Extreme uncertainty, capacity overflow & --- & Infrastructure, Germany \\
+\midrule
+Digital technology infrastructure & --- & --- & --- & --- \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}[flushleft]
+\small\linespread{1}\selectfont
+\item \textit{Note}: This table summarizes the antecedents of improvisation examined in the project management literature, classified into four categories. The absence of studies in the ``digital technology infrastructure'' category highlights a critical gap that the present study seeks to address.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+\vspace{-15pt}
 
 \subsection{Meta-knowledge in project teams}
 Meta-knowledge serves as a critical cognitive resource that enables project teams to navigate dispersed expertise and respond adaptively to evolving task demands and unexpected events \citep{swart2011Transactive, wegner1987Transactive, xue2022Knowledge}. Early research on meta-knowledge focused primarily on awareness of expertise distribution, conceptualized as knowing "who knows what" within a collective \citep{wegner1987Transactive}. This line of work highlighted the coordination benefits of such awareness, particularly in settings where tasks require contributions from multiple specialists \citep{brownEisenhardt1997}.
