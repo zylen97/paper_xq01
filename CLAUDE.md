@@ -19,6 +19,7 @@
 │   ├── make-diff.sh           # 生成 track-changes PDF 的脚本
 │   └── latexdiff-preamble.tex # 自定义差异渲染样式
 ├── build/                     # 编译临时文件（.aux, .log, .bbl等）
+├── polish/                    # Mode B 语言润色输出（顺序编号 001.md, 002.md, ...）
 ├── .vscode/settings.json      # VS Code配置
 ├── latexmkrc                  # latexmk编译配置（含自动diff触发）
 └── elsarticle.cls             # Elsevier模板文件
@@ -68,7 +69,18 @@ pdfLaTeX 不支持直接使用 Unicode 希腊字母和特殊符号。正文中�
 - **例外**：专有名词和缩写保持原有大写（如 COVID-19、China、BIM、QCA 等）
 
 ### 5. 语言规范
-撰写或修改英文学术文本时，须先读取 [`language-style-guide.md`](language-style-guide.md) 并遵循其中全部规则（含 Chinglish 消除、句式简洁、时态一致、破折号规范等 13 类，A–M）。此规范适用于所有交互场景，包括直接对话中的文本编辑。
+
+**权威规则源**: `~/.claude/agents/language-polisher.md`（Categories A–M，含 Chinglish 消除、时态、修饰语、破折号等 13 类规则）。
+
+主 agent 撰写英文文本时专注内容质量，**不需要**执行语言自检。
+用户需要语言润色时会手动指示调用 `language-polisher` agent（Mode B），届时按提示执行即可。
+
+#### Mode B 输出保存
+调用 language-polisher（Mode B）后，主 agent **必须**将完整输出保存到文件：
+- **目录**: `polish/`（项目根目录下，不存在则创建）
+- **文件名**: 三位顺序编号，如 `001.md`、`002.md`（扫描已有文件取最大编号 +1）
+- **内容**: polisher 返回的完整输出（润色后文本 + Change Summary），原样保存，不做额外加工
+- **保存后**：告知用户文件路径，方便查阅和合并
 
 ## 表格规范
 
