@@ -67,6 +67,9 @@ pdfLaTeX 不支持直接使用 Unicode 希腊字母和特殊符号。正文中�
 - ❌ `\section{Results of Necessary Condition Analysis}`
 - **例外**：专有名词和缩写保持原有大写（如 COVID-19、China、BIM、QCA 等）
 
+### 5. 语言规范
+撰写或修改英文学术文本时，须先读取 [`language-style-guide.md`](language-style-guide.md) 并遵循其中全部规则（含 Chinglish 消除、句式简洁、时态一致、破折号规范等 13 类，A–M）。此规范适用于所有交互场景，包括直接对话中的文本编辑。
+
 ## 表格规范
 
 ### 标准模板
