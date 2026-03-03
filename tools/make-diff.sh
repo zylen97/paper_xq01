@@ -48,6 +48,6 @@ latexmk -pvc- -pv- "$DIFF_TEX" 2>/dev/null
 if [ $? -eq 0 ]; then
     echo "[diff] SUCCESS: manuscript-track-changes.pdf generated"
 else
-    echo "[diff] WARNING: Compilation had issues, check build/manuscript-track-changes.log"
+    echo "[diff] WARNING: Compilation had issues, check manuscript-track-changes.log"
     exit 1
 fi

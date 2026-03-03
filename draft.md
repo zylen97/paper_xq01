@@ -13,20 +13,16 @@
 
 ## 文本
 
-A growing body of project management research has examined the antecedents of improvisation capability, focusing primarily on team-level cognitive and psychological states. For example, recent studies have investigated how collective mindfulness fosters team improvisation in megaprojects \citep{jiang2025Confronting} and how team mindfulness promotes improvisation as a pathway to team resilience in construction settings (ref). Qualitative research has also identified tacit knowledge utilization and sensemaking as key drivers of improvisation in rescue projects (ref). While these studies offer valuable insights into the individual and collective psychological conditions that enable improvisation, they share a common limitation: they focus predominantly on human cognitive readiness while overlooking the technological infrastructure through which knowledge is actually shared, accessed, and mobilized in contemporary project teams.
+Existing research on antecedents of improvisation capability has concentrated on three areas. First, cognitive and psychological states---such as collective mindfulness \citep{jiang2025Confronting, wang2025Formalization}, psychological safety \citep{huang2026Thriving}, and facilitating conditions \citep{coulon2026Wing}---have been shown to enable improvisation capability. Second, knowledge-based antecedents, including tacit knowledge and sensemaking \citep{sumbal2025Improvisation}, bricolage \citep{xie2025How}, and ambidextrous search \citep{rui2022Contingent, klein2015Improvisation}, contribute to improvisational capacity. Third, contextual and environmental triggers---such as project complexity \citep{mamedio2020Managing, jiang2023Toward}, plan deviations \citep{hamzeh2018Investigating, vuorinen2019Lifecycle}, and uncertainty \citep{hacker2019Legitimizing, malucelli2021Facing}---prompt improvisational responses. While these studies offer valuable insights, they share a common limitation: they overlook the technological infrastructure through which knowledge is shared and mobilized in contemporary project teams.
 
 Digital communication tools---such as WeChat, QQ, and DingTalk---have become central to coordination in large-scale construction projects \citep{zhu2023Dynamics}. These platforms mediate a substantial portion of daily task coordination, problem-solving discussion, and informal exchange across organizational boundaries \citep{jia2025Knowledge}. Despite this pervasive role, the project management literature has not examined whether and how digital communication tool use contributes to improvisation capability. This omission is notable given that effective improvisation in temporary project teams---where shared work history is limited and expertise is dispersed across organizations---depends heavily on the ability to rapidly locate and mobilize distributed knowledge, a process increasingly embedded in digital interaction. Existing research on digital tools in project settings has largely treated tool use as a homogeneous construct, assuming that greater use produces broadly similar collaboration outcomes \citep{ali-hassan2015Linking, chen2020Integrating}. This assumption overlooks an important distinction: digital tool use encompasses both work-oriented use---task-focused interactions for formal coordination, technical discussion, and document sharing---and social-oriented use---relationship-focused interactions for informal exchange and interpersonal connection. In large-scale projects with diverse participants and complex coordination needs, these different usage patterns may generate distinct cognitive and relational infrastructures, yet their differential effects on improvisation capability remain unexplored.
 
 ## 引用说明
 
-- `jiang2025Confronting` — 已在 xq01.bib 中
-- `zhu2023Dynamics` — 已在 xq01.bib 中
-- `jia2025Knowledge` — 已在 xq01.bib 中
-- `ali-hassan2015Linking` — 已在 xq01.bib 中
-- `chen2020Integrating` — 已在 xq01.bib 中
-- `(ref)` × 2 — 需要补充：
-  - Wang, He, Xie & Wang (2025) ECAM: team mindfulness → improvisation → resilience
-  - Sumbal et al. (2025) PMJ: improvisation in rescue projects
+精简版结构：三个类别各一句话，每句引用多篇文献。
+- Category 1 (认知/心理): `jiang2025Confronting`, `wang2025Formalization`, `huang2026Thriving`, `coulon2026Wing`
+- Category 2 (知识/经验): `sumbal2025Improvisation`, `xie2025How`, `rui2022Contingent`, `klein2015Improvisation`
+- Category 3 (情境/环境): `mamedio2020Managing`, `jiang2023Toward`, `hamzeh2018Investigating`, `vuorinen2019Lifecycle`, `hacker2019Legitimizing`, `malucelli2021Facing`
 
 ## 与现有 ¶3 的对比
 
@@ -58,6 +54,9 @@ Digital communication tools---such as WeChat, QQ, and DingTalk---have become cen
 | | Turbulence, time/resource constraints | Sumbal et al. (2025) PMJ | Rescue projects | Qual. |
 | | Extreme uncertainty, capacity overflow | Hacker et al. (2019) JCEM | Infrastructure | Qual. |
 | | Urgency, complexity, plan failure | Malucelli et al. (2021) IJMPB | General PM | SLR |
+| | Complex/dynamic uncertainties, project lifecycle | Jiang, Le et al. (2023) IJPM | Megaprojects | Qual. |
+| | Project complexity (tech/human/political) | Mamedio & Meyer (2020) IJMPB | Hospital construction | Qual. |
+| | Plan changes, methodology deviations | Vuorinen & Martinsuo (2019) IJMPB | Delivery projects | Qual. |
 | **Digital technology infrastructure** | — | — | — | — |
 
 ## 关键发现备注
@@ -68,6 +67,10 @@ Digital communication tools---such as WeChat, QQ, and DingTalk---have become cen
    - Sumbal et al. (2025) 同时跨类别2+3（知识前因 + 环境触发）
    - Jiang et al. (2025) 跨类别1+3（mindfulness + complexity/ambiguity 作为调节）
    - Rui et al. (2022) 跨类别2+3（search + environmental turbulence 作为调节）
+
+3. **注意区分两篇 Jiang**：
+   - Jiang et al. (2025) IJPM = Jiang, Zhao, Tang et al. — collective mindfulness → team improvisation（类别1）
+   - Jiang, Le et al. (2023) IJPM = Jiang, Le, Zheng et al. — MI taxonomy, uncertainty → 13 types of MI（类别3）
 
 3. **一句话总结（可用于正文）**：
    "Existing research on improvisation antecedents has concentrated on cognitive readiness, knowledge foundations, and environmental triggers, while the role of digital technology infrastructure as an enabling condition remains entirely unaddressed."
@@ -80,3 +83,4 @@ Digital communication tools---such as WeChat, QQ, and DingTalk---have become cen
 - 待确认：sumbal2025 (PMJ), xie2025 (ECAM), rui2022 (IEEE TEM), klein2015 (IJPM)
 - 待确认：hamzeh2018 (JME), menches2014 (JME), hacker2019 (JCEM), malucelli2021 (IJMPB)
 - 待确认：trebbe2015 (Autom. Constr.)
+- 新增：jiang2023Toward (IJPM), mamedio2020Managing (IJMPB), vuorinen2019Lifecycle (IJMPB) — 已加入 xq01.bib
