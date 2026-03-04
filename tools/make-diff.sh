@@ -32,7 +32,12 @@ fi
 
 # Post-process: fix latexdiff + booktabs incompatibility
 # \DIFxxxFL markers before \toprule/\midrule/\bottomrule break \noalign context
-echo "[diff] Post-processing diff for booktabs compatibility..."
+echo "[diff] Post-processing diff..."
+# Fix citations: remove \mbox wrappers, extract citations from \DIFdel{} blocks
+# so they can break across lines while keeping strikethrough on surrounding text.
+perl tools/fix-diff-citations.pl "$DIFF_TEX"
+
+# Fix booktabs compatibility:
 sed -i '' 's/\\DIFaddendFL \\bottomrule/\\bottomrule/g' "$DIFF_TEX"
 sed -i '' 's/\\DIFdelendFL \\bottomrule/\\bottomrule/g' "$DIFF_TEX"
 sed -i '' 's/\\DIFaddendFL \\midrule/\\midrule/g' "$DIFF_TEX"
@@ -45,9 +50,14 @@ sed -i '' 's/\\DIFdelbeginFL \\toprule/\\toprule/g' "$DIFF_TEX"
 echo "[diff] Compiling diff PDF..."
 latexmk -pvc- -pv- "$DIFF_TEX" 2>/dev/null
 
-if [ $? -eq 0 ]; then
+if [ -f "${DIFF_TEX%.tex}.pdf" ]; then
     echo "[diff] SUCCESS: manuscript-track-changes.pdf generated"
+    # Check for unresolved citations (non-fatal)
+    UNDEF=$(grep -c 'Citation.*undefined' "${DIFF_TEX%.tex}.log" 2>/dev/null || true)
+    if [ "$UNDEF" -gt 0 ]; then
+        echo "[diff] NOTE: $UNDEF unresolved citation(s) — check .bib entries"
+    fi
 else
-    echo "[diff] WARNING: Compilation had issues, check manuscript-track-changes.log"
+    echo "[diff] ERROR: PDF not generated, check manuscript-track-changes.log"
     exit 1
 fi
