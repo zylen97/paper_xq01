@@ -3,8 +3,8 @@
 > **Paper**: How digital communication tools use shapes improvisation capability in large-scale construction projects: The role of meta-knowledge
 > **Target journal**: International Journal of Project Management (IJPM)
 > **Theory**: Distributed Cognition Theory
-> **Method**: Time-lagged survey, n=355, CB-SEM (Mplus 8)
-> **Last updated**: 2026-03-04 (Track-changes citation line-break fix)
+> **Method**: Three-wave time-lagged survey, n=255, CB-SEM (R lavaan)
+> **Last updated**: 2026-03-06
 
 ## Status legend
 
@@ -38,12 +38,13 @@
 | **3. Hypothesis development** | 3.1 DCT usage and meta-knowledge (H1a--H1c) | ✅ | WU → SM/RM/PM |
 | | 3.2 Social use and meta-knowledge (H2a--H2c) | ✅ | SU → SM/RM/PM |
 | | 3.3 Meta-knowledge and IC (H3--H5) | ✅ | SM/RM/PM → IMM/CRE |
-| | 3.4 Mediating role (H6a--H6l) | ✅ | 12 mediation hypotheses |
-| **4. Methodology** | 4.1 Data collection | ✅ | Two-wave design; 355 valid responses |
-| | 4.2 Measures | ✅ | All scales cited with sources |
-| **5. Results** | 5.1 Reliability and validity | ✅ | CFA results reported; Tables 2--3 inserted |
-| | 5.2 Hypothesis testing | ✅ | Full SEM results; Tables 3--4 inserted |
-| | 5.3 Endogeneity and robustness checks | ✅ | Reverse causality + Durbin--Wu--Hausman test |
+| | 3.4 Mediating role (H6a--H6f) | ✅ | 6 mediation hypotheses (IC as aggregate DV) |
+| **4. Methodology** | 4.1 Data collection | ✅ | Three-wave design; N=255; eligibility criteria; Harrison 2024 scale definition |
+| | 4.2 Bias control and evaluation | ✅ | CMB procedural + statistical (Harman + CFA); non-response bias |
+| | 4.3 Measures | ✅ | All scales cited with sources; 5 control variables |
+| **5. Results** | 5.1 Reliability and validity | ✅ | CFA (lavaan); Tables 3 inserted |
+| | 5.2 Hypothesis testing | ✅ | Full SEM results; Tables 4--5 inserted |
+| | 5.3 Robustness checks | ✅ | Three-wave temporal precedence + second-order IC model (Table 6) |
 | **6. Discussion** | 6.1 Main findings | ✅ | Three subsubsections (asymmetric effects, differentiated effects, mediating role) |
 | | 6.2 Theoretical implications | ✅ | Three contributions articulated |
 | | 6.3 Practical implications | ✅ | Five actionable recommendations |
@@ -52,7 +53,7 @@
 | **Back matter** | Data availability | ✅ | |
 | | Acknowledgments | ❌ | Empty |
 | | Declaration of competing interest | ✅ | |
-| | References | 🔧 | 4 undefined citations (see CRITICAL C1 below) |
+| | References | ✅ | All citations resolved |
 
 ---
 
@@ -83,11 +84,12 @@
 ### MODERATE
 
 **M1: ~~Tables 2--5 not yet inserted~~ RESOLVED (2026-03-06)**
-- Table 1 (demographic information) --- ✅ L440
-- Table 2 (validity and construct correlations) --- ✅ L501
-- Table 3 (hypotheses testing / SEM paths) --- ✅ L533
-- Table 4 (mediating results) --- ✅ L579
-- Table 5 (measurement items) --- ✅ L625
+- Table 1 (antecedent literature) --- ✅ present
+- Table 2 (demographic information) --- ✅ inserted
+- Table 3 (validity and construct correlations) --- ✅ inserted
+- Table 4 (hypotheses testing / SEM paths) --- ✅ inserted
+- Table 5 (mediating results) --- ✅ inserted
+- Table 6 (robustness: second-order IC model) --- ✅ inserted
 
 **M2: Fig. 1 placeholder**
 - L222: `[Insert Fig. 1 here]` --- conceptual/research model figure not yet created
@@ -122,14 +124,23 @@
 
 - **Engine**: pdfLaTeX + BibTeX
 - **Build output**: root directory (no `build/` subdirectory)
-- **Last successful compile**: 2026-03-04
-- **Warnings**: 7--8 undefined citations (bib entries needed) + 1 float too large (Table 1)
-- **`(ref)` markers**: 2 remaining at L207 and L245 (pending `zhang2026Knowledge` replacement)
+- **Last successful compile**: 2026-03-06
+- **Warnings**: 0 undefined citations; 1 float too large (Table 1)
+- **`(ref)` markers**: 0 remaining
 - **Track-changes**: `tools/make-diff.sh` + `tools/fix-diff-citations.pl` (auto-triggered on save via latexmkrc)
 
 ---
 
 ## Change log
+
+### 2026-03-06 --- Methodology revision + robustness checks rewrite
+- **Sec 3.1**: Three-wave design (T1/T2/T3), N=255 (567→409→313→255), eligibility criteria consolidated (≥US$100M per Harrison 2024, ≥6 months, regular DCT use), gift compensation added
+- **Sec 3.2**: Renamed to "Bias control and evaluation"; added ethics statement, CMB procedural remedies, Harman single-factor test (32.38%), CFA model comparison (Δχ²(21)=1418.28), non-response bias test
+- **Sec 3.3**: Control variables expanded from 3 to 5 (added project type, professional qualifications)
+- **Sec 4.3**: Completely rewritten — removed flawed reverse causality / DWH tests; added three-wave temporal precedence + second-order IC model robustness check
+- **Table 6**: New table — second-order IC model (Panel A: structural paths, Panel B: indirect effects)
+- **References**: Fixed lavaan citation (rosseel2012), added harrison2024Scale, charoensukmongkol2019, faul2009Statistical, carmeli2021, zaman2024
+- **R scripts added**: `cfa_n255.R`, `cmb_test.R`, `nonresponse_bias_test.R`, `sem_5controls.R`, `reverse_causality.R`, `robustness_2nd_order.R`
 
 ### 2026-03-04 --- Track-changes citation line-break fix
 - **Problem**: latexdiff wraps `\citep`/`\citet` in `\mbox{}`, preventing multi-citation references from breaking across lines in track-changes PDF (overfull hbox)
@@ -177,11 +188,9 @@
 
 ## Next writing priorities
 
-1. **Literature review (Sec 2)** --- review and revise 2.1, 2.2, 2.3 (currently draft status)
-2. **Tables 2--5** --- insert regression/mediation/hypothesis summary tables from Mplus output
-3. **Fig. 1** --- create and insert conceptual model figure
-4. **Table 1 overflow** --- fix float-too-large warning
-5. **Keywords** --- expand to 5--6 terms
-6. **Appendix** --- add measurement scale items
-7. **Acknowledgments** --- add funding and acknowledgment information
-8. **Author emails** --- fill in TODO placeholders before unblinding
+1. **Fig. 1** --- create and insert conceptual model figure
+2. **Table 1 overflow** --- fix float-too-large warning
+3. **Keywords** --- expand to 5--6 terms
+4. **Sec 3--6 language polish** --- run language-polisher Mode B
+5. **Acknowledgments** --- add funding and acknowledgment information
+6. **Author emails** --- fill in TODO placeholders before unblinding
