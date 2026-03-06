@@ -41,8 +41,8 @@
 | | 3.4 Mediating role (H6a--H6l) | ✅ | 12 mediation hypotheses |
 | **4. Methodology** | 4.1 Data collection | ✅ | Two-wave design; 355 valid responses |
 | | 4.2 Measures | ✅ | All scales cited with sources |
-| **5. Results** | 5.1 Reliability and validity | 🔧 | CFA results reported; Tables 2--3 referenced but not inserted |
-| | 5.2 Hypothesis testing | 🔧 | Full SEM results; Tables 3--4 referenced but not inserted |
+| **5. Results** | 5.1 Reliability and validity | ✅ | CFA results reported; Tables 2--3 inserted |
+| | 5.2 Hypothesis testing | ✅ | Full SEM results; Tables 3--4 inserted |
 | | 5.3 Endogeneity and robustness checks | ✅ | Reverse causality + Durbin--Wu--Hausman test |
 | **6. Discussion** | 6.1 Main findings | ✅ | Three subsubsections (asymmetric effects, differentiated effects, mediating role) |
 | | 6.2 Theoretical implications | ✅ | Three contributions articulated |
@@ -82,13 +82,12 @@
 
 ### MODERATE
 
-**M1: Tables 2--5 not yet inserted**
-- Table 1 (antecedent literature) --- ✅ present (`tab:antecedents`)
-- Table 2 (reliability, AVE, correlations) --- referenced at L339, L341; **not inserted**
-- Table 3 (structural model path coefficients) --- referenced at L344; **not inserted**
-- Table 4 (bootstrap mediation results) --- referenced at L350; **not inserted**
-- Table 5 (hypothesis summary) --- referenced at L365; **not inserted**
-- **Action**: Create LaTeX table environments with data from Mplus output
+**M1: ~~Tables 2--5 not yet inserted~~ RESOLVED (2026-03-06)**
+- Table 1 (demographic information) --- ✅ L440
+- Table 2 (validity and construct correlations) --- ✅ L501
+- Table 3 (hypotheses testing / SEM paths) --- ✅ L533
+- Table 4 (mediating results) --- ✅ L579
+- Table 5 (measurement items) --- ✅ L625
 
 **M2: Fig. 1 placeholder**
 - L222: `[Insert Fig. 1 here]` --- conceptual/research model figure not yet created
