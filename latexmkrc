@@ -6,12 +6,6 @@ $pdflatex = "pdflatex -file-line-error -synctex=1 -interaction=nonstopmode %O %S
 # 启用 BibTeX 编译（用于 elsarticle 参考文献）
 $bibtex_use = 2;  # 强制每次运行BibTeX
 
-# 编译成功后：若编译的是 manuscript 则自动生成 track-changes PDF
-$success_cmd = 'if [ "%R" = "manuscript" ] && [ -f "manuscript-original.tex" ] && [ -f "tools/latexdiff-preamble.tex" ]; then '
-             .   'echo "[auto-diff] Regenerating highlighted diff..." && '
-             .   'bash tools/make-diff.sh 2>&1 | tail -1; '
-             . 'fi';
-
 # 自动清理辅助文件（包含 BibTeX 相关文件）
 $clean_ext = "bbl blg run.xml spl";
 
