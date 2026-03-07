@@ -4,7 +4,7 @@
 > **Target journal**: International Journal of Project Management (IJPM)
 > **Theory**: Distributed Cognition Theory
 > **Method**: Three-wave time-lagged survey, n=255, CB-SEM (R lavaan)
-> **Last updated**: 2026-03-07
+> **Last updated**: 2026-03-08
 
 ## Status legend
 
@@ -43,7 +43,7 @@
 | | 5.4 Limitations and future research | ✅ | Three limitations |
 | **6. Conclusion** | — | ✅ | Summary + contributions + caveats |
 | **Back matter** | Data availability | ✅ | |
-| | Acknowledgments | ❌ | Empty |
+| | Acknowledgments | ✅ | NSFC 72371190, 72371189 (titlepage.tex) |
 | | Declaration of competing interest | ✅ | |
 | | References | ✅ | All citations resolved |
 | **Appendix** | Survey items (Table A) | ✅ | All measurement items with SFL values |
@@ -84,9 +84,11 @@
 - Table 5 (mediating results) --- ✅ inserted
 - Table 6 (robustness: second-order IC model) --- ✅ inserted
 
-**M2: Fig. 1 placeholder**
-- L170: `[Insert Fig. 1 here]` --- conceptual/research model figure not yet created
-- **Action**: Create figure and replace placeholder
+**M2: ~~Fig. 1 placeholder~~ RESOLVED (2026-03-07)**
+- Fig. 1 (conceptual model with H1a--H5b): `Figures/fig1.tex` → `Figures/fig1.pdf`
+- Fig. 2 (structural results with coefficients + alignment paths): `Figures/fig2.tex` → `Figures/fig2.pdf`
+- Placeholders inserted in manuscript: Sec 2.4 (Fig. 1) and Discussion RQ2 (Fig. 2)
+- Fig. 2 also referenced in Sec 4.2 (hypothesis testing)
 
 **M3: Table 1 too large for page**
 - LaTeX warning: "Float too large for page by 264.56pt on input line 193"
@@ -97,14 +99,19 @@
 - `coverletter.tex` L58: `TODO@just.edu.cn` still present
 - **Action**: Update coverletter email before unblinding
 
+**M6: Level of analysis — RESOLVED (2026-03-08)** ✅
+- All variables confirmed as project team-level (N=255 teams, key informant design)
+- Appendix items, definitions, Measures, Discussion, Implications, Limitations all fully corrected
+- 0 residual individual-level language conflicting with team-level framing
+
 **M5: ~~Keywords insufficient~~ RESOLVED (2026-03-07)**
 - Currently 5 keywords: Digital communication tools, Meta-knowledge, Improvisation capability, Distributed cognition, Large-scale construction projects
 
 ### MINOR
 
-**m1: Acknowledgments section empty**
-- L374: `\section*{Acknowledgments}` has no content
-- **Action**: Add funding information and acknowledgments
+**m1: ~~Acknowledgments section empty~~ RESOLVED (2026-03-07)**
+- `titlepage.tex`: NSFC funding (72371190, 72371189) added
+- Removed empty Funding section (merged into Acknowledgments)
 
 **m2: ~~Appendix not included~~ RESOLVED (2026-03-06)**
 - Appendix A (Survey items) with Table A now included at end of manuscript (L660+)
@@ -116,14 +123,47 @@
 
 - **Engine**: pdfLaTeX + BibTeX
 - **Build output**: root directory (no `build/` subdirectory)
-- **Last successful compile**: 2026-03-06
-- **Warnings**: 0 undefined citations; 1 float too large (Table 1)
+- **Last successful compile**: 2026-03-08
+- **Warnings**: 0 undefined citations; 0 undefined references; 1 float too large (Table A)
 - **`(ref)` markers**: 0 remaining
 - **Track-changes**: `tools/make-diff.sh` + `tools/fix-diff-citations.pl` (auto-triggered on save via latexmkrc)
 
 ---
 
 ## Change log
+
+### 2026-03-08 --- Full team-level reconstruction (level of analysis overhaul)
+
+**Background**: Data was collected with "Our team..." wording (N=255 project teams, one key informant per team). All variables are project team-level constructs. A previously applied individual-level reframing (Method A) has been fully reversed and replaced.
+
+**Scope**: 35+ edits across the full manuscript — Appendix, all theory sections, Measures, Discussion, Implications, Limitations.
+
+**Key changes**:
+- **Appendix Table A (26 items)**: All survey items corrected to team-level wording
+  - WU/SU: "In our project team, we use digital communication tools to..."
+  - SM/RM: "Our team members have a good map of each other's..."
+  - IMM: "Our project team deals with / thinks on its feet / responds in the moment..."
+  - CRE: "Our project team tries / identifies / takes risks / demonstrates originality..."
+- **Sec 2.1**: IC defined at team level ("Project teams' improvisation capability"; "the project team's responsiveness under time pressure")
+- **Sec 2.2**: "team-level cognitive resources" (was "individual-level cognitive resources")
+- **Sec 2.3**: SM/RM/PM definitions changed from "an individual's awareness" → "the project team's collective awareness"; deleted Method A anchoring sentence
+- **Sec 2.4**: "enabling team members to navigate" (was "individuals")
+- **Sec 2.5 (H1–H5 development)**: 9 instances of "individuals" → team-level throughout hypotheses arguments
+- **Abstract**: "255 large-scale construction project teams"; "the project team's collective awareness"
+- **Introduction**: 5 instances corrected — "antecedents of improvisation capability in project teams", "the project team's improvisation capability", "255 large-scale construction project teams, with one key informant per team", etc.
+- **Sec 3.3 Measures**: Replaced individual-level justification sentence with key informant approach description
+- **Discussion**: 5 instances — "the project team", "team-level cognitive resources", "the project team's immediacy and creativity", etc.
+- **Sec 5.2 Theoretical implications**: "project teams develop the cognitive awareness"; "Project team improvisation capability depends on the team's collective awareness"
+- **Sec 5.3 Practical implications**: "the team's shared awareness of standard workflows"
+- **Sec 5.4 Limitations Second**: Replaced multilevel design limitation with key informant single-respondent limitation; Limitations Third: "team-level meta-knowledge"
+
+**Verification**: `grep` — 0 residual `individual-level`, `individual awareness`, `individual's awareness`, `members' improvisation`, `project members'`; pdfLaTeX compiles clean (0 errors, 0 undefined).
+
+### 2026-03-07b --- Figures + Acknowledgments
+- **Fig. 1** (`Figures/fig1.tex`): Conceptual model — three-column layout (IV → MK → DV) with H1a–H5b hypothesis labels, uniform arrow style
+- **Fig. 2** (`Figures/fig2.tex`): Structural model results — path coefficients with significance stars, dual-pathway mediator highlight (SM, orange), cognitive-capability alignment bands (blue: SU→RM→IMM, red: WU→PM→CRE)
+- **manuscript.tex**: Inserted Fig. 1 placeholder (Sec 2.4), Fig. 2 placeholder (Discussion RQ2), Fig. 2 reference (Sec 4.2); "dominant mediator" → "dual-pathway mediator"
+- **titlepage.tex**: Acknowledgments filled (NSFC 72371190, 72371189); removed empty Funding section
 
 ### 2026-03-07 --- Language polish Sec 3--4
 - **Sec 3 (Methodology)**: 12/14 changes from polish/002.md applied — subject-verb agreement ("network includes"), terminology ("construction projects"), em dash→comma, passive→active, redundancy removal; skipped #5 ("The formal survey" kept) and #9 ("were asked to provide" kept)
@@ -184,9 +224,8 @@
 
 ## Next writing priorities
 
-1. **Fig. 1** --- create and insert conceptual model figure
-2. **Table 1 overflow** --- fix float-too-large warning
-3. **Sec 5--6 language polish** --- run language-polisher Mode B (Sec 3--4 done)
-4. **Acknowledgments** --- add funding and acknowledgment information
-5. **Author emails** --- fill in TODO placeholders before unblinding
-6. **Attrition analysis** --- deferred; needs T-test/chi-square data
+1. **Table 1 overflow** --- fix float-too-large warning
+2. **Sec 5--6 language polish** --- run language-polisher Mode B (Sec 3--4 done)
+3. **Author emails** --- fill in TODO placeholders before unblinding
+4. **Cover letter** --- update word count; fix email at L58
+5. **Attrition analysis** --- deferred; needs T-test/chi-square data
