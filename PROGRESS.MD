@@ -31,12 +31,12 @@
 | | 2.3 Meta-knowledge in project teams | ✅ | SM/RM/PM conceptualized |
 | | 2.4 Distributed cognition perspective | ✅ | Theoretical lens |
 | | 2.5 Hypotheses development (2.5.1--2.5.4) | ✅ | 18 hypotheses: H1--H2 (DCT→MK), H3--H5 (MK→IC), H6 (mediation) |
-| **3. Methodology** | 3.1 Data collection | ✅ | Three-wave design; N=255; eligibility criteria |
-| | 3.2 Bias control and evaluation | ✅ | Ethics; CMB procedural + statistical (Harman + CFA); non-response bias |
-| | 3.3 Measures | ✅ | All scales cited; 5 control variables |
-| **4. Results** | 4.1 Reliability and validity | ✅ | CFA (lavaan); Tables 2--3 inserted |
-| | 4.2 Hypothesis testing | ✅ | Full SEM results; Tables 4--5 inserted |
-| | 4.3 Robustness checks | ✅ | Three-wave temporal precedence + second-order IC model (Table 6) |
+| **3. Methodology** | 3.1 Data collection | ✅ | Three-wave design; N=255; polished (polish/002.md) |
+| | 3.2 Bias control and evaluation | ✅ | Ethics; CMB; non-response bias; polished |
+| | 3.3 Measures | ✅ | All scales cited; 5 control variables; polished |
+| **4. Results** | 4.1 Reliability and validity | ✅ | CFA (lavaan); Tables 2--3; polished (polish/003.md) |
+| | 4.2 Hypothesis testing | ✅ | Full SEM results; Tables 4--5; polished |
+| | 4.3 Robustness checks | ✅ | Second-order IC model (Table 6); polished |
 | **5. Discussion** | 5.1 Main findings | ✅ | Three subsubsections (asymmetric, differentiated, mediating) |
 | | 5.2 Theoretical implications | ✅ | Three contributions |
 | | 5.3 Practical implications | ✅ | Five recommendations |
@@ -125,6 +125,10 @@
 
 ## Change log
 
+### 2026-03-07 --- Language polish Sec 3--4
+- **Sec 3 (Methodology)**: 12/14 changes from polish/002.md applied — subject-verb agreement ("network includes"), terminology ("construction projects"), em dash→comma, passive→active, redundancy removal; skipped #5 ("The formal survey" kept) and #9 ("were asked to provide" kept)
+- **Sec 4 (Results)**: 16 non-tense changes from polish/003.md applied — removed empty modifiers ("proposed", "empirical", "complex"), Fornell--Larcker en dash, "estimations"→"estimates", merged short sentences, robustness passive→active; present tense preserved throughout per user preference
+
 ### 2026-03-06 --- Methodology revision + robustness checks rewrite
 - **Sec 3.1**: Three-wave design (T1/T2/T3), N=255 (567→409→313→255), eligibility criteria consolidated (≥US$100M per Harrison 2024, ≥6 months, regular DCT use), gift compensation added
 - **Sec 3.2**: Renamed to "Bias control and evaluation"; added ethics statement, CMB procedural remedies, Harman single-factor test (32.38%), CFA model comparison (Δχ²(21)=1418.28), non-response bias test
@@ -182,7 +186,7 @@
 
 1. **Fig. 1** --- create and insert conceptual model figure
 2. **Table 1 overflow** --- fix float-too-large warning
-3. **Sec 3--6 language polish** --- run language-polisher Mode B
+3. **Sec 5--6 language polish** --- run language-polisher Mode B (Sec 3--4 done)
 4. **Acknowledgments** --- add funding and acknowledgment information
 5. **Author emails** --- fill in TODO placeholders before unblinding
-6. **Attrition analysis** --- deferred; needs T-test/chi-square data (see method_revision_plan.md #4)
+6. **Attrition analysis** --- deferred; needs T-test/chi-square data
