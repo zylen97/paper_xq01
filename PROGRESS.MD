@@ -4,7 +4,7 @@
 > **Target journal**: International Journal of Project Management (IJPM)
 > **Theory**: Distributed Cognition Theory
 > **Method**: Three-wave time-lagged survey, n=255, CB-SEM (R lavaan)
-> **Last updated**: 2026-03-06
+> **Last updated**: 2026-03-07
 
 ## Status legend
 
@@ -22,38 +22,31 @@
 | Section | Subsection | Status | Notes |
 |---------|-----------|--------|-------|
 | **Frontmatter** | Title | ✅ | |
-| | Authors & affiliations | 🔧 | Blinded for submission; two TODO emails (Gan, Zhang) |
+| | Authors & affiliations | 🔧 | Blinded for submission; coverletter.tex email TODO |
 | | Abstract | ✅ | 150-word structured abstract |
-| | Keywords | 🔧 | 4 keywords; IJPM typically expects 5--6 |
-| **1. Introduction** | ¶1 Background + IC definition + case | ✅ | IC defined with knowledge mobilization; HZM Bridge case |
-| | ¶2 Antecedent literature → Gap | ✅ | Three streams + communication technology gap |
-| | ¶3 DCT importance → Gap | ✅ | Large-scale vs conventional contrast; traditional mechanisms too slow; DCT uniqueness |
-| | ¶3.5 DCT use dimensions → Aim 1 | ✅ | Work-oriented vs social-oriented from practice; Aim 1 (bold+italic) |
-| | ¶4 Meta-knowledge → Aim 2 | ✅ | Practice-driven MK intro (info density + overload argument); PM gap; Aim 2 (bold+italic) |
-| | ¶5 Study overview + theory + RQs | ✅ | Study scope → 3 MK dimensions → method → DCT justify → 2 RQs (no contributions in intro) |
-| | ¶6 Structure preview | ✅ | Section roadmap |
-| **2. Literature review** | 2.1 IC and DCT usage in project teams | 📝 | Contains Table 1 (antecedent literature) |
-| | 2.2 Meta-knowledge in project teams | 📝 | SM/RM/PM conceptualized; procedural MK introduced |
-| | 2.3 Mechanisms linking DCT usage and IC: DCT perspective | 📝 | Distributed cognition lens |
-| **3. Hypothesis development** | 3.1 DCT usage and meta-knowledge (H1a--H1c) | ✅ | WU → SM/RM/PM |
-| | 3.2 Social use and meta-knowledge (H2a--H2c) | ✅ | SU → SM/RM/PM |
-| | 3.3 Meta-knowledge and IC (H3--H5) | ✅ | SM/RM/PM → IMM/CRE |
-| | 3.4 Mediating role (H6a--H6f) | ✅ | 6 mediation hypotheses (IC as aggregate DV) |
-| **4. Methodology** | 4.1 Data collection | ✅ | Three-wave design; N=255; eligibility criteria; Harrison 2024 scale definition |
-| | 4.2 Bias control and evaluation | ✅ | CMB procedural + statistical (Harman + CFA); non-response bias |
-| | 4.3 Measures | ✅ | All scales cited with sources; 5 control variables |
-| **5. Results** | 5.1 Reliability and validity | ✅ | CFA (lavaan); Tables 3 inserted |
-| | 5.2 Hypothesis testing | ✅ | Full SEM results; Tables 4--5 inserted |
-| | 5.3 Robustness checks | ✅ | Three-wave temporal precedence + second-order IC model (Table 6) |
-| **6. Discussion** | 6.1 Main findings | ✅ | Three subsubsections (asymmetric effects, differentiated effects, mediating role) |
-| | 6.2 Theoretical implications | ✅ | Three contributions articulated |
-| | 6.3 Practical implications | ✅ | Five actionable recommendations |
-| | 6.4 Limitations and future research | ✅ | Three limitations acknowledged |
-| **7. Conclusion** | — | ✅ | Summary of findings + contributions + caveats |
+| | Keywords | ✅ | 5 keywords |
+| **1. Introduction** | ¶1--¶6 | ✅ | Fully revised + polished (polish/001.md) |
+| **2. Theoretical foundations and hypotheses development** | 2.1 IC in large-scale construction projects | ✅ | Polished |
+| | 2.2 DCT use in project teams | ✅ | Contains Table 1 (antecedent literature) |
+| | 2.3 Meta-knowledge in project teams | ✅ | SM/RM/PM conceptualized |
+| | 2.4 Distributed cognition perspective | ✅ | Theoretical lens |
+| | 2.5 Hypotheses development (2.5.1--2.5.4) | ✅ | 18 hypotheses: H1--H2 (DCT→MK), H3--H5 (MK→IC), H6 (mediation) |
+| **3. Methodology** | 3.1 Data collection | ✅ | Three-wave design; N=255; eligibility criteria |
+| | 3.2 Bias control and evaluation | ✅ | Ethics; CMB procedural + statistical (Harman + CFA); non-response bias |
+| | 3.3 Measures | ✅ | All scales cited; 5 control variables |
+| **4. Results** | 4.1 Reliability and validity | ✅ | CFA (lavaan); Tables 2--3 inserted |
+| | 4.2 Hypothesis testing | ✅ | Full SEM results; Tables 4--5 inserted |
+| | 4.3 Robustness checks | ✅ | Three-wave temporal precedence + second-order IC model (Table 6) |
+| **5. Discussion** | 5.1 Main findings | ✅ | Three subsubsections (asymmetric, differentiated, mediating) |
+| | 5.2 Theoretical implications | ✅ | Three contributions |
+| | 5.3 Practical implications | ✅ | Five recommendations |
+| | 5.4 Limitations and future research | ✅ | Three limitations |
+| **6. Conclusion** | — | ✅ | Summary + contributions + caveats |
 | **Back matter** | Data availability | ✅ | |
 | | Acknowledgments | ❌ | Empty |
 | | Declaration of competing interest | ✅ | |
 | | References | ✅ | All citations resolved |
+| **Appendix** | Survey items (Table A) | ✅ | All measurement items with SFL values |
 
 ---
 
@@ -92,31 +85,30 @@
 - Table 6 (robustness: second-order IC model) --- ✅ inserted
 
 **M2: Fig. 1 placeholder**
-- L222: `[Insert Fig. 1 here]` --- conceptual/research model figure not yet created
+- L170: `[Insert Fig. 1 here]` --- conceptual/research model figure not yet created
 - **Action**: Create figure and replace placeholder
 
 **M3: Table 1 too large for page**
 - LaTeX warning: "Float too large for page by 264.56pt on input line 193"
 - **Action**: Reduce font size or split table across pages
 
-**M4: Author emails missing**
-- L76: `TODO@just.edu.cn` (Gan Xueqing, corresponding author)
-- L78: `TODO@tongji.edu.cn` (Zhang Zhe)
-- **Action**: Fill in correct email addresses before unblinding
+**M4: Author emails partially resolved**
+- `manuscript.tex`: Emails filled in (commented out, blinded for submission) ✅
+- `coverletter.tex` L58: `TODO@just.edu.cn` still present
+- **Action**: Update coverletter email before unblinding
 
-**M5: Keywords insufficient**
-- Currently 4 keywords; IJPM typically expects 5--6
-- **Action**: Add 1--2 keywords (e.g., "Distributed cognition", "Construction project teams")
+**M5: ~~Keywords insufficient~~ RESOLVED (2026-03-07)**
+- Currently 5 keywords: Digital communication tools, Meta-knowledge, Improvisation capability, Distributed cognition, Large-scale construction projects
 
 ### MINOR
 
 **m1: Acknowledgments section empty**
-- L436: `\section*{Acknowledgments}` has no content
+- L374: `\section*{Acknowledgments}` has no content
 - **Action**: Add funding information and acknowledgments
 
-**m2: Appendix not included**
-- L330 references "reported in the Appendix" for measurement items, but no appendix exists in the document
-- **Action**: Create appendix with full measurement scales
+**m2: ~~Appendix not included~~ RESOLVED (2026-03-06)**
+- Appendix A (Survey items) with Table A now included at end of manuscript (L660+)
+- Contains all measurement items with standardized factor loadings (SFL)
 
 ---
 
@@ -190,7 +182,7 @@
 
 1. **Fig. 1** --- create and insert conceptual model figure
 2. **Table 1 overflow** --- fix float-too-large warning
-3. **Keywords** --- expand to 5--6 terms
-4. **Sec 3--6 language polish** --- run language-polisher Mode B
-5. **Acknowledgments** --- add funding and acknowledgment information
-6. **Author emails** --- fill in TODO placeholders before unblinding
+3. **Sec 3--6 language polish** --- run language-polisher Mode B
+4. **Acknowledgments** --- add funding and acknowledgment information
+5. **Author emails** --- fill in TODO placeholders before unblinding
+6. **Attrition analysis** --- deferred; needs T-test/chi-square data (see method_revision_plan.md #4)
