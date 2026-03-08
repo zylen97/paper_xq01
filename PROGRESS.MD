@@ -4,7 +4,7 @@
 > **Target journal**: International Journal of Project Management (IJPM)
 > **Theory**: Distributed Cognition Theory
 > **Method**: Three-wave time-lagged survey, n=255, CB-SEM (R lavaan)
-> **Last updated**: 2026-03-09
+> **Last updated**: 2026-03-10
 
 ## Status legend
 
@@ -22,8 +22,8 @@
 | Section | Subsection | Status | Notes |
 |---------|-----------|--------|-------|
 | **Frontmatter** | Title | ✅ | |
-| | Authors & affiliations | 🔧 | Blinded for submission; coverletter.tex email TODO |
-| | Abstract | ✅ | 150-word structured abstract |
+| | Authors & affiliations | 🔧 | Blinded for submission; coverletter.tex email filled ✅ |
+| | Abstract | ✅ | 149-word structured abstract; rewritten to highlight meta-knowledge as core innovation |
 | | Keywords | ✅ | 5 keywords |
 | **1. Introduction** | ¶1--¶6 | ✅ | Fully revised + polished (polish/001.md) |
 | **2. Theoretical foundations and hypotheses development** | 2.1 IC in large-scale construction projects | ✅ | Polished |
@@ -40,8 +40,8 @@
 | | 4.2 Hypothesis testing | ✅ | Full SEM results; Tables 4--5; polished |
 | | 4.3 Robustness checks | ✅ | Second-order IC model (Table 6); polished |
 | **5. Discussion** | 5.1 Main findings | ✅ | Three subsubsections (asymmetric, differentiated, mediating) |
-| | 5.2 Theoretical implications | ✅ | Three contributions |
-| | 5.3 Practical implications | ✅ | Five recommendations |
+| | 5.2 Theoretical implications | ✅ | Four contributions |
+| | 5.3 Practical implications | ✅ | Three recommendations + Fig. 4 DCT system architecture |
 | | 5.4 Limitations and future research | ✅ | Three limitations |
 | **6. Conclusion** | — | ✅ | Summary + contributions + caveats |
 | **Back matter** | Data availability | ✅ | |
@@ -97,10 +97,8 @@
 - LaTeX warning: "Float too large for page by 264.56pt on input line 193"
 - **Action**: Reduce font size or split table across pages
 
-**M4: Author emails partially resolved**
-- `manuscript.tex`: Emails filled in (commented out, blinded for submission) ✅
-- `coverletter.tex` L58: `TODO@just.edu.cn` still present
-- **Action**: Update coverletter email before unblinding
+**M4: ~~Author emails~~ RESOLVED (2026-03-10)** ✅
+- `coverletter.tex`: Corresponding author email filled (xueq_gan@163.com)
 
 **M6: Level of analysis — RESOLVED (2026-03-08)** ✅
 - All variables confirmed as project team-level (N=255 teams, key informant design)
@@ -126,7 +124,7 @@
 
 - **Engine**: pdfLaTeX + BibTeX
 - **Build output**: root directory (no `build/` subdirectory)
-- **Last successful compile**: 2026-03-08
+- **Last successful compile**: 2026-03-10
 - **Warnings**: 0 undefined citations; 0 undefined references; 1 float too large (Table A)
 - **`(ref)` markers**: 0 remaining
 - **Track-changes**: `tools/make-diff.sh` + `tools/fix-diff-citations.pl` (auto-triggered on save via latexmkrc)
@@ -141,7 +139,7 @@
 - Zone A: Sample source + Eligibility criteria (two side-by-side info boxes with outer border)
 - Zone B: Time 1 → Time 2 (+1 month) → Time 3 (+1 month) cloud boxes with thick grey arrows
 - Zone C: Variable boxes per wave (Demographics/WU/SU | SM/RM/PM | IMM/CRE)
-- Zone D: Timeline with tick marks + response stats (567→409→313→255, phone-number matching)
+- Zone D: Timeline with tick marks + response stats (467→369→284→255, phone-number matching)
 - Vertical arrow from Zone A bottom to Time 1
 
 **Figure renumbering** (data collection flowchart moved to Fig. 2 to match narrative order):
@@ -206,7 +204,7 @@
 - **Sec 4 (Results)**: 16 non-tense changes from polish/003.md applied — removed empty modifiers ("proposed", "empirical", "complex"), Fornell--Larcker en dash, "estimations"→"estimates", merged short sentences, robustness passive→active; present tense preserved throughout per user preference
 
 ### 2026-03-06 --- Methodology revision + robustness checks rewrite
-- **Sec 3.1**: Three-wave design (T1/T2/T3), N=255 (567→409→313→255), eligibility criteria consolidated (≥US$100M per Harrison 2024, ≥6 months, regular DCT use), gift compensation added
+- **Sec 3.1**: Three-wave design (T1/T2/T3), N=255 (467→369→284→255), eligibility criteria consolidated (≥US$100M per Harrison 2024, ≥3 months, regular DCT use), gift compensation added
 - **Sec 3.2**: Renamed to "Bias control and evaluation"; added ethics statement, CMB procedural remedies, Harman single-factor test (32.38%), CFA model comparison (Δχ²(21)=1418.28), non-response bias test
 - **Sec 3.3**: Control variables expanded from 3 to 5 (added project type, professional qualifications)
 - **Sec 4.3**: Completely rewritten — removed flawed reverse causality / DWH tests; added three-wave temporal precedence + second-order IC model robustness check
@@ -258,10 +256,17 @@
 
 ---
 
-## Next writing priorities
+### 2026-03-10 --- Final draft complete; submission materials ready
 
-1. **Table 1 overflow** --- fix float-too-large warning
-2. **Sec 5--6 language polish** --- run language-polisher Mode B (Sec 3--4 done)
-3. **Author emails** --- fill in TODO placeholders before unblinding
-4. **Cover letter** --- update word count; fix email at L58
-5. **Attrition analysis** --- deferred; needs T-test/chi-square data
+**manuscript.tex**:
+- Section 5 (Discussion): All 45 language polish changes applied (polish/005.md); skipped #7 and #23 (quotation comma per user preference)
+- Section 6 (Conclusion): Rewritten with twofold structure (RQ1 + RQ2 answers); polished (polish/006.md)
+- Abstract: Rewritten to 149 words; first sentence highlights meta-knowledge as core innovation; RQ1/RQ2 framing retained
+- Title: Minor fix ("tools use" → "tool use")
+
+**Submission materials**:
+- `highlights.tex`: All 5 highlights rewritten to match journal style (direct finding statements); sample corrected to N=255
+- `coverletter.tex`: Fully rewritten — new排版 (bold section headers, RQ1/RQ2 listed); three-point fit argument aligned with IJPM aims and scope; Table 1 and Figure 4 referenced; email filled; em-dash overuse fixed
+- `titlepage.tex`: No changes needed
+
+**Next step**: Ready for submission to IJPM
