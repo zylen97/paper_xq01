@@ -1,159 +1,96 @@
-\documentclass[border=12pt, varwidth=38cm]{standalone}
+\documentclass[border=10pt]{standalone}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,decorations.pathreplacing}
 \usepackage{times}
 
 \begin{document}
 \begin{tikzpicture}[
-  % === Node styles ===
-  hub/.style={
-    draw, rounded corners=6pt,
-    minimum width=15cm, minimum height=1.5cm,
-    font=\normalsize\bfseries, fill=gray!10,
-    align=center, line width=1.2pt
-  },
-  module/.style={
-    draw, rounded corners=4pt,
-    text width=4.5cm, align=left,
-    fill=white, line width=0.8pt,
-    inner sep=7pt, minimum height=3.2cm
-  },
-  support/.style={
-    draw, rounded corners=3pt,
-    minimum width=3cm, minimum height=0.75cm,
-    font=\fontsize{8}{10}\selectfont, fill=white, align=center,
-    line width=0.6pt
-  },
-  outcome/.style={
-    draw, rounded corners=5pt,
-    minimum width=7cm, minimum height=1.2cm,
-    font=\normalsize\bfseries, fill=white,
-    align=center, line width=1pt
-  },
-  % === Arrow styles ===
-  arr/.style={-{Stealth[length=5pt]}, thick, black!70},
-  conn/.style={thick, black!35, densely dashed},
-  % === Label styles ===
-  arrlbl/.style={font=\fontsize{8}{10}\selectfont\itshape, fill=white, inner sep=1.5pt, text=black!60},
+  % Node styles
+  iv/.style={draw, rounded corners=3pt, minimum width=2.8cm, minimum height=1cm,
+             font=\small\bfseries, fill=gray!5, align=center},
+  mk/.style={draw, rounded corners=3pt, minimum width=2.8cm, minimum height=1cm,
+             font=\small\bfseries, fill=gray!5, align=center},
+  dv/.style={draw, rounded corners=3pt, minimum width=2.8cm, minimum height=1cm,
+             font=\small\bfseries, fill=gray!5, align=center},
+  % Arrow styles
+  sig/.style={-{Stealth[length=6pt]}, thick, black},
+  nonsig/.style={-{Stealth[length=6pt]}, thin, gray!50, dashed},
+  % Label style
+  lbl/.style={font=\scriptsize, fill=white, inner sep=1.5pt},
 ]
 
-% =============================================
-% Layer 0: DCTs Platform (Central Hub)
-% =============================================
-\node[hub] (dct) at (0, 0) {
-  Digital Communication Tools Platform\\[-2pt]
-  {\small\itshape (e.g., DingTalk, Feishu, Microsoft Teams)}
-};
+% === Column 1: IVs ===
+\node[iv] (WU) at (0, 0) {Work-oriented\\use (WU)};
+\node[iv] (SU) at (0, -4.5) {Social-oriented\\use (SU)};
 
-% =============================================
-% Layer 1: Three Meta-Knowledge Modules
-% =============================================
-\node[module, anchor=south] (sm) at (-6, 1.8) {
-  {\centering\fontsize{9}{11}\selectfont\itshape Structural meta-knowledge\par}
-  \vspace{2pt}
-  {\centering\small\bfseries Expert Capability Atlas\par}
-  \vspace{4pt}
-  \fontsize{9}{11}\selectfont
-  \textbullet~Expertise tags by specialty\\
-  \textbullet~Professional certifications\\
-  \textbullet~Key personnel profiles\\
-  \textbullet~Prior project experience
-};
+% === Column 2: Mediators ===
+\node[mk] (SM) at (5.5, -0.5) {Structural\\meta-knowledge (SM)};
+\node[mk] (RM) at (5.5, -2.5) {Relational\\meta-knowledge (RM)};
+\node[mk] (PM) at (5.5, -4.5) {Procedural\\meta-knowledge (PM)};
 
-\node[module, anchor=south] (rm) at (0, 1.8) {
-  {\centering\fontsize{9}{11}\selectfont\itshape Relational meta-knowledge\par}
-  \vspace{2pt}
-  {\centering\small\bfseries Collaboration Network\par}
-  \vspace{4pt}
-  \fontsize{9}{11}\selectfont
-  \textbullet~Cross-unit liaison contacts\\
-  \textbullet~Historical cooperation records\\
-  \textbullet~Communication frequency logs\\
-  \textbullet~Trusted coordination channels
-};
+% === Column 3: DVs ===
+\node[dv] (IMM) at (11, -1.2) {Immediacy\\(IMM)};
+\node[dv] (CRE) at (11, -3.8) {Creativity\\(CRE)};
 
-\node[module, anchor=south] (pm) at (6, 1.8) {
-  {\centering\fontsize{9}{11}\selectfont\itshape Procedural meta-knowledge\par}
-  \vspace{2pt}
-  {\centering\small\bfseries Procedure Knowledge Base\par}
-  \vspace{4pt}
-  \fontsize{9}{11}\selectfont
-  \textbullet~Standardized construction seq.\\
-  \textbullet~Emergency response plans\\
-  \textbullet~Construction method templates\\
-  \textbullet~Approval workflows \& policies
-};
+% === Stage 1 arrows: IV -> MK (6 arrows) ===
+% WU paths
+\draw[sig]    ([yshift=3pt]WU.east)  -- node[lbl, above]                {0.247***} ([yshift=3pt]SM.west);
+\draw[nonsig] (WU.east)              -- node[lbl, above, pos=0.6, text=gray] {0.060} (RM.west);
+\draw[sig]    ([yshift=-3pt]WU.east) -- node[lbl, below, pos=0.4]       {0.294***} ([yshift=3pt]PM.west);
 
-% =============================================
-% Layer 2: Improvisation Capability (Outcome)
-% =============================================
-\node[outcome] (ic) at (0, 8.3) {
-  Improvisation Capability\\[-2pt]
-  {\small (Immediacy \& Creativity)}
-};
+% SU paths
+\draw[sig]    ([yshift=3pt]SU.east)  -- node[lbl, above, pos=0.4]       {0.204***} ([yshift=-3pt]SM.west);
+\draw[sig]    (SU.east)              -- node[lbl, below, pos=0.6]        {0.193***} (RM.west);
+\draw[nonsig] ([yshift=-3pt]SU.east) -- node[lbl, below, text=gray]     {0.036} ([yshift=-3pt]PM.west);
 
-% =============================================
-% Layer -1: Supporting Functions
-% =============================================
-\node[support] (s1) at (-5.5, -2.2) {Automated\\Onboarding Workflows};
-\node[support] (s2) at (-1.8, -2.2) {Project\\Decision Logs};
-\node[support] (s3) at (1.8, -2.2) {Lessons-Learned\\Repository};
-\node[support] (s4) at (5.5, -2.2) {Real-time\\Alert Mechanisms};
+% === Stage 2 arrows: MK -> DV (6 arrows) ===
+% SM -> IMM, SM -> CRE (dual-pathway)
+\draw[sig] ([yshift=2pt]SM.east)  -- node[lbl, above]           {0.205***} ([yshift=6pt]IMM.west);
+\draw[sig] ([yshift=-2pt]SM.east) -- node[lbl, above, pos=0.4]  {0.136*} ([yshift=6pt]CRE.west);
 
-% =============================================
-% Arrows: DCTs → MK Modules
-% =============================================
-\draw[arr] ([xshift=-6cm]dct.north) -- (sm.south);
-\draw[arr] (dct.north) -- (rm.south);
-\draw[arr] ([xshift=6cm]dct.north) -- (pm.south);
+% RM -> IMM (sig), RM -> CRE (n.s.)
+\draw[sig]    ([yshift=2pt]RM.east)  -- node[lbl, below, pos=0.4]            {0.174**} ([yshift=-6pt]IMM.west);
+\draw[nonsig] ([yshift=-2pt]RM.east) -- node[lbl, below, pos=0.7, text=gray] {0.030} ([yshift=2pt]CRE.west);
 
-% Arrow label (centered between DCTs and MK)
-\node[arrlbl] at ([yshift=0.55cm]dct.north) {builds};
+% PM -> IMM (n.s.), PM -> CRE (sig)
+\draw[nonsig] ([yshift=2pt]PM.east)  -- node[lbl, above, pos=0.7, text=gray] {0.009} ([yshift=-6pt]IMM.west);
+\draw[sig]    ([yshift=-2pt]PM.east) -- node[lbl, below]                     {0.256***} ([yshift=-6pt]CRE.west);
 
-% =============================================
-% Arrows: MK Modules → IC (unified)
-% =============================================
-\draw[arr] (sm.north) -- ([xshift=-2.0cm]ic.south);
-\draw[arr] (rm.north) -- (ic.south);
-\draw[arr] (pm.north) -- ([xshift=2.0cm]ic.south);
+% === Background: SM universal zone (only around SM node) ===
+\begin{scope}[on background layer]
+  \node[fit=(SM), fill=orange!8, draw=orange!60!black, dashed,
+        rounded corners=8pt, inner sep=10pt,
+        label={[font=\scriptsize\itshape, text=orange!60!black, align=center]above:
+          Dual-pathway mediator}] {};
+\end{scope}
 
-% Arrow label (centered between MK and IC)
-\node[arrlbl] at (0, 6.9) {enables};
+% === Alignment highlight bands ===
+% Aligned path 1: SU -> RM -> IMM (blue)
+\begin{scope}[on background layer]
+  \draw[blue!70, line width=10pt, rounded corners=8pt, opacity=0.18]
+    (SU.east) -- (RM.west) -- (RM.east) -- ([yshift=-6pt]IMM.west);
+\end{scope}
 
-% =============================================
-% Connections: Supporting Functions ↔ DCTs
-% =============================================
-\draw[conn] (s1.north) -- ([xshift=-5.5cm]dct.south);
-\draw[conn] (s2.north) -- ([xshift=-1.8cm]dct.south);
-\draw[conn] (s3.north) -- ([xshift=1.8cm]dct.south);
-\draw[conn] (s4.north) -- ([xshift=5.5cm]dct.south);
+% Aligned path 2: WU -> PM -> CRE (red)
+\begin{scope}[on background layer]
+  \draw[red!70, line width=10pt, rounded corners=8pt, opacity=0.18]
+    ([yshift=-3pt]WU.east) -- ([yshift=3pt]PM.west) -- ([yshift=-2pt]PM.east) -- ([yshift=-6pt]CRE.west);
+\end{scope}
 
-% =============================================
-% Background groupings
-% =============================================
-\begin{pgfonlayer}{background}
-  % Meta-knowledge infrastructure group
-  \node[fill=blue!3, rounded corners=10pt, inner xsep=14pt, inner ysep=14pt,
-        fit=(sm)(rm)(pm)]
-        (mkbg) {};
-  % Supporting functions group
-  \node[fill=orange!4, rounded corners=8pt, inner sep=8pt,
-        fit=(s1)(s2)(s3)(s4),
-        label={[font=\fontsize{9}{11}\selectfont\bfseries, text=black!50]below:Supporting Functions}]
-        (supbg) {};
-\end{pgfonlayer}
+% === Stage labels (centered over respective arrow zones) ===
+\node[font=\small\bfseries] at (2.75, 1.2) {Stage 1: Externalization};
+\node[font=\small\bfseries] at (8.25, 1.2) {Stage 2: Integration};
 
-% MK group label (just above the top-right corner of the blue background box)
-\node[font=\small\bfseries, text=black!60, anchor=south east] at ([yshift=0.15cm, xshift=-0.2cm]mkbg.north east) {Meta-Knowledge Infrastructure};
+% Subtle vertical separator
+\draw[gray!30, thin, dashed] (5.5, 1.0) -- (5.5, -5.8);
 
-% =============================================
-% Overall system frame
-% =============================================
-\node[draw=black!35, densely dashed, rounded corners=14pt,
-      inner xsep=20pt, inner ysep=16pt,
-      fit=(ic)(mkbg)(dct)(supbg),
-      label={[font=\small\bfseries, anchor=south]above:Project-Level Distributed Cognition System}]
-      {};
+% === Legend (horizontal, centered) ===
+\draw[sig]    (0.0, -6.2) -- ++(1.0,0) node[right, font=\scriptsize] {Significant path};
+\draw[nonsig] (3.5, -6.2) -- ++(1.0,0) node[right, font=\scriptsize] {Non-significant path};
+\draw[blue!70, line width=6pt, opacity=0.18] (7.7, -6.2) -- ++(0.4,0);
+\draw[red!70, line width=6pt, opacity=0.18]  (8.1, -6.2) -- ++(0.4,0)
+  node[right, font=\scriptsize, text=black, opacity=1] {Aligned mediation path};
+\node[font=\scriptsize, anchor=north west] at (0.0, -6.7) {*$p < 0.05$; **$p < 0.01$; ***$p < 0.001$};
 
 \end{tikzpicture}
 \end{document}

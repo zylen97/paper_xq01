@@ -4,7 +4,7 @@
 > **Target journal**: International Journal of Project Management (IJPM)
 > **Theory**: Distributed Cognition Theory
 > **Method**: Three-wave time-lagged survey, n=255, CB-SEM (R lavaan)
-> **Last updated**: 2026-03-08
+> **Last updated**: 2026-03-09
 
 ## Status legend
 
@@ -31,9 +31,11 @@
 | | 2.3 Meta-knowledge in project teams | ✅ | SM/RM/PM conceptualized |
 | | 2.4 Distributed cognition perspective | ✅ | Theoretical lens |
 | | 2.5 Hypotheses development (2.5.1--2.5.4) | ✅ | 18 hypotheses: H1--H2 (DCT→MK), H3--H5 (MK→IC), H6 (mediation) |
-| **3. Methodology** | 3.1 Data collection | ✅ | Three-wave design; N=255; polished (polish/002.md) |
-| | 3.2 Bias control and evaluation | ✅ | Ethics; CMB; non-response bias; polished |
-| | 3.3 Measures | ✅ | All scales cited; 5 control variables; polished |
+| **3. Methodology** | 3.1 Data collection | ✅ | Three-wave design; N=255; polished (polish/002.md); Fig. 2 placeholder inserted |
+| | 3.2 Bias mitigation and evaluation | ✅ | Ethics; CMB; non-response bias; polished |
+| | 3.3 Questionnaire development | ✅ | Expert interview; pilot study (N=35); CITC > 0.4 |
+| | 3.4 Measures | ✅ | All scales cited; 5 control variables; polished |
+| | 3.5 Analytical methods | ✅ | CB-SEM justification (3 reasons); mediation bootstrap |
 | **4. Results** | 4.1 Reliability and validity | ✅ | CFA (lavaan); Tables 2--3; polished (polish/003.md) |
 | | 4.2 Hypothesis testing | ✅ | Full SEM results; Tables 4--5; polished |
 | | 4.3 Robustness checks | ✅ | Second-order IC model (Table 6); polished |
@@ -84,11 +86,12 @@
 - Table 5 (mediating results) --- ✅ inserted
 - Table 6 (robustness: second-order IC model) --- ✅ inserted
 
-**M2: ~~Fig. 1 placeholder~~ RESOLVED (2026-03-07)**
-- Fig. 1 (conceptual model with H1a--H5b): `Figures/fig1.tex` → `Figures/fig1.pdf`
-- Fig. 2 (structural results with coefficients + alignment paths): `Figures/fig2.tex` → `Figures/fig2.pdf`
-- Placeholders inserted in manuscript: Sec 2.4 (Fig. 1) and Discussion RQ2 (Fig. 2)
-- Fig. 2 also referenced in Sec 4.2 (hypothesis testing)
+**M2: ~~Fig. placeholders~~ RESOLVED (2026-03-09)**
+- Fig. 1 (conceptual model, H1a--H5b): `Figures/fig1.tex/pdf` → Sec 2.4
+- Fig. 2 (data collection flowchart, three-wave): `Figures/fig2.tex/pdf` → Sec 3.1 (new)
+- Fig. 3 (SEM structural results with path coefficients): `Figures/fig3.tex/pdf` → Sec 4.2 + Discussion RQ2
+- Fig. 4 (distributed cognition system framework): `Figures/fig4.tex/pdf` → Sec 5.3
+- All four placeholders inserted in manuscript; all four PDFs compiled clean
 
 **M3: Table 1 too large for page**
 - LaTeX warning: "Float too large for page by 264.56pt on input line 193"
@@ -131,6 +134,39 @@
 ---
 
 ## Change log
+
+### 2026-03-09 --- Fig. 2 (data collection flowchart) + figure renumbering
+
+**Fig. 2 created** (`Figures/fig2.tex`): Full data collection flowchart integrating all Sec 3.1 elements:
+- Zone A: Sample source + Eligibility criteria (two side-by-side info boxes with outer border)
+- Zone B: Time 1 → Time 2 (+1 month) → Time 3 (+1 month) cloud boxes with thick grey arrows
+- Zone C: Variable boxes per wave (Demographics/WU/SU | SM/RM/PM | IMM/CRE)
+- Zone D: Timeline with tick marks + response stats (567→409→313→255, phone-number matching)
+- Vertical arrow from Zone A bottom to Time 1
+
+**Figure renumbering** (data collection flowchart moved to Fig. 2 to match narrative order):
+- Old Fig. 2 (SEM results) → Fig. 3; old Fig. 3 (DCT system) → Fig. 4
+- `Figures/fig2.tex/pdf`, `fig3.tex/pdf`, `fig4.tex/pdf` renamed accordingly
+
+**manuscript.tex** updates:
+- Sec 3.1: added `The overall data collection process is illustrated in Fig. 2.` + placeholder
+- Sec 4.2: Fig. 2 → Fig. 3
+- Discussion RQ2: Fig. 2 → Fig. 3
+- Sec 5.3: Fig. 3 → Fig. 4
+- All four figure PDFs compiled clean (0 errors)
+
+**Other manuscript changes (same session)**:
+- Terminology: "DCT usage" → "DCT use" throughout; "participants" (survey) → "respondents"
+- Hypothesis labels bolded (H1a–H6f) in Sec 2.5
+- Subsubsection headings: DCT abbreviated → full name
+- Power analysis: 6 → 8 predictors; minimum N 146 → 160
+- Pilot study: "satisfactory psychometric properties" → "satisfactory internal consistency reliability (Cronbach's α > 0.70)"
+- New Sec 3.3 Questionnaire development (expert interview + pilot study with CITC)
+- New Sec 3.5 Analytical methods (CB-SEM justification: 3 reasons + mediation paragraph)
+- Section reorder: 3.1 Data collection → 3.2 Bias mitigation → 3.3 Questionnaire development → 3.4 Measures → 3.5 Analytical methods
+- Table/figure placeholders inserted for all Tables 1–6 and Figs. 1–4
+- Fig. 1 (fig1.tex): removed vertical dashed separator line
+- bib: added `anderson1988Structural`, `hair2019Multivariate`, `preacher2008Asymptotic`; fixed `pesämaa` → `pesamaa`
 
 ### 2026-03-08 --- Full team-level reconstruction (level of analysis overhaul)
 

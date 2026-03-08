@@ -1,96 +1,115 @@
-\documentclass[border=10pt]{standalone}
+\documentclass[border=12pt]{standalone}
+\usepackage[T1]{fontenc}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,decorations.pathreplacing}
+\usetikzlibrary{arrows.meta, positioning, fit, calc, backgrounds}
 \usepackage{times}
 
 \begin{document}
 \begin{tikzpicture}[
-  % Node styles
-  iv/.style={draw, rounded corners=3pt, minimum width=2.8cm, minimum height=1cm,
-             font=\small\bfseries, fill=gray!5, align=center},
-  mk/.style={draw, rounded corners=3pt, minimum width=2.8cm, minimum height=1cm,
-             font=\small\bfseries, fill=gray!5, align=center},
-  dv/.style={draw, rounded corners=3pt, minimum width=2.8cm, minimum height=1cm,
-             font=\small\bfseries, fill=gray!5, align=center},
-  % Arrow styles
-  sig/.style={-{Stealth[length=6pt]}, thick, black},
-  nonsig/.style={-{Stealth[length=6pt]}, thin, gray!50, dashed},
-  % Label style
-  lbl/.style={font=\scriptsize, fill=white, inner sep=1.5pt},
+  infobox/.style={
+    draw, thick, rounded corners=6pt,
+    fill=gray!10, align=left,
+    inner sep=10pt,
+    minimum height=3.0cm,
+    text width=5.6cm
+  },
+  cloudbox/.style={
+    draw, very thick, rounded corners=14pt,
+    fill=gray!8, align=center,
+    minimum width=3.4cm, minimum height=1.3cm,
+    font=\normalsize\bfseries
+  },
+  bigArrow/.style={
+    -{Stealth[length=11pt, width=9pt]},
+    line width=3.5pt, gray!55
+  },
+  varbox/.style={
+    draw, dashed, thick, rounded corners=3pt,
+    minimum width=3.4cm, minimum height=0.82cm,
+    fill=white, font=\small, align=center
+  },
 ]
 
-% === Column 1: IVs ===
-\node[iv] (WU) at (0, 0) {Work-oriented\\use (WU)};
-\node[iv] (SU) at (0, -4.5) {Social-oriented\\use (SU)};
+%% ============================================================
+%% ZONE A: Two info boxes — centred on the overall figure
+%% Overall figure x-centre will be approx x=6.5
+%% sampbox centred at ~3.5, eligbox at ~9.5 => midpoint 6.5
+%% ============================================================
+\node[infobox] (sampbox) at (3.4, 0) {
+  \textbf{Sample source}\\[5pt]
+  Large-scale construction project\\
+  professionals in China, recruited via\\
+  a government-recognized construction\\
+  training organization
+};
 
-% === Column 2: Mediators ===
-\node[mk] (SM) at (5.5, -0.5) {Structural\\meta-knowledge (SM)};
-\node[mk] (RM) at (5.5, -2.5) {Relational\\meta-knowledge (RM)};
-\node[mk] (PM) at (5.5, -4.5) {Procedural\\meta-knowledge (PM)};
+\node[infobox, right=0.8cm of sampbox] (eligbox) {
+  \textbf{Eligibility criteria}\\[5pt]
+  \textbf{(1)}~Project investment $\geq$ US\$100M\\[4pt]
+  \textbf{(2)}~Project involvement $\geq$ 6 months\\[4pt]
+  \textbf{(3)}~Regular DCT use\\
+  \hspace*{1.2em}\textup{(QQ / WeChat / DingTalk)}
+};
 
-% === Column 3: DVs ===
-\node[dv] (IMM) at (11, -1.2) {Immediacy\\(IMM)};
-\node[dv] (CRE) at (11, -3.8) {Creativity\\(CRE)};
-
-% === Stage 1 arrows: IV -> MK (6 arrows) ===
-% WU paths
-\draw[sig]    ([yshift=3pt]WU.east)  -- node[lbl, above]                {0.247***} ([yshift=3pt]SM.west);
-\draw[nonsig] (WU.east)              -- node[lbl, above, pos=0.6, text=gray] {0.060} (RM.west);
-\draw[sig]    ([yshift=-3pt]WU.east) -- node[lbl, below, pos=0.4]       {0.294***} ([yshift=3pt]PM.west);
-
-% SU paths
-\draw[sig]    ([yshift=3pt]SU.east)  -- node[lbl, above, pos=0.4]       {0.204***} ([yshift=-3pt]SM.west);
-\draw[sig]    (SU.east)              -- node[lbl, below, pos=0.6]        {0.193***} (RM.west);
-\draw[nonsig] ([yshift=-3pt]SU.east) -- node[lbl, below, text=gray]     {0.036} ([yshift=-3pt]PM.west);
-
-% === Stage 2 arrows: MK -> DV (6 arrows) ===
-% SM -> IMM, SM -> CRE (dual-pathway)
-\draw[sig] ([yshift=2pt]SM.east)  -- node[lbl, above]           {0.205***} ([yshift=6pt]IMM.west);
-\draw[sig] ([yshift=-2pt]SM.east) -- node[lbl, above, pos=0.4]  {0.136*} ([yshift=6pt]CRE.west);
-
-% RM -> IMM (sig), RM -> CRE (n.s.)
-\draw[sig]    ([yshift=2pt]RM.east)  -- node[lbl, below, pos=0.4]            {0.174**} ([yshift=-6pt]IMM.west);
-\draw[nonsig] ([yshift=-2pt]RM.east) -- node[lbl, below, pos=0.7, text=gray] {0.030} ([yshift=2pt]CRE.west);
-
-% PM -> IMM (n.s.), PM -> CRE (sig)
-\draw[nonsig] ([yshift=2pt]PM.east)  -- node[lbl, above, pos=0.7, text=gray] {0.009} ([yshift=-6pt]IMM.west);
-\draw[sig]    ([yshift=-2pt]PM.east) -- node[lbl, below]                     {0.256***} ([yshift=-6pt]CRE.west);
-
-% === Background: SM universal zone (only around SM node) ===
+%% Outer border
 \begin{scope}[on background layer]
-  \node[fit=(SM), fill=orange!8, draw=orange!60!black, dashed,
-        rounded corners=8pt, inner sep=10pt,
-        label={[font=\scriptsize\itshape, text=orange!60!black, align=center]above:
-          Dual-pathway mediator}] {};
+  \node[draw, thick, rounded corners=10pt, fill=gray!3,
+        fit=(sampbox)(eligbox), inner sep=8pt] (zonaA) {};
 \end{scope}
 
-% === Alignment highlight bands ===
-% Aligned path 1: SU -> RM -> IMM (blue)
-\begin{scope}[on background layer]
-  \draw[blue!70, line width=10pt, rounded corners=8pt, opacity=0.18]
-    (SU.east) -- (RM.west) -- (RM.east) -- ([yshift=-6pt]IMM.west);
-\end{scope}
+%% ============================================================
+%% ZONE B: Time clouds — left column anchored at fixed x
+%% t1 x ≈ 1.7,  t2 ≈ 6.1,  t3 ≈ 10.5  (spacing 4.4cm)
+%% ============================================================
+\node[cloudbox] (t1) at (1.7, -3.2) {Time 1};
+\node[cloudbox, right=3.0cm of t1] (t2) {Time 2\\[-1pt]\scriptsize(+1 month)};
+\node[cloudbox, right=3.0cm of t2] (t3) {Time 3\\[-1pt]\scriptsize(+1 month)};
 
-% Aligned path 2: WU -> PM -> CRE (red)
-\begin{scope}[on background layer]
-  \draw[red!70, line width=10pt, rounded corners=8pt, opacity=0.18]
-    ([yshift=-3pt]WU.east) -- ([yshift=3pt]PM.west) -- ([yshift=-2pt]PM.east) -- ([yshift=-6pt]CRE.west);
-\end{scope}
+\draw[bigArrow] (t1.east) -- (t2.west);
+\draw[bigArrow] (t2.east) -- (t3.west);
 
-% === Stage labels (centered over respective arrow zones) ===
-\node[font=\small\bfseries] at (2.75, 1.2) {Stage 1: Externalization};
-\node[font=\small\bfseries] at (8.25, 1.2) {Stage 2: Integration};
+%% Arrow: straight down from Zone A bottom (above T1) to T1 top
+\draw[-{Stealth[length=8pt, width=7pt]}, line width=2pt, gray!60]
+  (zonaA.south -| t1) -- (t1.north);
 
-% Subtle vertical separator
-\draw[gray!30, thin, dashed] (5.5, 1.0) -- (5.5, -5.8);
+%% ============================================================
+%% ZONE C: Variable boxes
+%% ============================================================
+\node[varbox, below=0.45cm of t1]  (v1a) {Demographics \\ \textup{(control variables)}};
+\node[varbox, below=0.18cm of v1a] (v1b) {Work-oriented use (WU)};
+\node[varbox, below=0.18cm of v1b] (v1c) {Social-oriented use (SU)};
 
-% === Legend (horizontal, centered) ===
-\draw[sig]    (0.0, -6.2) -- ++(1.0,0) node[right, font=\scriptsize] {Significant path};
-\draw[nonsig] (3.5, -6.2) -- ++(1.0,0) node[right, font=\scriptsize] {Non-significant path};
-\draw[blue!70, line width=6pt, opacity=0.18] (7.7, -6.2) -- ++(0.4,0);
-\draw[red!70, line width=6pt, opacity=0.18]  (8.1, -6.2) -- ++(0.4,0)
-  node[right, font=\scriptsize, text=black, opacity=1] {Aligned mediation path};
-\node[font=\scriptsize, anchor=north west] at (0.0, -6.7) {*$p < 0.05$; **$p < 0.01$; ***$p < 0.001$};
+\node[varbox, below=0.45cm of t2]  (v2a) {Structural meta-knowledge (SM)};
+\node[varbox, below=0.18cm of v2a] (v2b) {Relational meta-knowledge (RM)};
+\node[varbox, below=0.18cm of v2b] (v2c) {Procedural meta-knowledge (PM)};
+
+\node[varbox, below=0.45cm of t3]  (v3a) {Immediacy (IMM)};
+\node[varbox, below=0.18cm of v3a] (v3b) {Creativity (CRE)};
+
+%% ============================================================
+%% ZONE D: Timeline + stats
+%% ============================================================
+\coordinate (axisY) at ($(v1c.south)+(0,-0.6cm)$);
+
+\draw[-{Stealth[length=7pt]}, thick]
+  ([xshift=-2.0cm]t1|-axisY) -- ([xshift=2.2cm]t3|-axisY);
+
+\foreach \nd in {t1, t2, t3}
+  \draw[thick] ($(\nd|-axisY)+(0,0.18cm)$) -- ($(\nd|-axisY)+(0,-0.18cm)$);
+
+\node[font=\small, align=center, below=0.3cm] at (t1|-axisY) {
+  \textbf{567} distributed\\
+  \textbf{409} valid \textup{(72.1\%)}
+};
+\node[font=\small, align=center, below=0.3cm] at (t2|-axisY) {
+  \textbf{409} distributed\\
+  \textbf{313} valid \textup{(76.5\%)}
+};
+\node[font=\small, align=center, below=0.3cm] at (t3|-axisY) {
+  \textbf{313} distributed\\
+  \textbf{255} matched \textup{(62.3\%)}\\
+  \scriptsize\itshape phone-number matching
+};
 
 \end{tikzpicture}
 \end{document}
