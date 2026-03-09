@@ -55,6 +55,8 @@
     \normalsize\elsauthors\par\vskip10pt
     \normalsize\itshape\elsaddress\par\vskip12pt  % 改为\normalsize，进一步增大affiliation字体
     % 横线被移除了，原本这里有\hrule命令
+    \ifvoid\absbox\else\unvbox\absbox\par\vskip10pt\fi
+    \ifvoid\keybox\else\unvbox\keybox\par\vskip10pt\fi
   \end{center}%
   \gdef\thefootnote{\arabic{footnote}}%
   }
@@ -122,7 +124,6 @@ Digital communication tools \sep Meta-knowledge \sep Improvisation capability \s
 Large-scale construction projects, characterized by long cycles, complex technical interdependencies, and multiple-stakeholder involvement \citep{yang2025How}, often encounter contingencies \citep{shen2022Largescale}. Traditional plan-driven project management approaches are challenged by the need for quick responses to contingencies \citep{malucelli2021Facing,coulon2026Wing}. Project teams' improvisation has emerged as a critical ability for addressing these challenges \citep{sumbal2025Improvisation}. \textbf{\textit{Improvisation capability}} refers to the ability to spontaneously create and implement solutions to unexpected project contingencies by rapidly mobilizing and recombining existing knowledge and resources \citep{magni2009Role,veranghg2005Improvisation}. For instance, the final joint of the Hong Kong-Zhuhai-Macao Bridge immersed tunnel exceeded its acceptance tolerance. In response, the project team improvised an unprecedented reverse-operation to re-dock the structure, reducing the deviation from 17 centimeters to 2.5 millimeters within 38 hours \citep{21cbh2018Redocking}. The convergence of planning and execution in time and the generation of novel responses distinguish improvisation capability from routine problem-solving \citep{moorman1998Organizational, miner2001Organizational}. Enhancing project teams' improvisation capability is of practical importance, especially given the difficulty of comprehensive planning in a temporary organization setting \citep{wang2025Formalization}.
 
 Existing project management research on antecedents of improvisation capability in project teams has concentrated on three areas, as shown in Table 1.
-
 \begin{center}[Insert Table 1 here]\end{center}
 
 First, cognitive and psychological states, such as collective mindfulness \citep{jiang2025Confronting} and psychological safety \citep{huang2026Thriving}, are shown to enable improvisation capability. Second, the knowledge and experience base, including tacit knowledge and sensemaking \citep{sumbal2025Improvisation} and ambidextrous search \citep{rui2022Contingent, klein2015Improvisation}, contributes to improvisation capability development. Third, contextual and environmental antecedents, such as project complexity \citep{mamedio2020Managing}, plan deviations \citep{vuorinen2019Lifecycle}, and uncertainty \citep{hacker2019Legitimizing}, prompt improvisational responses. \textbf{\textit{Yet, limited study has examined the role of communication technology through which existing knowledge is shared and mobilized}}, which is crucial for improvisation formation \citep{veranghg2005Improvisation}.
