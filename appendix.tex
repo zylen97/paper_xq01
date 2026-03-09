@@ -1,0 +1,93 @@
+% !TEX program = pdflatex
+% Standalone appendix file — compile independently to produce appendix.pdf
+% For separate upload to IJPM submission system
+
+\documentclass[10pt]{article}
+\usepackage{txfonts}      % Times字体
+
+\usepackage{geometry}
+\geometry{landscape, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{hyperref}
+\hypersetup{colorlinks=false}
+
+\captionsetup{font=normalsize, labelsep=period}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\section*{Appendix A: Survey items}
+
+\renewcommand{\thetable}{A}
+
+{\small\setstretch{1}%
+\begin{longtable}{>{\raggedright\arraybackslash}p{2.5cm}l>{\raggedright\arraybackslash}p{\dimexpr\linewidth-2.5cm-1.5cm-1.0cm-6\tabcolsep\relax}>{\centering\arraybackslash}p{1.0cm}}
+\caption{Measurement items}\label{tab:survey_items_app}\\
+\toprule
+\textbf{Constructs} & \textbf{Items} & \textbf{Measures} & \textbf{SFL} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{c}{\tablename~\thetable~(\textit{continued})} \\[3pt]
+\toprule
+\textbf{Constructs} & \textbf{Items} & \textbf{Measures} & \textbf{SFL} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{\small\textit{Continued on next page}} \\
+\endfoot
+\bottomrule
+\multicolumn{4}{@{}p{\linewidth}@{}}{\small\textit{Note}: SFL = standardized factor loading. All items were measured on a five-point Likert scale ranging from 1 (``strongly disagree'') to 5 (``strongly agree''). Items were adapted to the construction project context. (R) denotes reverse-scored item.} \\
+\endlastfoot
+\multirow{4}{2.5cm}{Work-oriented (WU)}
+ & WU-1 & In our team, we use digital communication tools to share content about work projects with team members. & 0.831 \\
+ & WU-2 & In our team, we use digital communication tools to create content about work projects in collaboration with team members. & 0.765 \\
+ & WU-3 & In our team, we use digital communication tools to disseminate content related to project work. & 0.716 \\
+ & WU-4 & In our team, we use digital communication tools to access project-related content created by team members. & 0.789 \\
+\midrule
+\multirow{4}{2.5cm}{Social-oriented (SU)}
+ & SU-1 & In our team, we use digital communication tools to build new relationships at work. & 0.813 \\
+ & SU-2 & In our team, we use digital communication tools to get to know people we would otherwise not meet. & 0.732 \\
+ & SU-3 & In our team, we use digital communication tools to maintain close social relationships with people at work. & 0.784 \\
+ & SU-4 & In our team, we use digital communication tools to get acquainted with colleagues from different organizations or disciplines involved in the project. & 0.767 \\
+\midrule
+\multirow{3}{2.5cm}{Structural Meta-knowledge (SM)}
+ & SM-1 & Our team members have a good ``map'' of each other's talents and skills. & 0.752 \\
+ & SM-2 & Our team members know which task-related skills and knowledge each other possesses. & 0.809 \\
+ & SM-3 & Our team members know who among them has specialized skills and knowledge relevant to the project. & 0.771 \\
+\midrule
+\multirow{3}{2.5cm}{Relational Meta-knowledge (RM)}
+ & RM-1 & Our team members know who among them has established connections with key personnel in other organizations involved in the project. & 0.824 \\
+ & RM-2 & Our team members know whom to approach within the team to reach external experts or decision-makers quickly. & 0.792 \\
+ & RM-3 & Our team members have a clear picture of the informal communication networks that exist among project team members. & 0.843 \\
+\midrule
+\multirow{3}{2.5cm}{Procedural Meta-knowledge (PM)}
+ & PM-1 & Our team members know the best ways to access specialized knowledge or expertise within the team. & 0.741 \\
+ & PM-2 & Our team members know which procedures or channels to use when they need knowledge or skills they do not possess. & 0.813 \\
+ & PM-3 & Our team members know how to quickly locate and mobilize hard-to-find knowledge or skills when the project demands it. & 0.765 \\
+\midrule
+\multirow{3}{2.5cm}{Immediacy (IMM)}
+ & IMM-1 & Our team deals with unanticipated events on the spot. & 0.826 \\
+ & IMM-2 & Our team thinks on its feet when carrying out project actions. & 0.754 \\
+ & IMM-3 & Our team responds in the moment to unexpected project problems. & 0.736 \\
+\midrule
+\multirow{4}{2.5cm}{Creativity (CRE)}
+ & CRE-1 & Our team tries new approaches to problems. & 0.755 \\
+ & CRE-2 & Our team identifies opportunities for new solutions. & 0.716 \\
+ & CRE-3 & Our team takes risks in producing new ideas for the project. & 0.689 \\
+ & CRE-4 & Our team demonstrates originality in accomplishing project tasks. & 0.742 \\
+\midrule
+\multirow{3}{2.5cm}{Regulatory uncertainty (RU)}
+ & RU-1 & Changes in government policies and regulations at the project location greatly affect how our project is managed. & 0.803 \\
+ & RU-2 & The regulatory environment applicable to our project is frequently updated and difficult to predict. & 0.821 \\
+ & RU-3 & Government supervision over project-related decisions and actions is minimal at our project location. (R) & 0.743 \\
+\end{longtable}%
+}
+
+\end{document}

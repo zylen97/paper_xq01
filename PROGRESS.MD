@@ -1,6 +1,6 @@
 # Manuscript Progress
 
-> **Paper**: How digital communication tools use shapes improvisation capability in large-scale construction projects: The role of meta-knowledge
+> **Paper**: How digital communication tool use shapes improvisation capability in large-scale projects through meta-knowledge: Distributed cognition perspective
 > **Target journal**: International Journal of Project Management (IJPM)
 > **Theory**: Distributed Cognition Theory
 > **Method**: Three-wave time-lagged survey, n=255, CB-SEM (R lavaan)
