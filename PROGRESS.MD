@@ -48,7 +48,7 @@
 | | Acknowledgments | ✅ | NSFC 72371190, 72371189 (titlepage.tex) |
 | | Declaration of competing interest | ✅ | |
 | | References | ✅ | All citations resolved |
-| **Appendix** | Survey items (Table A) | ✅ | All measurement items with SFL values |
+| ~~**Appendix**~~ | ~~Survey items (Table A)~~ | ~~✅~~ | Moved to main text as Table 3 (2026-03-10) |
 
 ---
 
@@ -81,10 +81,11 @@
 **M1: ~~Tables 2--5 not yet inserted~~ RESOLVED (2026-03-06)**
 - Table 1 (antecedent literature) --- ✅ present
 - Table 2 (demographic information) --- ✅ inserted
-- Table 3 (validity and construct correlations) --- ✅ inserted
-- Table 4 (hypotheses testing / SEM paths) --- ✅ inserted
-- Table 5 (mediating results) --- ✅ inserted
-- Table 6 (robustness: second-order IC model) --- ✅ inserted
+- Table 3 (measurement items / SFL) --- ✅ moved from appendix (2026-03-10)
+- Table 4 (validity and construct correlations) --- ✅ inserted (renumbered from Table 3)
+- Table 5 (hypotheses testing / SEM paths) --- ✅ inserted (renumbered from Table 4)
+- Table 6 (mediating results) --- ✅ inserted (renumbered from Table 5)
+- Table 7 (robustness: second-order IC model) --- ✅ inserted (renumbered from Table 6)
 
 **M2: ~~Fig. placeholders~~ RESOLVED (2026-03-09)**
 - Fig. 1 (conceptual model, H1a--H5b): `Figures/fig1.tex/pdf` → Sec 2.4
@@ -102,7 +103,7 @@
 
 **M6: Level of analysis — RESOLVED (2026-03-08)** ✅
 - All variables confirmed as project team-level (N=255 teams, key informant design)
-- Appendix items, definitions, Measures, Discussion, Implications, Limitations all fully corrected
+- Table 3 items, definitions, Measures, Discussion, Implications, Limitations all fully corrected
 - 0 residual individual-level language conflicting with team-level framing
 
 **M5: ~~Keywords insufficient~~ RESOLVED (2026-03-07)**
@@ -114,9 +115,9 @@
 - `titlepage.tex`: NSFC funding (72371190, 72371189) added
 - Removed empty Funding section (merged into Acknowledgments)
 
-**m2: ~~Appendix not included~~ RESOLVED (2026-03-06)**
-- Appendix A (Survey items) with Table A now included at end of manuscript (L660+)
-- Contains all measurement items with standardized factor loadings (SFL)
+**m2: ~~Appendix not included~~ RESOLVED (2026-03-06); ~~standalone appendix.tex~~ REMOVED (2026-03-10)**
+- Survey items merged into main text as Table 3 (landscape longtable, 26 items + RU, SFL values)
+- `appendix.tex` and all compiled artifacts deleted; 0 "Appendix" references remain in manuscript
 
 ---
 
@@ -125,7 +126,7 @@
 - **Engine**: pdfLaTeX + BibTeX
 - **Build output**: root directory (no `build/` subdirectory)
 - **Last successful compile**: 2026-03-10
-- **Warnings**: 0 undefined citations; 0 undefined references; 1 float too large (Table A)
+- **Warnings**: 0 undefined citations; 0 undefined references; 0 float too large (Table A resolved — now longtable)
 - **`(ref)` markers**: 0 remaining
 - **Track-changes**: `tools/make-diff.sh` + `tools/fix-diff-citations.pl` (auto-triggered on save via latexmkrc)
 
@@ -206,7 +207,7 @@
 ### 2026-03-06 --- Methodology revision + robustness checks rewrite
 - **Sec 3.1**: Three-wave design (T1/T2/T3), N=255 (467→369→284→255), eligibility criteria consolidated (≥US$100M per Harrison 2024, ≥3 months, regular DCT use), gift compensation added
 - **Sec 3.2**: Renamed to "Bias control and evaluation"; added ethics statement, CMB procedural remedies, Harman single-factor test (32.38%), CFA model comparison (Δχ²(21)=1418.28), non-response bias test
-- **Sec 3.3**: Control variables expanded from 3 to 5 (added project type, professional qualifications)
+- **Sec 3.3**: Control variables revised; current manuscript uses **4 project-level controls**: project type (ProjType), project investment size (InvSize), project duration (ProjDur), regulatory uncertainty (RU, 3 items from wang2016Governing). Note: `sem_5controls.R` (individual-level gen/age/edu/type/propo) was an earlier draft script and does not reflect the final analysis.
 - **Sec 4.3**: Completely rewritten — removed flawed reverse causality / DWH tests; added three-wave temporal precedence + second-order IC model robustness check
 - **Table 6**: New table — second-order IC model (Panel A: structural paths, Panel B: indirect effects)
 - **References**: Fixed lavaan citation (rosseel2012), added harrison2024Scale, charoensukmongkol2019, faul2009Statistical, carmeli2021, zaman2024
@@ -270,3 +271,17 @@
 - `titlepage.tex`: No changes needed
 
 **Next step**: Ready for submission to IJPM
+
+---
+
+### 2026-03-10 --- Survey items moved from appendix to main text (Table 3)
+
+**manuscript.tex**:
+- Measurement items table (formerly Table A in standalone `appendix.tex`) merged into main text as **Table 3** (landscape `longtable`, 26 items across 7 constructs + 3 RU control items, with SFL values)
+- Added `\usepackage{longtable}` to preamble
+- All "see Appendix" / "reported in the Appendix" references replaced with "Table~3" (Sec 3.3 L275, Sec 3.4 L282); `[Insert Table 3 here]` placeholder added after Sec 3.4
+- Existing tables renumbered: Table 3→4 (validity), Table 4→5 (hypotheses), Table 5→6 (mediation), Table 6→7 (robustness); all inline references and placeholders updated (9 body-text edits total)
+
+**Files deleted**: `appendix.tex`, `appendix.pdf`, `appendix.aux`, `appendix.log`, `appendix.out`, `appendix.synctex.gz`
+
+**Compilation**: 0 errors, 0 undefined references, 0 float-too-large warnings (longtable spans pages naturally)

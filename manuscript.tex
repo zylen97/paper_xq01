@@ -14,6 +14,7 @@
 % 基础功能宏包（elsarticle已包含graphicx）
 \usepackage{booktabs}     % 制作专业表格（\toprule、\midrule、\bottomrule）
 \usepackage{multirow}     % 表格跨行合并
+\usepackage{longtable}    % 跨页长表格
 \usepackage{threeparttable} % 支持表格注释
 \usepackage{tabularx}     % 自动分配列宽的表格
 \usepackage{caption}      % caption格式控制
@@ -271,14 +272,16 @@ To examine potential non-response bias, the final sample was divided into early 
 \subsection{Questionnaire development}
 Questionnaire development followed a three-step procedure based on \citet{anderson1988Structural}. First, building on a systematic review of peer-reviewed literature, established measurement scales were identified and adapted to the context of large-scale construction project teams. Initial items were modified to ensure that the wording reflected team-level constructs and project-specific practices, producing a preliminary item pool.
 
-Second, 12 semi-structured interviews were conducted with domain experts, comprising eight academics with expertise in project management, organizational behavior, or information systems, and four construction industry practitioners with direct experience in large-scale construction project delivery. The interviews pursued two aims: (1) to develop contextual understanding of how the study constructs manifest in large-scale construction projects; and (2) to solicit feedback on the relevance, accuracy, and readability of the questionnaire items. Based on expert feedback, several items were revised. For example, one procedural meta-knowledge item originally read ``Our team members know the standard procedures for accomplishing most tasks'', which practitioners noted was too generic to capture cross-organizational coordination realities in large-scale projects. The item was revised to ``Our team members know which procedures or channels to use when they need knowledge or skills they do not possess'' (PM-2; see Appendix), better reflecting the multi-party knowledge-access complexity inherent in such projects.
+Second, 12 semi-structured interviews were conducted with domain experts, comprising eight academics with expertise in project management, organizational behavior, or information systems, and four construction industry practitioners with direct experience in large-scale construction project delivery. The interviews pursued two aims: (1) to develop contextual understanding of how the study constructs manifest in large-scale construction projects; and (2) to solicit feedback on the relevance, accuracy, and readability of the questionnaire items. Based on expert feedback, several items were revised. For example, one procedural meta-knowledge item originally read ``Our team members know the standard procedures for accomplishing most tasks'', which practitioners noted was too generic to capture cross-organizational coordination realities in large-scale projects. The item was revised to ``Our team members know which procedures or channels to use when they need knowledge or skills they do not possess'' (PM-2; Table~3), better reflecting the multi-party knowledge-access complexity inherent in such projects.
 
 Third, a pilot study was conducted to validate the revised questionnaire. A total of 47 responses were collected from project professionals recruited through the research team's networks. For each item, the corrected item-total correlation was calculated, and Cronbach's $\alpha$ was computed for each construct. All corrected item-total correlation values exceeded the recommended threshold of 0.50, and all Cronbach's $\alpha$ values exceeded 0.70, confirming satisfactory item consistency and internal reliability across all constructs.
 
 \subsection{Measures}
 Building on the expert interview insights from Section 3.3, all constructs were operationalized using established scales adapted from prior research to fit the large-scale construction project context. To ensure construct equivalence in the Chinese project setting, all measurement items were translated using a back-translation procedure. The translation process involved independent forward translation into Chinese and back-translation into English. Discrepancies were discussed and resolved to ensure conceptual consistency with the original scales while maintaining relevance to large-scale project contexts in China. All items were measured on a five-point Likert scale ranging from 1 (“strongly disagree”) to 5 (“strongly agree”). 
 
-Digital communication tool (DCT) usage was measured using eight items adapted from \citet{chen2020Integrating}, including four items capturing work-oriented use (WU) and four capturing social-oriented use (SU). Structural and relational meta-knowledge were each assessed using three-item scales adapted from \citet{engelbrecht2019How}. Procedural meta-knowledge was measured using three items adapted from \citet{faraj2000Coordinating} and modified to reflect the project context.  Improvisation capability (IC) was measured using seven items from \citet{magni2009Role}, comprising three items for immediacy (IMM) and four for creativity (CRE). All items were adapted to the construction project context and are reported in the Appendix.
+Digital communication tool (DCT) usage was measured using eight items adapted from \citet{chen2020Integrating}, including four items capturing work-oriented use (WU) and four capturing social-oriented use (SU). Structural and relational meta-knowledge were each assessed using three-item scales adapted from \citet{engelbrecht2019How}. Procedural meta-knowledge was measured using three items adapted from \citet{faraj2000Coordinating} and modified to reflect the project context.  Improvisation capability (IC) was measured using seven items from \citet{magni2009Role}, comprising three items for immediacy (IMM) and four for creativity (CRE). All items were adapted to the construction project context and are reported in Table~3.
+
+\begin{center}[Insert Table 3 here]\end{center}
 
 Given that the unit of analysis is the project team, four project-level control variables were included. Project type and project investment size were controlled because different project contexts present varying levels of complexity and coordination demands that may influence both meta-knowledge formation and improvisation capability. Project duration was controlled because longer projects may allow more time for meta-knowledge to develop. Regulatory uncertainty was controlled because projects operating under volatile regulatory environments may face greater external pressures that independently affect team improvisation; it was measured using three items adapted from \citet{wang2016Governing}. All four control variables were measured at the project level and reported by the key informant.
 
@@ -291,37 +294,37 @@ The hypothesized mediation effects (H6a--H6f) were tested using bias-corrected b
 \subsection{Reliability and validity}
 To assess the reliability and validity of the measurement instruments, confirmatory factor analysis (CFA) was conducted using the lavaan package in R \citep{rosseel2012Lavaan}. The seven-factor measurement model demonstrates acceptable fit to the data ($\chi^{2}$(231) = 383.79, $\chi^{2}$/df = 1.661; CFI = 0.947; TLI = 0.936; RMSEA = 0.051, 90\% CI [0.042, 0.060]; SRMR = 0.049). All indices meet commonly accepted thresholds ($\chi^{2}$/df < 3, CFI and TLI > 0.90, RMSEA < 0.08, SRMR < 0.08), indicating adequate model fit.
 
-Internal consistency was assessed using Cronbach's $\alpha$ and composite reliability (CR). As reported in Table 3, Cronbach's $\alpha$ values range from 0.797 to 0.838, and CR values range from 0.816 to 0.860, all exceeding the recommended threshold of 0.70. These results indicate satisfactory internal reliability across all constructs \citep{eisinga2019Building}.
+Internal consistency was assessed using Cronbach's $\alpha$ and composite reliability (CR). As reported in Table 4, Cronbach's $\alpha$ values range from 0.797 to 0.838, and CR values range from 0.816 to 0.860, all exceeding the recommended threshold of 0.70. These results indicate satisfactory internal reliability across all constructs \citep{eisinga2019Building}.
 
-\begin{center}[Insert Table 3 here]\end{center}
+\begin{center}[Insert Table 4 here]\end{center}
 
-Convergent validity was evaluated using the average variance extracted (AVE). As shown in Table 3, AVE values range from 0.527 to 0.672, all exceeding the recommended cutoff of 0.50, confirming that the measurement items adequately capture the variance of their corresponding latent constructs. Discriminant validity was assessed using the Fornell--Larcker criterion. As presented in Table 3, the square root of the AVE for each construct exceeds its correlations with all other constructs, providing evidence of satisfactory discriminant validity \citep{chen2007Sensitivity, li2019When}.
+Convergent validity was evaluated using the average variance extracted (AVE). As shown in Table 4, AVE values range from 0.527 to 0.672, all exceeding the recommended cutoff of 0.50, confirming that the measurement items adequately capture the variance of their corresponding latent constructs. Discriminant validity was assessed using the Fornell--Larcker criterion. As presented in Table 4, the square root of the AVE for each construct exceeds its correlations with all other constructs, providing evidence of satisfactory discriminant validity \citep{chen2007Sensitivity, li2019When}.
 
 \subsection{Hypothesis testing}
-The structural model was estimated using CB-SEM as described in Section 3.5. The results are presented in Tables 4 and 5 and visualized in Fig. 3.
+The structural model was estimated using CB-SEM as described in Section 3.5. The results are presented in Tables 5 and 6 and visualized in Fig. 3.
 
 \begin{center}[Insert Fig. 3 here]\end{center}
 
 WU has a significant positive effect on SM ($\beta$ = 0.247, p < 0.001) and PM ($\beta$ = 0.294, p < 0.001), supporting H1a and H1c. However, the effect of WU on RM is not significant ($\beta$ = 0.060, p > 0.05), and H1b is therefore not supported. SU shows significant positive effects on SM ($\beta$ = 0.204, p < 0.001) and RM ($\beta$ = 0.193, p < 0.001), supporting H2a and H2b. In contrast, the effect of SU on PM is not significant ($\beta$ = 0.036, p > 0.05), and H2c is not supported.
 
-Regarding the effects of meta-knowledge on IC, SM exhibits significant positive effects on both IMM ($\beta$ = 0.205, p < 0.001) and CRE ($\beta$ = 0.136, p < 0.05), supporting H3a and H3b. RM demonstrates a significant positive association with IMM ($\beta$ = 0.174, p < 0.01), supporting H4a, but its effect on CRE is not significant ($\beta$ = 0.030, p > 0.05); H4b is therefore not supported. PM shows a significant positive effect on CRE ($\beta$ = 0.256, p < 0.001) but does not significantly affect IMM ($\beta$ = 0.009, p > 0.05). H5b is thus supported, while H5a is not. Full results, including 95\% confidence intervals and standard errors, are reported in Table 4.
+Regarding the effects of meta-knowledge on IC, SM exhibits significant positive effects on both IMM ($\beta$ = 0.205, p < 0.001) and CRE ($\beta$ = 0.136, p < 0.05), supporting H3a and H3b. RM demonstrates a significant positive association with IMM ($\beta$ = 0.174, p < 0.01), supporting H4a, but its effect on CRE is not significant ($\beta$ = 0.030, p > 0.05); H4b is therefore not supported. PM shows a significant positive effect on CRE ($\beta$ = 0.256, p < 0.001) but does not significantly affect IMM ($\beta$ = 0.009, p > 0.05). H5b is thus supported, while H5a is not. Full results, including 95\% confidence intervals and standard errors, are reported in Table 5.
 
-\begin{center}[Insert Table 4 here]\end{center}
+\begin{center}[Insert Table 5 here]\end{center}
 
 None of the control variables showed significant effects on either IMM or CRE (all p > 0.05).
 
-Bootstrapping with 5,000 resamples was conducted to assess the significance of indirect effects, and the results are reported in Table 5. An indirect effect is considered significant if the 95\% bootstrap confidence interval does not include zero. For the WU pathways, the indirect effects through SM on both IMM ($\beta$ = 0.051) and CRE ($\beta$ = 0.034) are significant, supporting H6a: SM mediates the relationship between WU and IC. In contrast, the confidence intervals for indirect effects through RM include zero for both IMM ($\beta$ = 0.010) and CRE ($\beta$ = 0.002); H6b is thus not supported. For PM, the indirect effect of WU on CRE is significant ($\beta$ = 0.075), whereas the indirect effect on IMM is not ($\beta$ = 0.003). H6c is therefore partially supported: PM mediates the WU--CRE relationship but not the WU--IMM relationship.
+Bootstrapping with 5,000 resamples was conducted to assess the significance of indirect effects, and the results are reported in Table 6. An indirect effect is considered significant if the 95\% bootstrap confidence interval does not include zero. For the WU pathways, the indirect effects through SM on both IMM ($\beta$ = 0.051) and CRE ($\beta$ = 0.034) are significant, supporting H6a: SM mediates the relationship between WU and IC. In contrast, the confidence intervals for indirect effects through RM include zero for both IMM ($\beta$ = 0.010) and CRE ($\beta$ = 0.002); H6b is thus not supported. For PM, the indirect effect of WU on CRE is significant ($\beta$ = 0.075), whereas the indirect effect on IMM is not ($\beta$ = 0.003). H6c is therefore partially supported: PM mediates the WU--CRE relationship but not the WU--IMM relationship.
 
-For the SU pathways, the indirect effects through SM are significant for both IMM ($\beta$ = 0.042) and CRE ($\beta$ = 0.028), and H6d is therefore supported: SM mediates the relationship between SU and IC. The indirect effect through RM is significant for IMM ($\beta$ = 0.034) but not for CRE ($\beta$ = 0.006); H6e is thus partially supported, as RM mediates the SU--IMM relationship but not the SU--CRE relationship. For PM, neither the indirect effect on IMM ($\beta$ = 0.001) nor on CRE ($\beta$ = 0.009) is significant, and H6f is therefore not supported. The direct effects of both WU and SU on IMM and CRE remain significant after accounting for the mediators (see Table 5), suggesting partial mediation.
+For the SU pathways, the indirect effects through SM are significant for both IMM ($\beta$ = 0.042) and CRE ($\beta$ = 0.028), and H6d is therefore supported: SM mediates the relationship between SU and IC. The indirect effect through RM is significant for IMM ($\beta$ = 0.034) but not for CRE ($\beta$ = 0.006); H6e is thus partially supported, as RM mediates the SU--IMM relationship but not the SU--CRE relationship. For PM, neither the indirect effect on IMM ($\beta$ = 0.001) nor on CRE ($\beta$ = 0.009) is significant, and H6f is therefore not supported. The direct effects of both WU and SU on IMM and CRE remain significant after accounting for the mediators (see Table 6), suggesting partial mediation.
 
-\begin{center}[Insert Table 5 here]\end{center}
+\begin{center}[Insert Table 6 here]\end{center}
 
 \subsection{Robustness checks}
 The three-wave time-lagged design employed in this study establishes temporal precedence for the proposed causal direction, as independent variables (T1), mediators (T2), and dependent variables (T3) were measured at separate time points with one-month intervals. Combined with the procedural and statistical common method bias controls reported in Section 3.3, these design features substantially mitigate threats to causal interpretation.
 
-To further assess robustness, we examined whether the core findings are sensitive to how improvisation capability is operationalized. The main analysis modeled immediacy (IMM) and creativity (CRE) as two separate first-order dependent variables, following \citet{magni2009Role}. However, prior research has also operationalized improvisation capability as a higher-order construct \citep{charoensukmongkol2019Entrepreneurial}. We therefore re-estimated the structural model with IC specified as a reflective second-order latent variable measured by IMM and CRE, and re-tested all structural paths and mediation effects without control variables. The second-order model demonstrated good fit ($\chi^{2}$(238) = 332.79, CFI = 0.969, TLI = 0.964, RMSEA = 0.040, SRMR = 0.078). As shown in Table 6, the direction and significance of all six IV-to-mediator paths remained consistent with the first-order model:
+To further assess robustness, we examined whether the core findings are sensitive to how improvisation capability is operationalized. The main analysis modeled immediacy (IMM) and creativity (CRE) as two separate first-order dependent variables, following \citet{magni2009Role}. However, prior research has also operationalized improvisation capability as a higher-order construct \citep{charoensukmongkol2019Entrepreneurial}. We therefore re-estimated the structural model with IC specified as a reflective second-order latent variable measured by IMM and CRE, and re-tested all structural paths and mediation effects without control variables. The second-order model demonstrated good fit ($\chi^{2}$(238) = 332.79, CFI = 0.969, TLI = 0.964, RMSEA = 0.040, SRMR = 0.078). As shown in Table 7, the direction and significance of all six IV-to-mediator paths remained consistent with the first-order model:
 
-\begin{center}[Insert Table 6 here]\end{center}
+\begin{center}[Insert Table 7 here]\end{center}
 
 WU significantly predicted SM ($\beta$ = 0.307, p < 0.001) and PM ($\beta$ = 0.344, p < 0.001) but not RM, while SU significantly predicted SM ($\beta$ = 0.232, p < 0.01) and RM ($\beta$ = 0.237, p < 0.05) but not PM. For the mediator-to-IC paths, SM ($\beta$ = 0.255, p < 0.05) and PM ($\beta$ = 0.279, p < 0.01) significantly predicted IC, whereas RM did not ($\beta$ = 0.134, p > 0.05). Bootstrap mediation tests confirmed that the WU--SM--IC ($\beta$ = 0.078), WU--PM--IC ($\beta$ = 0.096), and SU--SM--IC ($\beta$ = 0.059) indirect paths were significant, consistent with the first-order results. The non-significance of the RM--IC path in the second-order model aligns with the first-order findings, where RM significantly predicted IMM but not CRE; aggregating the two dimensions into a single IC construct dilutes this dimension-specific effect. This pattern reinforces the theoretical value of distinguishing between immediacy and creativity as separate facets of improvisation capability. Overall, these results demonstrate that the core findings are robust to the operationalization of the dependent variable.
 
@@ -488,9 +491,9 @@ The authors declare that they have no known competing financial interests or per
 \quad 500 million $\leq$ amount $<$ 1 billion & 54 & 21.18\% \\
 \quad amount $\geq$ 1 billion & 42 & 16.47\% \\
 \textit{Project duration [Years]} & & \\
-\quad duration $\leq$ 1 & 14 & 5.49\% \\
+\quad duration $\leq$ 1 & 4 & 1.57\% \\
 \quad 1 $<$ duration $\leq$ 2 & 61 & 23.92\% \\
-\quad 2 $<$ duration $\leq$ 3 & 113 & 44.31\% \\
+\quad 2 $<$ duration $\leq$ 3 & 123 & 48.24\% \\
 \quad 3 $<$ duration & 67 & 26.27\% \\
 \bottomrule
 \end{tabular*}
@@ -501,7 +504,75 @@ The authors declare that they have no known competing financial interests or per
 \end{threeparttable}
 \end{table}
 
-% ===== Table 3: Validity and construct correlations =====
+% ===== Table 3: Measurement items =====
+\begin{landscape}
+\captionsetup{font=normalsize, labelsep=period}
+{\small\setstretch{1}%
+\begin{longtable}{>{\raggedright\arraybackslash}p{2.5cm}l>{\raggedright\arraybackslash}p{\dimexpr\linewidth-2.5cm-1.5cm-1.0cm-6\tabcolsep\relax}>{\centering\arraybackslash}p{1.0cm}}
+\caption{Measurement items}\label{tab:survey_items}\\
+\toprule
+\textbf{Constructs} & \textbf{Items} & \textbf{Measures} & \textbf{SFL} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{c}{\tablename~\thetable~(\textit{continued})} \\[3pt]
+\toprule
+\textbf{Constructs} & \textbf{Items} & \textbf{Measures} & \textbf{SFL} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{\small\textit{Continued on next page}} \\
+\endfoot
+\bottomrule
+\multicolumn{4}{@{}p{\linewidth}@{}}{\small\textit{Note}: SFL = standardized factor loading. All items were measured on a five-point Likert scale ranging from 1 (``strongly disagree'') to 5 (``strongly agree''). Items were adapted to the construction project context. (R) denotes reverse-scored item.} \\
+\endlastfoot
+\multirow{4}{2.5cm}{Work-oriented (WU)}
+ & WU-1 & In our team, we use digital communication tools to share content about work projects with team members. & 0.831 \\
+ & WU-2 & In our team, we use digital communication tools to create content about work projects in collaboration with team members. & 0.765 \\
+ & WU-3 & In our team, we use digital communication tools to disseminate content related to project work. & 0.716 \\
+ & WU-4 & In our team, we use digital communication tools to access project-related content created by team members. & 0.789 \\
+\midrule
+\multirow{4}{2.5cm}{Social-oriented (SU)}
+ & SU-1 & In our team, we use digital communication tools to build new relationships at work. & 0.813 \\
+ & SU-2 & In our team, we use digital communication tools to get to know people we would otherwise not meet. & 0.732 \\
+ & SU-3 & In our team, we use digital communication tools to maintain close social relationships with people at work. & 0.784 \\
+ & SU-4 & In our team, we use digital communication tools to get acquainted with colleagues from different organizations or disciplines involved in the project. & 0.767 \\
+\midrule
+\multirow{3}{2.5cm}{Structural Meta-knowledge (SM)}
+ & SM-1 & Our team members have a good ``map'' of each other's talents and skills. & 0.752 \\
+ & SM-2 & Our team members know which task-related skills and knowledge each other possesses. & 0.809 \\
+ & SM-3 & Our team members know who among them has specialized skills and knowledge relevant to the project. & 0.771 \\
+\midrule
+\multirow{3}{2.5cm}{Relational Meta-knowledge (RM)}
+ & RM-1 & Our team members know who among them has established connections with key personnel in other organizations involved in the project. & 0.824 \\
+ & RM-2 & Our team members know whom to approach within the team to reach external experts or decision-makers quickly. & 0.792 \\
+ & RM-3 & Our team members have a clear picture of the informal communication networks that exist among project team members. & 0.843 \\
+\midrule
+\multirow{3}{2.5cm}{Procedural Meta-knowledge (PM)}
+ & PM-1 & Our team members know the best ways to access specialized knowledge or expertise within the team. & 0.741 \\
+ & PM-2 & Our team members know which procedures or channels to use when they need knowledge or skills they do not possess. & 0.813 \\
+ & PM-3 & Our team members know how to quickly locate and mobilize hard-to-find knowledge or skills when the project demands it. & 0.765 \\
+\midrule
+\multirow{3}{2.5cm}{Immediacy (IMM)}
+ & IMM-1 & Our team deals with unanticipated events on the spot. & 0.826 \\
+ & IMM-2 & Our team thinks on its feet when carrying out project actions. & 0.754 \\
+ & IMM-3 & Our team responds in the moment to unexpected project problems. & 0.736 \\
+\midrule
+\multirow{4}{2.5cm}{Creativity (CRE)}
+ & CRE-1 & Our team tries new approaches to problems. & 0.755 \\
+ & CRE-2 & Our team identifies opportunities for new solutions. & 0.716 \\
+ & CRE-3 & Our team takes risks in producing new ideas for the project. & 0.689 \\
+ & CRE-4 & Our team demonstrates originality in accomplishing project tasks. & 0.742 \\
+\midrule
+\multirow{3}{2.5cm}{Regulatory uncertainty (RU)}
+ & RU-1 & Changes in government policies and regulations at the project location greatly affect how our project is managed. & 0.803 \\
+ & RU-2 & The regulatory environment applicable to our project is frequently updated and difficult to predict. & 0.821 \\
+ & RU-3 & Government supervision over project-related decisions and actions is minimal at our project location. (R) & 0.743 \\
+\end{longtable}%
+}
+\end{landscape}
+\vspace{-15pt}
+
+% ===== Table 4: Validity and construct correlations =====
 \begin{table}[!htbp]
 \centering
 \captionsetup{font=normalsize, labelsep=period}
@@ -533,7 +604,7 @@ The authors declare that they have no known competing financial interests or per
 \end{threeparttable}
 \end{table}
 
-% ===== Table 4: Results of hypotheses testing =====
+% ===== Table 5: Results of hypotheses testing =====
 \begin{table}[!htbp]
 \centering
 \captionsetup{font=normalsize, labelsep=period}
@@ -577,7 +648,7 @@ H5b & PM $\rightarrow$ CRE & 0.256  & [0.156, 0.357] & $<$0.001 & 0.051 & Suppor
 \end{threeparttable}
 \end{table}
 
-% ===== Table 5: Mediating result of SEM =====
+% ===== Table 6: Mediating result of SEM =====
 \begin{table}[!htbp]
 \centering
 \captionsetup{font=normalsize, labelsep=period}
@@ -617,7 +688,7 @@ H5b & PM $\rightarrow$ CRE & 0.256  & [0.156, 0.357] & $<$0.001 & 0.051 & Suppor
 \end{threeparttable}
 \end{table}
 
-% ===== Table 6: Robustness check — Second-order IC model =====
+% ===== Table 7: Robustness check — Second-order IC model =====
 \begin{table}[!htbp]
 \centering
 \captionsetup{font=normalsize, labelsep=period}
